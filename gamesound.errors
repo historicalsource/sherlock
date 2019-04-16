@@ -1,0 +1,36 @@
+Assembling GAMESOUND.ZAP.26 on Wednesday, January 27, 1988 15:52:06
+Release: 26
+
+    64	Inserting GAMESOUNDFREQ.ZAP.1	   (620 bytes)
+   684	Inserting GAMESOUNDDAT.ZAP.26	 (30289 bytes)
+ 30973	Inserting SCHED.ZAP.140	  (1253 bytes)
+ 32226	Inserting BOOT.ZAP.159	  (2610 bytes)
+ 34836	Inserting PARSER.ZAP.184	  (9985 bytes)
+ 44821	Inserting GAMESOUNDPUR.ZAP.26	  (3202 bytes)
+ 48023	Inserting OTHER-MISC.ZAP.138	  (4317 bytes)
+ 52340	Inserting DEBUG.ZAP.147	    (58 bytes)
+ 52398	Inserting HINTS.ZAP.140	  (1650 bytes)
+ 54048	Inserting VERBS.ZAP.84	 (18296 bytes)
+ 72344	Inserting PEOPLE.ZAP.71	 (15680 bytes)
+ 88024	Inserting GENERIC.ZAP.120	   (871 bytes)
+ 88895	Inserting PLACES3.ZAP.137	 (14899 bytes)
+103794	Inserting PLACES2.ZAP.129	  (8415 bytes)
+112209	Inserting THINGS2.ZAP.145	 (17725 bytes)
+129934	Inserting THINGS1.ZAP.125	  (1601 bytes)
+131535	Inserting CAB.ZAP.142	  (3875 bytes)
+135410	Inserting TOWER.ZAP.125	  (2311 bytes)
+137721	Inserting SCOPE.ZAP.122	  (1533 bytes)
+139254	Inserting ELIZA.ZAP.124	  (1801 bytes)
+141055	Inserting CHARLES.ZAP.131	  (5059 bytes)
+146114	Inserting BANK.ZAP.128	  (7526 bytes)
+153640	Inserting PUZZLES.ZAP.133	 (14468 bytes)
+168108	Inserting LOCALS.ZAP.65	  (3365 bytes)
+171473	Inserting GAMESOUNDSTR.ZAP.26	 (18705 bytes)
+314 objects.
+240 globals.
+1194 word vocabulary.
+
+190178 bytes (186K).
+ 30973 bytes of preload.
+ 16443 bytes of impure.
+Outputting symbol tables

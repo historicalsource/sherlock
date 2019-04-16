@@ -1,0 +1,1800 @@
+
+
+	.FUNCT	RT-EXAMINE-GEM,GEM
+	EQUAL?	GEM,TH-SAPPHIRE \?CCL3
+	IN?	TH-SAPPHIRE,TH-CLAPPER \?CCL3
+	PRINTR	"The sapphire is hanging from the end of the clapper."
+?CCL3:	LOC	GEM
+	EQUAL?	STACK,CH-PLAYER \?CCL7
+	EQUAL?	GL-PRSA,V?EXAMINE,V?LOOK-ON \?CCL10
+	PRINTI	"It looks as if there is a scratch on "
+	ICALL1	RT-THEO-PRINT
+	PRINTR	"."
+?CCL10:	EQUAL?	GL-PRSA,V?READ \?CCL12
+	PRINTI	"All you can see on "
+	ICALL1	RT-THEO-PRINT
+	PRINTR	" is a scratch."
+?CCL12:	EQUAL?	GL-PRSA,V?LOOK-THRU \FALSE
+	EQUAL?	GL-PRSI,TH-MAGNIFYING-GLASS \FALSE
+	IN?	TH-MAGNIFYING-GLASS,GL-WINNER \?CCL19
+	PRINTI	"You see """
+	EQUAL?	GEM,TH-SAPPHIRE \?CCL22
+	PRINTI	"2:00 a.m."
+	JUMP	?CND20
+?CCL22:	EQUAL?	GEM,TH-EMERALD \?CCL24
+	PRINTI	"20/6/87"
+	JUMP	?CND20
+?CCL24:	EQUAL?	GEM,TH-OPAL \?CCL26
+	PRINTI	"Password: Swordfish"
+	JUMP	?CND20
+?CCL26:	EQUAL?	GEM,TH-RUBY \?CCL28
+	PRINTI	"Wear a carnation"
+	JUMP	?CND20
+?CCL28:	EQUAL?	GEM,TH-TOPAZ \?CCL30
+	PRINTI	"Bar of Gold"
+	JUMP	?CND20
+?CCL30:	EQUAL?	GEM,TH-GARNET \?CND20
+	PRINTI	"Give me to Akbar"
+?CND20:	PRINTI	""" scratched into the surface of "
+	ICALL1	RT-THEO-PRINT
+	PRINTC	46
+	CRLF	
+	BTST	CH-HOLMES-AUX1,2 /TRUE
+	BOR	CH-HOLMES-AUX1,K-HOLMES-GEM? >CH-HOLMES-AUX1
+	MOVE	TH-RING,CH-PLAYER
+	FSET	TH-RING,FL-SEEN
+	FSET	TH-RING,FL-TOUCHED
+	FCLEAR	TH-RING,FL-NODESC
+	CRLF	
+	PRINTI	"Holmes"
+	ICALL1	RT-HOLMES-SAYS-AGRA-MSG
+	GETP	TH-RING,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	TH-RING,P?VALUE,0
+	RTRUE	
+?CCL19:	ICALL	RT-YOUD-HAVE-TO-MSG,STR?738,TH-MAGNIFYING-GLASS
+	RTRUE	
+?CCL7:	EQUAL?	GL-PRSA,V?READ \?CCL36
+	ICALL1	RT-CYOU-MSG
+	ICALL	RT-WOULD-HAVE-TO-MSG,STR?738,GL-PRSO
+	PRINTI	" to read "
+	ICALL2	RT-SAY-HIM-HER-THEM-IT-MSG,GL-PRSO
+	PRINTR	"."
+?CCL36:	EQUAL?	GL-PRSA,V?LOOK-THRU \?CCL38
+	EQUAL?	GL-PRSI,TH-MAGNIFYING-GLASS \?CCL38
+	ICALL1	RT-CYOU-MSG
+	ICALL	RT-WOULD-HAVE-TO-MSG,STR?738,GL-PRSO
+	PRINT	K-GOOD-LOOK-MSG
+	CRLF	
+	RTRUE	
+?CCL38:	EQUAL?	GL-PRSA,V?EXAMINE,V?LOOK-ON \FALSE
+	ICALL1	RT-CYOU-MSG
+	ICALL	RT-WOULD-HAVE-TO-MSG,STR?738,GL-PRSO
+	PRINT	K-GOOD-LOOK-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-HANDLE-SCRATCH,GEM,CONTEXT
+	EQUAL?	CONTEXT,K-M-SDESC \?CCL3
+	PUTP	GEM,P?OBJ-NOUN,0
+	ICALL2	DPRINT,GEM
+	PUTP	GEM,P?OBJ-NOUN,W?SCRATCH
+	PRINTI	"'s scratch"
+	RTRUE	
+?CCL3:	EQUAL?	CONTEXT,K-M-DESCFCN /?CND1
+?CND1:	LOC	GEM
+	EQUAL?	STACK,CH-PLAYER \?CCL7
+	EQUAL?	GL-PRSA,V?EXAMINE \?CCL10
+	PRINTR	"It looks like very tiny writing."
+?CCL10:	EQUAL?	GL-PRSA,V?READ \?CCL12
+	PRINTR	"It is too tiny."
+?CCL12:	EQUAL?	GL-PRSA,V?LOOK-THRU \FALSE
+	EQUAL?	GL-PRSI,TH-MAGNIFYING-GLASS \FALSE
+	IN?	TH-MAGNIFYING-GLASS,GL-WINNER \?CCL19
+	PRINTI	"You see """
+	EQUAL?	GEM,TH-SAPPHIRE \?CCL22
+	PRINTI	"2:00 a.m"
+	JUMP	?CND20
+?CCL22:	EQUAL?	GEM,TH-EMERALD \?CCL24
+	PRINTI	"20/6/87"
+	JUMP	?CND20
+?CCL24:	EQUAL?	GEM,TH-OPAL \?CCL26
+	PRINTI	"Password: Swordfish"
+	JUMP	?CND20
+?CCL26:	EQUAL?	GEM,TH-RUBY \?CCL28
+	PRINTI	"Wear a carnation"
+	JUMP	?CND20
+?CCL28:	EQUAL?	GEM,TH-TOPAZ \?CCL30
+	PRINTI	"Bar of Gold"
+	JUMP	?CND20
+?CCL30:	EQUAL?	GEM,TH-GARNET \?CND20
+	PRINTI	"Give me to Akbar"
+?CND20:	PRINTI	"."""
+	CRLF	
+	BTST	CH-HOLMES-AUX1,2 /TRUE
+	BOR	CH-HOLMES-AUX1,K-HOLMES-GEM? >CH-HOLMES-AUX1
+	MOVE	TH-RING,CH-PLAYER
+	FSET	TH-RING,FL-SEEN
+	FSET	TH-RING,FL-TOUCHED
+	FCLEAR	TH-RING,FL-NODESC
+	CRLF	
+	PRINTI	"Holmes"
+	ICALL1	RT-HOLMES-SAYS-AGRA-MSG
+	GETP	TH-RING,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	TH-RING,P?VALUE,0
+	RTRUE	
+?CCL19:	ICALL	RT-YOUD-HAVE-TO-MSG,STR?738,TH-MAGNIFYING-GLASS
+	RTRUE	
+?CCL7:	EQUAL?	GL-PRSA,V?LOOK-THRU \?PRD38
+	EQUAL?	GL-PRSI,TH-MAGNIFYING-GLASS /?CCL36
+?PRD38:	EQUAL?	GL-PRSA,V?EXAMINE,V?READ \FALSE
+?CCL36:	ICALL1	RT-CYOU-MSG
+	ICALL	RT-WOULD-HAVE-TO-MSG,STR?738,GEM
+	EQUAL?	GL-PRSA,V?READ \?CCL43
+	PRINTR	" to read the scratch."
+?CCL43:	PRINT	K-GOOD-LOOK-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-HOLE?,OBJ,OFF,CNT,NUM,PLACE
+?PRG1:	MUL	NUM,2 >OFF
+	GET	GL-HOLES,0
+	EQUAL?	NUM,STACK /?REP2
+	ADD	OFF,1
+	GET	GL-HOLES,STACK
+	EQUAL?	OBJ,STACK \?CND3
+	ADD	OFF,2
+	GET	GL-HOLES,STACK >PLACE
+	ZERO?	PLACE /?CCL8
+	EQUAL?	GL-PLACE-CUR,PLACE \?CND3
+?CCL8:	INC	'CNT
+?CND3:	INC	'NUM
+	JUMP	?PRG1
+?REP2:	RETURN	CNT
+
+
+	.FUNCT	RT-WASTE-OF-BULLETS-MSG,WHO
+	CALL1	RT-WHO-SAYS? >WHO
+	EQUAL?	WHO,CH-HOLMES \?CCL3
+	PRINTR	"Holmes glances at you and says, ""Save your ammunition, Watson. More danger may lie ahead."""
+?CCL3:	EQUAL?	WHO,CH-WIGGINS \?CCL5
+	PRINTI	"Wiggins looks at you impatiently and says, ""'Ow in the name of Dick Whittington is shooting "
+	ICALL1	RT-A-PRINT
+	PRINTR	" going to help Mr 'Olmes?"""
+?CCL5:	PRINTR	"That would be a waste of bullets."
+
+
+	.FUNCT	RT-SHOOT-DEAD-MSG,WHO
+	CALL1	RT-WHO-SAYS? >WHO
+	EQUAL?	WHO,CH-HOLMES \?CCL3
+	PRINTR	"Holmes lifts an eyebrow and says sardonically, ""Is shooting dead people a new trend in medical research, Doctor?"""
+?CCL3:	EQUAL?	WHO,CH-WIGGINS \?CCL5
+	PRINTR	"Wiggins tugs at your sleeve and whispers nervously, ""Everyone here is already dead... aren't they?"""
+?CCL5:	PRINTR	"Have you no decency? Have you no shame? No? Then a bright future awaits you in the legal profession. Apply now to the law school of your choice."
+
+
+	.FUNCT	RT-READ-NEWSPAPER
+	PRINTR	"It's the newspaper that came in your game package."
+
+
+	.FUNCT	RT-WAKE-UP-HOLMES
+	FCLEAR	CH-HOLMES,FL-ASLEEP
+	FSET	LG-PARLOUR-DOOR,FL-OPENED
+	REMOVE	TH-PHIAL
+	REMOVE	TH-MOROCCO-CASE
+	REMOVE	TH-SYRINGE
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-PM-HALL,STACK
+	ICALL2	RT-ALARM-CLR,RT-I-PM-QUITS
+	PRINTI	"Holmes "
+	EQUAL?	TH-NEWSPAPER,GL-PRSO,GL-PRSI \?CND1
+	PRINTI	"glances at the paper and his eye falls on the notice about the Tower of London. He "
+?CND1:	PRINTI	"immediately leaps to his feet and hurls the phial and the case into the fireplace. The phial and the syringe shatter, and the liquid evaporates instantly, but the detective does not even notice. "
+	EQUAL?	GL-PRSI,CH-PRIME-MINISTER \?CCL5
+	PRINTI	"""A client?"" he exclaims. ""On government business? Most interesting."""
+	JUMP	?CND3
+?CCL5:	PRINTI	"""They've closed the Tower?"" he exclaims. ""Most singular."""
+?CND3:	CRLF	
+	ICALL2	RT-UPDATE-SCORE,5
+	CRLF	
+	PRINTI	"Holmes strides to the door and calls down to Mrs Hudson to bring up a tray of food. Then he plops back down on the sofa, "
+	EQUAL?	GL-PRSI,CH-PRIME-MINISTER \?CND6
+	CALL	RT-META-IN?,TH-NEWSPAPER,CH-PLAYER
+	ZERO?	STACK \?CND6
+	CALL2	RT-META-LOC,TH-NEWSPAPER
+	EQUAL?	STACK,RM-HOLMES-STUDY \?CND6
+	PRINTI	"glances at the newspaper, and then "
+?CND6:	PRINTR	"makes a steeple of his fingertips and focuses his intense gaze upon you."
+
+
+	.FUNCT	RT-I-PM-HALL
+	FSET	CH-HUDSON,FL-NODESC
+	MOVE	CH-PRIME-MINISTER,RM-ENTRY-HALL
+	MOVE	CH-HUDSON,RM-ENTRY-HALL
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-PM-VESTIBULE,STACK
+	EQUAL?	GL-PLACE-CUR,RM-VESTIBULE \FALSE
+	CRLF	
+	PRINTR	"Mrs Hudson and the visitor emerge from the parlour and appear to be on their way upstairs."
+
+
+	.FUNCT	RT-I-PM-VESTIBULE
+	MOVE	CH-PRIME-MINISTER,RM-VESTIBULE
+	MOVE	CH-HUDSON,RM-VESTIBULE
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-HUDSON,STACK
+	EQUAL?	GL-PLACE-CUR,RM-VESTIBULE \?CCL3
+	EQUAL?	GL-PLACE-PRV,RM-ENTRY-HALL /?CCL3
+	CRLF	
+	PRINTR	"Mrs Hudson and the visitor arrive at the top of the stairs on their way into Holmes's study."
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-ENTRY-HALL \FALSE
+	EQUAL?	GL-PLACE-PRV,RM-VESTIBULE \FALSE
+	CRLF	
+	PRINTR	"Mrs Hudson and the visitor passed you on the stairs."
+
+
+	.FUNCT	RT-I-HUDSON,NUM
+	MOVE	CH-PRIME-MINISTER,RM-HOLMES-STUDY
+	REMOVE	CH-HUDSON
+	FCLEAR	CH-HUDSON,FL-NODESC
+	SET	'NUM,RM-HOLMES-STUDY-AUX1
+	ZERO?	NUM \?CND1
+	EQUAL?	GL-PLACE-CUR,RM-VESTIBULE \?CCL5
+	CRLF	
+	PRINTI	"Mrs Hudson ushers the visitor into "
+	ICALL2	RT-THEO-PRINT,RM-HOLMES-STUDY
+	PRINTI	" and goes downstairs."
+	CRLF	
+	JUMP	?CND1
+?CCL5:	EQUAL?	GL-PLACE-CUR,RM-ENTRY-HALL \?CND1
+	CRLF	
+	PRINTI	"You see Mrs Hudson come down the stairway."
+	CRLF	
+?CND1:	EQUAL?	GL-PLACE-CUR,RM-HOLMES-STUDY /?CTR8
+	EQUAL?	RM-HOLMES-STUDY-AUX1,3 \?CCL9
+?CTR8:	MOVE	TH-WESTMINSTER-CLUE,CH-PLAYER
+	FSET	TH-WESTMINSTER-CLUE,FL-SEEN
+	FSET	CH-PRIME-MINISTER,FL-SEEN
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,3,0
+	ICALL	RT-ALARM-SET-REL,RT-I-PM-LEAVE,STACK
+	EQUAL?	GL-PLACE-CUR,RM-HOLMES-STUDY \?CCL14
+	ZERO?	NUM \?CCL14
+	CRLF	
+	PRINTI	"Mrs Hudson appears at the door, accompanied by a worried-looking gentleman."
+	CRLF	
+	CRLF	
+	PRINTI	"Holmes jumps up and ushers the gentleman to the armchair, dismissing Mrs Hudson at the same time. ""Watson,"" he says, ""I am sure you recognize our distinguished visitor. "
+	JUMP	?CND12
+?CCL14:	EQUAL?	GL-PLACE-CUR,RM-HOLMES-STUDY \?CCL18
+	EQUAL?	NUM,1,2 \?CCL18
+	CRLF	
+	PRINTI	"Holmes has seated his visitor and is exchanging pleasantries with him. As you walk in Holmes looks up and says, ""Ah, here you are Watson. Now we can get down to business."" He turns to the gentleman seated in the armchair and says, """
+	JUMP	?CND12
+?CCL18:	CRLF	
+	PRINTI	"Holmes appears and says, ""Come with me, Watson. We have an important visitor."" He takes you by the arm and ushers you back to his study. Once inside, he gestures to the guest seated in the armchair and says, """
+	MOVE	CH-PLAYER,RM-HOLMES-STUDY
+	SET	'GL-PLACE-PRV,GL-PLACE-CUR
+	SET	'GL-PLACE-CUR,RM-HOLMES-STUDY
+?CND12:	PRINTI	"I presume, sir, that you have come about the Jewels."""
+	CRLF	
+	CRLF	
+	PRINTI	"The visitor half rises from his chair in protest and sputters, ""But...but, how...?"""
+	CRLF	
+	CRLF	
+	PRINTI	"Holmes calms him with a glance. ""Come, sir. What else could it be? The Tower is suddenly closed, and within hours I receive a call from the highest official of Her Majesty's government. A simple deduction. Now then, tell me about the theft."""
+	CRLF	
+	CRLF	
+	PRINTI	"The visitor settles back into his chair and says, ""We know very little. Only that the Crown Jewels were stolen from the Tower sometime Thursday night. The theft was discovered Friday morning, and we immediately closed and searched the Tower. All we found was this verse which was left behind in the empty jewel case."""
+	CRLF	
+	CRLF	
+	PRINTI	"The visitor removes a folded piece of paper from his pocket and gives it to Holmes, who glances at it and passes it on to you."
+	CRLF	
+	ICALL2	RT-THIS-IS-IT,TH-WESTMINSTER-CLUE
+	ICALL2	RT-THIS-IS-IT,CH-PRIME-MINISTER
+	RTRUE	
+?CCL9:	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-HUDSON,STACK
+	ADD	NUM,1 >RM-HOLMES-STUDY-AUX1
+	ZERO?	NUM \TRUE
+	CRLF	
+	PRINTR	"You hear Holmes call you to come back into his study..."
+
+
+	.FUNCT	RT-I-PM-LEAVE
+	FCLEAR	LG-HOLMES-BEDROOM-DOOR,FL-LOCKED
+	FSET	LG-HOLMES-BEDROOM-DOOR,FL-OPENED
+	REMOVE	CH-PRIME-MINISTER
+	MOVE	CH-HOLMES,RM-221B-BAKER-ST
+	LOC	CH-PLAYER
+	EQUAL?	STACK,RM-HOLMES-STUDY \?CCL3
+	CRLF	
+	PRINTI	"The visitor looks at his pocket watch and stands up. ""Thank you, gentlemen. I must go now. Remember, this calamity can only be hidden from the public until Monday morning at nine o'clock. If the Regalia is not at Buckingham Palace in time for the Coronation Day festivities, then all is lost."""
+	CRLF	
+	CRLF	
+	PRINTI	"The gentleman leaves, and Holmes unlocks the door to the bedroom, goes in, and reappears moments later wearing his Inverness cape and deerstalker hat."
+	CRLF	
+	CRLF	
+	PRINTR	"""Come when you're ready, Watson. I'll wait for you outside."""
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-221B-BAKER-ST \?CCL5
+	CRLF	
+	PRINTR	"You see Holmes and the visitor emerge from the house. They confer briefly, shake hands, and then the Minister walks off into the fog."
+?CCL5:	CRLF	
+	PRINTR	"Holmes and the visitor brush past you as they leave the house. Holmes says to you, ""Come when you're ready, Watson. I'll wait for you outside."""
+
+
+	.FUNCT	RT-I-PM-QUITS
+	CRLF	
+	EQUAL?	GL-PLACE-CUR,RM-221B-BAKER-ST \?CCL3
+	PRINTI	"You see "
+	ICALL2	RT-THEO-PRINT,LG-BAKER-ST-DOOR
+	PRINTI	" open, and a dejected-looking man comes out. He slowly walks away into the fog."
+	CRLF	
+	CRLF	
+	JUMP	?CND1
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-HOLMES-STUDY,RM-VESTIBULE \?CCL5
+	PRINTI	"From downstairs you hear the sound of a door closing. You go down and open "
+	ICALL2	RT-THEO-PRINT,LG-BAKER-ST-DOOR
+	PRINTI	" in time to see a dejected-looking man disappearing into the fog."
+	CRLF	
+	CRLF	
+	JUMP	?CND1
+?CCL5:	EQUAL?	GL-PLACE-CUR,RM-ENTRY-HALL \?CND1
+	PRINTI	"Suddenly "
+	ICALL2	RT-THEO-PRINT,LG-PARLOUR-DOOR
+	PRINTI	" opens and a dejected-looking man appears. ""Thank you for trying, Mrs Hudson, but without Sherlock Holmes, there is no hope."" He opens "
+	ICALL2	RT-THEO-PRINT,LG-BAKER-ST-DOOR
+	PRINTI	" and disappears into the fog."
+	CRLF	
+	CRLF	
+?CND1:	PRINTI	"Moments later you see newsboys running through the streets shouting, ""Crown Jewels stolen! Prime Minister resigns in disgrace!"""
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-GET-PIGEON,OBJ,WHO
+	BTST	CH-TRAINED-PIGEON-AUX1,4 \?CCL3
+	PRINTI	"""He's too young to fly too often."
+	SET	'OBJ,CH-TRAINED-PIGEON-AUX3
+	IN?	OBJ,CH-SHERMAN \?CCL6
+	PRINTI	" He did come back with "
+	ICALL2	RT-A-PRINT,OBJ
+	PRINTI	", however,"" he says, giving it to you."
+	CRLF	
+	MOVE	OBJ,CH-PLAYER
+	ICALL2	RT-THIS-IS-IT,OBJ
+	FSET	OBJ,FL-SEEN
+	FSET	OBJ,FL-TOUCHED
+	FCLEAR	OBJ,FL-NODESC
+	GETP	OBJ,P?VALUE
+	ZERO?	STACK /FALSE
+	CALL1	RT-WHO-SAYS? >WHO
+	EQUAL?	WHO,CH-HOLMES \?CND10
+	CRLF	
+	PRINT	K-BRAVO-MSG
+	CRLF	
+?CND10:	GETP	OBJ,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	OBJ,P?VALUE,0
+	RTRUE	
+?CCL6:	PRINTR	" Come back next week."""
+?CCL3:	IN?	CH-TRAINED-PIGEON,CH-SHERMAN \?CCL13
+	PRINTI	"Sherman hands you the bird. ""Take good care of him, now. I've grown fond of him."""
+	CRLF	
+	MOVE	CH-TRAINED-PIGEON,CH-PLAYER
+	FSET	CH-TRAINED-PIGEON,FL-SEEN
+	FSET	CH-TRAINED-PIGEON,FL-TOUCHED
+	FCLEAR	CH-TRAINED-PIGEON,FL-NODESC
+	GETP	CH-TRAINED-PIGEON,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	CH-TRAINED-PIGEON,P?VALUE,0
+	RTRUE	
+?CCL13:	PRINTR	"""I've already given him to you."""
+
+
+	.FUNCT	RT-PIGEON-INTEREST,ATT-BIT
+	EQUAL?	ATT-BIT,K-PIGEON-GET-RUBY \?CND1
+	BTST	CH-TRAINED-PIGEON-AUX1,1 /?CND1
+	ICALL2	RT-CTHEO-PRINT,CH-TRAINED-PIGEON
+	PRINTR	" doesn't seem to see the object to which you are referring."
+?CND1:	BOR	CH-TRAINED-PIGEON-AUX1,ATT-BIT >CH-TRAINED-PIGEON-AUX1
+	ICALL2	RT-AC-CH-TRAINED-PIGEON,K-M-DESCFCN
+	ICALL2	RT-ALARM-CLR,RT-I-PIGEON-LOSE-INTEREST
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,3,0
+	ICALL	RT-ALARM-SET-REL,RT-I-PIGEON-LOSE-INTEREST,STACK
+	BTST	CH-TRAINED-PIGEON-AUX1,1 \FALSE
+	BTST	CH-TRAINED-PIGEON-AUX1,2 \FALSE
+	CALL2	RT-ALARM-SET?,RT-I-PIGEON-IMPATIENT
+	ZERO?	STACK /?CND10
+	ICALL2	RT-ALARM-CLR,RT-I-PIGEON-IMPATIENT
+?CND10:	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	CALL	RT-ALARM-SET-REL,RT-I-PIGEON-IMPATIENT,STACK
+	RSTACK	
+
+
+	.FUNCT	RT-KILL-PIGEON
+	FCLEAR	CH-TRAINED-PIGEON,FL-ALIVE
+	SET	'CH-TRAINED-PIGEON-AUX2,0
+	LOC	CH-TRAINED-PIGEON
+	ZERO?	STACK /?CND1
+	LOC	CH-TRAINED-PIGEON
+	MOVE	TH-DEAD-PIGEON,STACK
+	REMOVE	CH-TRAINED-PIGEON
+?CND1:	ICALL2	RT-ALARM-CLR,RT-I-PIGEON-LOSE-INTEREST
+	ICALL2	RT-ALARM-CLR,RT-I-PIGEON-IMPATIENT
+	EQUAL?	GL-PLACE-CUR,RM-SHERMANS-HOUSE \?CCL5
+	CALL2	RT-SHERMAN-RAGE,FALSE-VALUE
+	RSTACK	
+?CCL5:	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,30,0
+	CALL	RT-ALARM-SET-REL,RT-I-SHERMANS-REVENGE,STACK
+	RSTACK	
+
+
+	.FUNCT	RT-PIGEON-OBJ,P-OBJ,WHO
+	MOVE	P-OBJ,CH-PLAYER
+	ICALL2	RT-THIS-IS-IT,P-OBJ
+	FSET	P-OBJ,FL-SEEN
+	FSET	P-OBJ,FL-TOUCHED
+	FCLEAR	P-OBJ,FL-NODESC
+	GETP	P-OBJ,P?VALUE
+	ZERO?	STACK /TRUE
+	CALL1	RT-WHO-SAYS? >WHO
+	EQUAL?	WHO,CH-HOLMES \?CND3
+	CRLF	
+	PRINT	K-BRAVO-MSG
+	CRLF	
+?CND3:	GETP	P-OBJ,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	P-OBJ,P?VALUE,0
+	RTRUE	
+
+
+	.FUNCT	RT-SHERMAN-RAGE,WALK
+	CRLF	
+	ZERO?	WALK /?CND1
+	PRINTI	"As you walk into the shop, "
+?CND1:	PRINTI	"Sherman sees you and flies into a rage. ""Animal hater!"" he cries. ""You killed my bird! How could you do such a thing?"""
+	CRLF	
+	CRLF	
+	PRINTI	"With a strength you didn't know he possessed, Sherman wrestles you into one of the larger cages that line the walls of his shop."
+	CRLF	
+	CRLF	
+	PRINTI	"Over the next few days, no customers buy you. But then on Monday morning Inspector Lestrade comes in looking for a pet for his wife. ""Did you you hear about the Crown Jewels?"" he asks. ""I'm looking into it personally and I don't mind telling you I've a few theories of my own. By the way, isn't it a little cramped in there?"""
+	CRLF	
+	CRLF	
+	PRINTI	"Lestrade leaves and you decide that with him handling the case, you'd just as soon stay in the cage."
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-I-PIGEON-LOSE-INTEREST
+	SET	'CH-TRAINED-PIGEON-AUX1,0
+	CALL2	RT-VISIBLE?,CH-TRAINED-PIGEON
+	ZERO?	STACK /FALSE
+	CRLF	
+	ICALL2	RT-CTHEO-PRINT,CH-TRAINED-PIGEON
+	PRINTR	" seems to lose interest."
+
+
+	.FUNCT	RT-I-PIGEON-IMPATIENT
+	CALL2	RT-VISIBLE?,CH-TRAINED-PIGEON
+	ZERO?	STACK /FALSE
+	CRLF	
+	ICALL2	RT-CTHEO-PRINT,CH-TRAINED-PIGEON
+	PRINTR	" looks at you as if waiting for you to let him go."
+
+
+	.FUNCT	RT-I-PIGEON-CIRCLE,CIRCLE,L
+	SET	'CIRCLE,CH-TRAINED-PIGEON-AUX2
+	LOC	CH-TRAINED-PIGEON >L
+	EQUAL?	GL-WINNER,CH-PLAYER \?PRD5
+	EQUAL?	GL-PRSA,V?WALK /?CTR2
+?PRD5:	EQUAL?	CIRCLE,3 \?CCL3
+?CTR2:	MOVE	CH-TRAINED-PIGEON,CH-SHERMAN
+	SET	'CH-TRAINED-PIGEON-AUX1,K-PIGEON-TIRED
+	SET	'CH-TRAINED-PIGEON-AUX2,0
+	MOVE	CH-TRAINED-PIGEON-AUX3,CH-SHERMAN
+	EQUAL?	L,GL-PLACE-CUR \FALSE
+	EQUAL?	GL-WINNER,CH-PLAYER \?CCL10
+	EQUAL?	GL-PRSA,V?WALK /FALSE
+?CCL10:	CRLF	
+	ICALL2	RT-CTHEO-PRINT,CH-TRAINED-PIGEON
+	PRINTR	" circles above you for the last time, and flies out of sight."
+?CCL3:	EQUAL?	CIRCLE,1,2 \FALSE
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-PIGEON-CIRCLE,STACK
+	ADD	CIRCLE,1 >CH-TRAINED-PIGEON-AUX2
+	EQUAL?	L,GL-PLACE-CUR \FALSE
+	CRLF	
+	ICALL2	RT-CTHEO-PRINT,CH-TRAINED-PIGEON
+	PRINTR	" circles above you."
+
+
+	.FUNCT	RT-I-SHERMANS-REVENGE
+	FSET?	GL-PLACE-CUR,FL-INDOORS \?CCL3
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-SHERMANS-REVENGE,STACK
+	RFALSE	
+?CCL3:	CRLF	
+	PRINTI	"Suddenly, you see Sherman the animal trainer running towards you. He is accompanied by a constable. Sherman is beside himself with rage. ""There they are, constable. They killed my bird. Arrest them."" The constable takes both you and Sherlock into custody, and although everything is eventually straightened out, it takes far too long for you to have enough time left to solve the mystery."
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-IMPOLITE-MSG,STR1,STR2
+	PRINTI	"It isn't polite to "
+	PRINT	STR1
+	PRINTI	" without "
+	PRINT	STR2
+	PRINTR	"."
+
+
+	.FUNCT	RT-I-BIGBEN,HRS,MIN,SEC,YRS,MON,DAY,RET,?TMP1,?TMP2,?TMP3
+	FSET?	CH-PLAYER,FL-ASLEEP /FALSE
+	ZERO?	GL-WAIT-BELL /?CCL5
+	EQUAL?	GL-PRSA,V?WAIT-FOR,V?WAIT \?CCL5
+	SET	'RET,TRUE-VALUE
+	JUMP	?CND3
+?CCL5:	EQUAL?	GL-PRSA,V?WAIT-FOR,V?WAIT \?CCL9
+	EQUAL?	GL-PLACE-CUR,RM-CLOCK-TOWER /?CCL9
+	ICALL	RT-DO-CLOCK-SET,GL-TIME-UPDT-INC,1,0,0
+	ICALL1	RT-CLOCK-INC
+	GETB	GL-TEMP-TIME,K-HRS >?TMP3
+	GETB	GL-TEMP-TIME,K-MIN >?TMP2
+	GETB	GL-TEMP-TIME,K-SEC >?TMP1
+	GETB	GL-TEMP-TIME,K-DAY
+	CALL	RT-CLOCK-CMP,?TMP3,?TMP2,?TMP1,STACK
+	EQUAL?	STACK,1 \?CND12
+	ZERO?	GL-WAIT-BELL \?CND14
+	CRLF	
+	PRINTI	"While you wait, you hear Big Ben strike each hour."
+	CRLF	
+?CND14:	SET	'RET,TRUE-VALUE
+?CND12:	ICALL	RT-DO-CLOCK-SET,GL-TIME-UPDT-INC,-1,0,0
+	ICALL1	RT-CLOCK-INC
+	SET	'GL-WAIT-BELL,TRUE-VALUE
+	JUMP	?CND3
+?CCL9:	SET	'GL-WAIT-BELL,FALSE-VALUE
+?CND3:	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,1,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-BIGBEN,STACK
+	ZERO?	RET \FALSE
+	GETB	GL-TIME,K-HRS >HRS
+	EQUAL?	GL-PLACE-CUR,RM-CLOCK-TOWER /?CCL20
+	CRLF	
+	PRINTI	"In the distance, you hear Big Ben strike the hour."
+	CRLF	
+	ZERO?	SOUND-QUEUED? \FALSE
+	GRTR?	HRS,12 \?CCL26
+	SUB	HRS,12 >TH-BELL-AUX1
+	JUMP	?CND24
+?CCL26:	SET	'TH-BELL-AUX1,HRS
+?CND24:	CALL	SOUNDS,S-FARBEN,S-START,3,TH-BELL-AUX1
+	RSTACK	
+?CCL20:	GRTR?	HRS,12 \?CCL29
+	SUB	HRS,12 >TH-BELL-AUX1
+	JUMP	?CND27
+?CCL29:	SET	'TH-BELL-AUX1,HRS
+?CND27:	CALL1	RT-I-SWING-BELL
+	RSTACK	
+
+
+	.FUNCT	RT-I-SWING-BELL,OBJ,NUM,POS,WHO
+	SET	'NUM,TH-BELL-AUX1
+	SET	'POS,TH-BELL-AUX2
+	EQUAL?	GL-PLACE-CUR,RM-CLOCK-TOWER /?CND1
+	ICALL1	RT-RELIEF
+	SET	'HEARD-SWING?,FALSE-VALUE
+	SET	'TH-BELL-AUX1,0
+	SET	'TH-BELL-AUX2,K-BELL-AWAY
+	ICALL1	RT-ZERO-SECONDS
+	RFALSE	
+?CND1:	GRTR?	NUM,0 \?CND3
+	ICALL	RT-DO-CLOCK-SET,GL-TIME-UPDT-INC,0,0,2
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,0,2
+	ICALL	RT-ALARM-SET-REL,RT-I-SWING-BELL,STACK
+?CND3:	ZERO?	HEARD-SWING? \?CND5
+	ICALL	SOUNDS,S-CLOCK,S-INIT
+?CND5:	CRLF	
+	PRINTI	"The bell swings "
+	ZERO?	POS \?CCL9
+	SET	'TH-BELL-AUX2,K-BELL-TOWARDS
+	PRINTI	"towards you, "
+	FSET?	TH-COTTON-BALLS,FL-WORN \?CCL12
+	PRINTI	"ringing loudly, but the cotton protects your ears"
+	CALL1	RT-WHO-SAYS? >WHO
+	ZERO?	WHO /?CND13
+	ZERO?	HEARD-SWING? \?CND13
+	PRINTI	". "
+	ICALL2	RT-CTHEO-PRINT,WHO
+	PRINTI	" claps his hands to his ears in an attempt to protect them"
+	FIRST?	WHO \?CND13
+	ICALL	RT-MOVE-ALL,WHO,RM-CLOCK-TOWER
+	PRINTI	", dropping everything he was carrying in the process"
+?CND13:	PRINTI	". The clapper swings up within reach."
+	CRLF	
+	ICALL	SOUNDS,S-CLOCK,S-START,6
+	SET	'HEARD-SWING?,TRUE-VALUE
+	JUMP	?CND10
+?CCL12:	PRINTI	"ringing unbearably loud. BONG!"
+	ICALL2	SOUNDS,S-CLOCK
+	ZERO?	HEARD-SWING? \?CND19
+	FSET?	TH-HANDS,FL-LOCKED /?CND19
+	SET	'HEARD-SWING?,TRUE-VALUE
+	CALL1	RT-WHO-SAYS? >WHO
+	FSET	TH-HANDS,FL-LOCKED
+	ICALL	RT-MOVE-ALL-BUT-WORN,CH-PLAYER,RM-CLOCK-TOWER
+	PRINTI	" You "
+	ZERO?	WHO /?CND23
+	ICALL	RT-MOVE-ALL,WHO,RM-CLOCK-TOWER
+	PRINTI	"and "
+	ICALL2	DPRINT,WHO
+	PRINTC	32
+?CND23:	PRINTI	"clap your hands to your ears in an attempt to protect them, dropping everything you are carrying in the process."
+?CND19:	CRLF	
+?CND10:	SUB	NUM,1 >TH-BELL-AUX1
+	RETURN	TH-BELL-AUX1
+?CCL9:	SET	'TH-BELL-AUX2,K-BELL-AWAY
+	PRINTI	"away from you"
+	ZERO?	NUM \?CCL27
+	PRINTI	", finishing the ringing of the hour."
+	CRLF	
+	ICALL1	RT-RELIEF
+	CALL1	RT-ZERO-SECONDS
+	RSTACK	
+?CCL27:	PRINTR	"."
+
+
+	.FUNCT	RT-RELIEF
+	SET	'HEARD-SWING?,FALSE-VALUE
+	FSET?	TH-HANDS,FL-LOCKED \FALSE
+	FCLEAR	TH-HANDS,FL-LOCKED
+	PRINTR	"You breath a sigh of relief as you take your hands away from your ears."
+
+
+	.FUNCT	RT-ZERO-SECONDS,SEC
+	GETB	GL-TIME,K-SEC >SEC
+	ZERO?	SEC /FALSE
+	SUB	60,SEC
+	ICALL	RT-DO-CLOCK-SET,GL-TIME-UPDT-INC,0,0,STACK
+	ICALL1	RT-CLOCK-INC
+	CALL	RT-COPY-TIME,GL-TIME,GL-TEMP-TIME
+	RSTACK	
+
+
+	.FUNCT	RT-I-EXHALE
+	FSET?	TH-BREATH,FL-LOCKED \FALSE
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,1,0
+	ICALL	RT-ALARM-SET-REL,RT-I-INHALE,STACK
+	CRLF	
+	PRINTR	"You can't hold your breath much longer..."
+
+
+	.FUNCT	RT-I-INHALE
+	FSET?	TH-BREATH,FL-LOCKED \FALSE
+	CRLF	
+	PRINTI	"Your lungs scream for air. You take a deep breath."
+	CRLF	
+	FCLEAR	TH-BREATH,FL-LOCKED
+	SET	'RUN-SMELL-ETHERIUM?,TRUE-VALUE
+	RTRUE	
+
+
+	.FUNCT	RT-I-TAKE-WATSONS-STUFF
+	FSET?	CH-AKBAR,FL-ASLEEP /FALSE
+	CRLF	
+	PRINTI	"Akbar"
+	FSET?	TH-WATSONS-HAT,FL-WORN \?CND3
+	PRINTI	" apologizes to you,"
+?CND3:	PRINTI	" removes everything from your hands, and then hits you over the head. The last thing you see before losing consciousness is the look of defeat on Holmes's face."
+	CRLF	
+	CRLF	
+	PRINTI	"You awake sometime later to find yourself bound hand and foot. Moriarty is standing over you with a newspaper in his hand."
+	CRLF	
+	CRLF	
+	PRINT	K-FOUGHT-WELL-MSG
+	CRLF	
+	CRLF	
+	PRINTI	"Moriarty takes the Crown Jewels and departs, leaving you to ponder your defeat and the inevitable demise of the British Empire."
+	CRLF	
+	CRLF	
+	ICALL1	RT-QSR
+	RFALSE	
+
+
+	.FUNCT	RT-I-OUT-OF-TIME
+	CRLF	
+	FSET?	GL-PLACE-CUR,FL-INDOORS \?CCL3
+	PRINTI	"Outside you hear"
+	JUMP	?CND1
+?CCL3:	PRINTI	"You see"
+?CND1:	PRINTI	" the paper boy run through the streets shouting out, ""Crown Jewels stolen... the end is near."""
+	CRLF	
+	CRLF	
+	EQUAL?	GL-PLACE-CUR,RM-LAIR \?CND4
+	ICALL2	DPRINT,CH-MORIARTY
+	FSET?	CH-MORIARTY,FL-ASLEEP \?CND6
+	FCLEAR	CH-MORIARTY,FL-ASLEEP
+	PRINTI	" awakens from his stupor and"
+?CND6:	PRINTI	" says, "
+	PRINT	K-FOUGHT-WELL-MSG
+	CRLF	
+	CRLF	
+?CND4:	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-ETHERIUM-EFFECT,ASLEEP?,OBJ,TOP,CNT
+	ASSIGNED?	'TOP /?CND1
+	SET	'TOP,TRUE-VALUE
+?CND1:	ZERO?	OBJ \?PRG5
+	SET	'OBJ,GL-PLACE-CUR
+?PRG5:	ZERO?	OBJ /?REP6
+	FSET?	OBJ,FL-ALIVE \?CCL11
+	EQUAL?	OBJ,CH-PLAYER \?CTR10
+	FSET?	TH-BREATH,FL-LOCKED /?CCL11
+?CTR10:	ZERO?	ASLEEP? /?CCL18
+	EQUAL?	OBJ,CH-HOLMES \?CCL20
+	FSET?	TH-BREATH,FL-LOCKED /?CND7
+?CCL20:	FSET	OBJ,FL-ASLEEP
+	INC	'CNT
+	EQUAL?	GL-PUPPY,OBJ \?CND7
+	SET	'GL-FORMER-PUPPY,OBJ
+	SET	'GL-PUPPY,FALSE-VALUE
+	JUMP	?CND7
+?CCL18:	FCLEAR	OBJ,FL-ASLEEP
+	INC	'CNT
+	JUMP	?CND7
+?CCL11:	FIRST?	OBJ \?CND7
+	FIRST?	OBJ /?BOGUS26
+?BOGUS26:	CALL	RT-ETHERIUM-EFFECT,ASLEEP?,STACK,FALSE-VALUE
+	ADD	CNT,STACK >CNT
+?CND7:	ZERO?	TOP \?REP6
+	NEXT?	OBJ >OBJ /?PRG5
+	JUMP	?PRG5
+?REP6:	RETURN	CNT
+
+
+	.FUNCT	RT-I-WAKE-UP,OBJ
+	LOC	TH-ETHERIUM-GAS
+	ICALL	RT-ETHERIUM-EFFECT,FALSE-VALUE,STACK
+	REMOVE	TH-ETHERIUM-GAS
+	RTRUE	
+
+
+	.FUNCT	RT-SMELL-ETHERIUM?
+	LOC	TH-ETHERIUM-GAS
+	EQUAL?	GL-PLACE-CUR,STACK \FALSE
+	FSET?	TH-BREATH,FL-LOCKED /?CCL5
+	REMOVE	TH-ETHERIUM-GAS
+	CRLF	
+	PRINTI	"The etherium knocks you out."
+	CRLF	
+	CRLF	
+	FSET	CH-PLAYER,FL-ASLEEP
+	EQUAL?	GL-PLACE-CUR,RM-LAIR \?CCL8
+	ICALL2	RT-ALARM-CLR,RT-I-WAKE-UP
+	ICALL1	RT-DOES-MORIARTY-WIN
+	RTRUE	
+?CCL8:	CALL2	RT-ALARM-SET?,RT-I-WAKE-UP
+	ZERO?	STACK /?CCL11
+	COPYT	GL-TIME-PARM,GL-TIME,K-A-TWDTH
+	ICALL2	RT-ALARM-CHK,FALSE-VALUE
+	SET	'GL-CLOCK-WAIT,TRUE-VALUE
+	PRINT	K-WAKE-UP-MSG
+	CRLF	
+	JUMP	?CND9
+?CCL11:	ICALL	RT-CLOCK-JMP,6,0,0
+	PRINT	K-WAKE-UP-MSG
+	CRLF	
+?CND9:	ZERO?	GL-FORMER-PUPPY /TRUE
+	IN?	GL-FORMER-PUPPY,GL-PLACE-CUR \TRUE
+	ZERO?	GL-PUPPY \TRUE
+	FCLEAR	GL-FORMER-PUPPY,FL-ASLEEP
+	SET	'GL-PUPPY,GL-FORMER-PUPPY
+	SET	'GL-FORMER-PUPPY,FALSE-VALUE
+	RTRUE	
+?CCL5:	ZERO?	GL-PUPPY /TRUE
+	EQUAL?	GL-PUPPY,CH-HOLMES /TRUE
+	CALL	RT-ETHERIUM-EFFECT,TRUE-VALUE,GL-PUPPY
+	ZERO?	STACK /TRUE
+	ICALL2	RT-CTHEO-PRINT,GL-FORMER-PUPPY
+	PRINTR	" passes out."
+
+
+	.FUNCT	RT-FIND-FLAME,OBJ,TOP,FST
+	ASSIGNED?	'TOP /?CND1
+	SET	'TOP,TRUE-VALUE
+?CND1:	ZERO?	OBJ \?PRG5
+	SET	'OBJ,GL-PLACE-CUR
+?PRG5:	ZERO?	OBJ /FALSE
+	FSET?	OBJ,FL-BURNABLE \?CND7
+	FSET?	OBJ,FL-LIGHTED /TRUE
+?CND7:	FIRST?	OBJ >FST /?BOGUS13
+?BOGUS13:	ZERO?	FST /?CND14
+	CALL	RT-FIND-FLAME,FST,FALSE-VALUE
+	ZERO?	STACK \TRUE
+?CND14:	ZERO?	TOP \FALSE
+	NEXT?	OBJ >OBJ /?PRG5
+	JUMP	?PRG5
+
+
+	.FUNCT	RT-DOES-MORIARTY-WIN
+	FSET?	CH-MORIARTY,FL-LOCKED \?CCL3
+	FSET?	CH-AKBAR,FL-LOCKED \?CCL3
+	ICALL	RT-DO-CLOCK-SET,GL-TIME,8,30,0,20
+	ICALL2	RT-ALARM-CLR,RT-I-OUT-OF-TIME
+	ICALL2	RT-ALARM-CHK,FALSE-VALUE
+	SET	'GL-CLOCK-WAIT,TRUE-VALUE
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,9,0,0,20
+	ICALL	RT-ALARM-SET-ABS,RT-I-OUT-OF-TIME,STACK
+	PRINTI	"You awaken slowly and stumble to your feet. Moriarty and Akbar have already recovered, and they are struggling fiercely to free themselves. It seems as if you were unconscious for quite a while, but it's hard to tell. You probably don't have a lot of time."
+	CRLF	
+	FCLEAR	CH-PLAYER,FL-ASLEEP
+	FCLEAR	CH-HOLMES,FL-ASLEEP
+	FCLEAR	CH-AKBAR,FL-ASLEEP
+	FCLEAR	CH-MORIARTY,FL-ASLEEP
+	RTRUE	
+?CCL3:	PRINTI	"Unfortunately, Moriarty and Akbar recovered before you did. You find yourself bound securely to Holmes."
+	CRLF	
+	CRLF	
+	PRINTI	"Moriarty looks at you and says, "
+	PRINT	K-FOUGHT-WELL-MSG
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-PROCESS-PASSWORD
+	EQUAL?	GL-PLACE-CUR,RM-BAR-OF-GOLD \?CCL3
+	ICALL2	RT-CTHEO-PRINT,CH-DENKEEPER
+	IN?	TH-CARNATION,TH-LAPEL \?CCL6
+	FSET?	CH-AKBAR,FL-SEEN /?CCL6
+	CALL	RT-CLOCK-CMP,2,0,0,20
+	EQUAL?	STACK,-1,0 \?CCL6
+	FSET	CH-AKBAR,FL-SEEN
+	MOVE	CH-AKBAR,RM-BAR-OF-GOLD
+	PRINTI	" disappears into a back room and reappears moments later, accompanied by a tall, silent man who has dark skin and wears a white turban."
+	CRLF	
+	CRLF	
+	PRINTI	"The Indian glances at your "
+	FSET?	TH-WATSONS-HAT,FL-WORN /?CND10
+	PRINTI	"uncovered "
+?CND10:	PRINTI	"head and then intones, ""I am Akbar"
+	FSET?	TH-WATSONS-HAT,FL-WORN \?CND12
+	PRINTI	", honourable sir"
+?CND12:	PRINTR	". What is it that you wish?"""
+?CCL6:	PRINTR	" says, ""Not now, mate. Can't you see I'm busy?"""
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-BYWARD-TOWER \?CCL15
+	ICALL2	RT-CTHEO-PRINT,CH-TOWER-GUARD
+	PRINTR	" pauses and looks at you strangely. Then he says, ""An interesting guess. But wrong."""
+?CCL15:	PRINTR	"Thatsa no swordfish. Thatsa duck."
+
+
+	.FUNCT	V-SWORDFISH
+	CALL1	RT-PROCESS-PASSWORD
+	RSTACK	
+
+
+	.FUNCT	RT-ROPE-MSG
+	PRINTI	"As"
+	ICALL	RT-YOU-MSG,STR?769,STR?770
+	PRINTI	"for "
+	ICALL2	RT-THEO-PRINT,TH-ROPE
+	PRINTI	", Akbar"
+	FSET?	TH-WATSONS-HAT,FL-WORN \?CND1
+	PRINTI	" says, ""Pardon me, honourable sir,"" and"
+?CND1:	PRINTI	" hits you over the head."
+	CRLF	
+	CRLF	
+	PRINTI	"When you regain consciousness, you find that your hands and feet are bound. Outside you hear the paper boy run through the streets shouting out ""Crown Jewels stolen! Prime Minister resigns in disgrace!"""
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-INSCRIPTION-APPEARS-MSG
+	PRINTR	"After a few moments, the tomb's inscription comes through onto the piece of paper."
+
+
+	.FUNCT	RT-PROCESS-TOMB,TOMB-NUMBER
+	EQUAL?	GL-PRSA,V?READ \?CCL3
+	CALL2	RT-READ-INSCRIPTION,TOMB-NUMBER
+	RSTACK	
+?CCL3:	EQUAL?	GL-PRSA,V?TRANSLATE \?CCL5
+	PRINTR	"Unfortunately, what little Latin you remember from your school days is limited to medical matters."
+?CCL5:	EQUAL?	GL-PRSA,V?RUB-WITH \?CCL7
+	PRINTR	"Rubbing the paper with the crayon would probably yield better results."
+?CCL7:	EQUAL?	GL-PRSA,V?LOOK-INSIDE,V?SEARCH \?CCL9
+	ICALL1	RT-CYOU-MSG
+	ICALL	RT-WOULD-HAVE-TO-MSG,STR?227,TH-IT
+	PRINTR	" first."
+?CCL9:	EQUAL?	GL-PRSA,V?OPEN \?CCL11
+	PRINTR	"Getting just a little bit morbid, aren't we?"
+?CCL11:	EQUAL?	GL-PRSA,V?TOUCH \?CCL13
+	EQUAL?	TOMB-NUMBER,1,2,3 \?CCL16
+	PRINTR	"It feels a little sticky."
+?CCL16:	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTI	"not feel anything "
+	CALL2	RT-PICK-NEXT,GL-BORING-TXT
+	PRINT	STACK
+	PRINTR	"."
+?CCL13:	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	CALL1	RT-SHOOT-DEAD-MSG
+	RSTACK	
+
+
+	.FUNCT	RT-READ-INSCRIPTION,NUM
+	PRINTI	"The inscription"
+	EQUAL?	2,NUM \?CCL3
+	PRINTI	" reads, ""ISAACVS NEWTON  Eques Auratus"
+	JUMP	?CND1
+?CCL3:	EQUAL?	1,NUM \?CCL5
+	PRINTI	" reads, ""REGNO CONSORTES & VRNA HIC OBDOR MIMVS ELIZABETHA ET MARIA SORORES IN SPE RESVRRECTIONIS"
+	JUMP	?CND1
+?CCL5:	EQUAL?	7,NUM \?CCL7
+	PRINTI	" is a long one, but in the middle of it you see the name ""GALFRIDVS CHAVCER"
+	JUMP	?CND1
+?CCL7:	EQUAL?	9,NUM \?CCL9
+	PRINTI	"s are written in Latin, but you can make out the names ""Edward V"" and ""Richard, Duke of York"
+	JUMP	?CND1
+?CCL9:	PRINTI	" is written in Latin, but you can make out the name """
+	EQUAL?	3,NUM \?CCL12
+	PRINTI	"Henry V"
+	JUMP	?CND1
+?CCL12:	EQUAL?	4,NUM \?CCL14
+	PRINTI	"Edward the Confessor"
+	JUMP	?CND1
+?CCL14:	EQUAL?	5,NUM \?CCL16
+	PRINTI	"Alexander Pope"
+	JUMP	?CND1
+?CCL16:	EQUAL?	6,NUM \?CCL18
+	PRINTI	"Charles Dickens"
+	JUMP	?CND1
+?CCL18:	EQUAL?	8,NUM \?CCL20
+	PRINTI	"Anne of Cleves"
+	JUMP	?CND1
+?CCL20:	EQUAL?	10,NUM \?CCL22
+	PRINTI	"Mary, Queen of Scots"
+	JUMP	?CND1
+?CCL22:	EQUAL?	11,NUM \?CCL24
+	PRINTI	"Henry VII"
+	JUMP	?CND1
+?CCL24:	EQUAL?	12,NUM \?CCL26
+	PRINTI	"Pitt"
+	JUMP	?CND1
+?CCL26:	EQUAL?	13,NUM \?CND1
+	PRINTI	"Francis Vere"
+?CND1:	PRINTR	"."""
+
+
+	.FUNCT	RT-READ-PAPER,PAPER-NAME,WRITING,PHEAT
+	ZERO?	WRITING \?CCL3
+	PRINTR	"The paper appears to be blank."
+?CCL3:	GETP	PAPER-NAME,P?FLIPPED
+	ZERO?	STACK \?CCL6
+	ICALL2	RT-READ-INSCRIPTION,WRITING
+	RTRUE	
+?CCL6:	ZERO?	PHEAT \?CCL9
+	PRINTR	"This side appears to be blank."
+?CCL9:	EQUAL?	1,PHEAT \?CCL11
+	PRINTR	"You see a faint discolouration."
+?CCL11:	EQUAL?	2,PHEAT \TRUE
+	EQUAL?	1,WRITING \?CCL15
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Hickory Dickory Dock."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Your enemy is the clock."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"When it strikes nine,"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"The victory's mine."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Hickory Dickory Dock."
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINT	K-ASTERISK-MSG
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Here comes a candle to light you to bed."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Here comes a chopper"
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"to chop off your head."
+	CRLF	
+	FSET	PAPER-NAME,FL-LOCKED
+	BOR	TH-PACKET-OF-PAPER-AUX1,1 >TH-PACKET-OF-PAPER-AUX1
+	JUMP	?CND13
+?CCL15:	EQUAL?	2,WRITING \?CCL17
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"London Bridge is falling down."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"All that's under it will drown."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"With it falls Victoria's reign."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Britannia ne'er to rule again."
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINT	K-ASTERISK-MSG
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"When a number you require,"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"And you're banking all thereon."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Subtract the conquest from the fire,"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Half a league, half a league."
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"Half a league on."
+	CRLF	
+	FSET	PAPER-NAME,FL-LOCKED
+	BOR	TH-PACKET-OF-PAPER-AUX1,2 >TH-PACKET-OF-PAPER-AUX1
+	JUMP	?CND13
+?CCL17:	EQUAL?	3,WRITING \?CND13
+	ICALL1	RT-INDENT-PRINT
+	PRINT	K-TWINKLE-MSG
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Fought at sea, midst masts and spars."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Now above the world so high,"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Looking down with watchful eye."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINT	K-TWINKLE-MSG
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"England's hero, prince of tars."
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINT	K-ASTERISK-MSG
+	CRLF	
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Pussycat, pussycat,"
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"where have you been?"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"I've been to the Tower"
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"to look at the Queen."
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"Pussycat, pussycat,"
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"what did you there?"
+	CRLF	
+	ICALL1	RT-INDENT-PRINT
+	PRINTI	"I left something for you."
+	ICALL1	RT-WRAP-PRINT
+	PRINTI	"Go back, if you dare."
+	CRLF	
+	FSET	PAPER-NAME,FL-LOCKED
+	BOR	TH-PACKET-OF-PAPER-AUX1,4 >TH-PACKET-OF-PAPER-AUX1
+?CND13:	FSET?	TH-PACKET-OF-PAPER,FL-ASLEEP /?CCL21
+	FSET	TH-PACKET-OF-PAPER,FL-ASLEEP
+	ICALL2	RT-UPDATE-SCORE,5
+	RTRUE	
+?CCL21:	EQUAL?	TH-PACKET-OF-PAPER-AUX1,7 \TRUE
+	CALL1	RT-WHO-SAYS?
+	EQUAL?	STACK,CH-HOLMES \TRUE
+	SET	'TH-PACKET-OF-PAPER-AUX1,15
+	CRLF	
+	PRINTR	"Holmes leans forward with an excited expression upon his hawk-like features and says, ""There is only one man in all London clever enough to plan this, Watson - Professor Moriarty. See how boldly he hides clues in public places, knowing all the while that they will remain hidden from the casual eye. Onward, Doctor. Let us solve these riddles and see what the good Professor has in mind for us."""
+
+
+	.FUNCT	RT-PROCESS-PAPER,PAPER-NAME,WRITING,PHEAT
+	GETP	PAPER-NAME,P?INSCRIPTION >WRITING
+	GETP	PAPER-NAME,P?HEATED >PHEAT
+	EQUAL?	GL-PRSA,V?TAKE \?CCL3
+	LOC	PAPER-NAME
+	EQUAL?	STACK,TH-ELIZABETH-TOMB,TH-NEWTON-TOMB,TH-HENRY-V-TOMB \FALSE
+	EQUAL?	WRITING,1,2,3 \FALSE
+	PRINTI	"You pick at the paper for a few seconds, but it seems to be stuck to the inscription. After a few seconds you manage to peel it off."
+	CRLF	
+	MOVE	PAPER-NAME,CH-PLAYER
+	RTRUE	
+?CCL3:	EQUAL?	GL-PRSA,V?RAISE \?PRD12
+	EQUAL?	GL-PRSO,PAPER-NAME \?PRD12
+	CALL2	RT-VISIBLE?,LG-SHAFT-OF-LIGHT
+	ZERO?	STACK \?CTR9
+?PRD12:	EQUAL?	GL-PRSA,V?PUT \?PRD16
+	EQUAL?	GL-PRSO,PAPER-NAME \?PRD16
+	EQUAL?	GL-PRSI,LG-SHAFT-OF-LIGHT /?CTR9
+?PRD16:	EQUAL?	GL-PRSA,V?TOUCH-TO \?CCL10
+	EQUAL?	GL-PRSI,LG-SHAFT-OF-LIGHT /?CTR9
+	EQUAL?	GL-PRSI,TH-LAMP \?CCL10
+	FSET?	TH-LAMP,FL-LIGHTED \?CCL10
+?CTR9:	EQUAL?	PHEAT,1 \?CCL28
+	ICALL	RT-CYOU-MSG,STR?665,STR?666
+	PRINTI	"a discolouration"
+	GETP	PAPER-NAME,P?FLIPPED
+	ZERO?	STACK \?CND26
+	PRINTI	" which appears to be on the back"
+	JUMP	?CND26
+?CCL28:	EQUAL?	PHEAT,2 \?CCL32
+	PRINTI	"There seems to be some writing"
+	GETP	PAPER-NAME,P?FLIPPED
+	ZERO?	STACK \?CND26
+	PRINTI	" on the back"
+	JUMP	?CND26
+?CCL32:	EQUAL?	WRITING,1,2,3 \?CCL36
+	ICALL	RT-CYOU-MSG,STR?665,STR?666
+	PRINTI	"a faint discolouration"
+	JUMP	?CND26
+?CCL36:	ICALL	RT-CYOU-MSG,STR?665,STR?666
+	PRINTI	"a watermark"
+?CND26:	PRINTR	"."
+?CCL10:	EQUAL?	GL-PRSA,V?HEAT,V?HOLD-OVER,V?LIGHT-WITH /?CTR37
+	EQUAL?	GL-PRSA,V?BURN-WITH,V?TOUCH-TO \?CCL38
+?CTR37:	IN?	PAPER-NAME,GL-WINNER /?CCL43
+	ICALL	RT-CYOU-MSG,STR?228,STR?229
+	PRINTI	"not holding "
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTR	"."
+?CCL43:	EQUAL?	GL-PRSA,V?LIGHT-WITH,V?BURN-WITH,V?TOUCH-TO /?CCL45
+	EQUAL?	GL-PRSI,TH-BANK-OF-CANDLES \?CCL45
+	PRINTI	"The paper is heated by the bank of candles"
+	GETP	PAPER-NAME,P?HEATED
+	EQUAL?	STACK,2 \?CCL50
+	EQUAL?	WRITING,1,2,3 \?CCL50
+	PRINTI	", but nothing more appears"
+	JUMP	?CND48
+?CCL50:	EQUAL?	WRITING,1,2,3 \?CND48
+	PUTP	PAPER-NAME,P?HEATED,2
+	PRINTI	". Something seems to be gradually appearing on "
+	GETP	PAPER-NAME,P?FLIPPED
+	ZERO?	STACK \?CND54
+	PRINTI	"the back of "
+?CND54:	ICALL2	RT-THEO-PRINT,PAPER-NAME
+?CND48:	PRINTR	"."
+?CCL45:	EQUAL?	GL-PRSA,V?LIGHT-WITH,V?BURN-WITH,V?TOUCH-TO /?CCL57
+	EQUAL?	GL-PRSI,TH-PIPE,TH-TOBACCO,TH-MATCH \?CCL57
+	EQUAL?	GL-PRSI,TH-PIPE,TH-TOBACCO \?PRD64
+	FSET?	TH-TOBACCO,FL-LIGHTED /?CTR61
+?PRD64:	EQUAL?	GL-PRSI,TH-MATCH \?CCL62
+	FSET?	TH-MATCH,FL-LIGHTED \?CCL62
+?CTR61:	PRINTI	"The paper is warmed by "
+	ICALL1	RT-THEI-PRINT
+	PRINTC	46
+	CRLF	
+	EQUAL?	WRITING,1,2,3 \TRUE
+	ZERO?	PHEAT \TRUE
+	PUTP	PAPER-NAME,P?HEATED,1
+	RTRUE	
+?CCL62:	ICALL1	RT-CTHEI-PRINT
+	ICALL2	RT-ISNT-ARENT-MSG,GL-PRSI
+	PRINTR	"lit."
+?CCL57:	FSET?	GL-PRSI,FL-BURNABLE \?PRD75
+	FSET?	GL-PRSI,FL-LIGHTED /?CCL73
+?PRD75:	EQUAL?	GL-PRSI,TH-PIPE \?PRD78
+	FSET?	TH-TOBACCO,FL-LIGHTED /?CCL73
+?PRD78:	EQUAL?	GL-PRSI,PSEUDO-OBJECT \FALSE
+	GETP	GL-PRSI,P?ACTION
+	EQUAL?	STACK,RT-AC-TH-FIREPLACE \FALSE
+?CCL73:	PRINTI	"The paper catches fire quickly."
+	EQUAL?	WRITING,1,2,3 \?CND83
+	FSET?	PAPER-NAME,FL-LOCKED /?CND83
+	PRINTI	" As it burns, you catch a glimpse of writing you could swear hadn't been there before."
+?CND83:	CRLF	
+	CRLF	
+	ICALL2	RT-CTHEO-PRINT,PAPER-NAME
+	PRINTI	" vanishes in a poof of smoke."
+	CRLF	
+	REMOVE	PAPER-NAME
+	RTRUE	
+?CCL38:	EQUAL?	GL-PRSA,V?READ,V?EXAMINE \?CCL88
+	IN?	PAPER-NAME,TH-PACKET-OF-PAPER \?CND89
+	ICALL1	RT-CYOU-MSG
+	PRINTR	"cannot do that while it is in the pacquet of paper."
+?CND89:	GET	GL-P-OFW,0
+	EQUAL?	STACK,W?BACK \?CND91
+	ICALL	RT-PERFORM,V?FLIP,GL-PRSO
+	RTRUE	
+?CND91:	ICALL	RT-READ-PAPER,PAPER-NAME,WRITING,PHEAT
+	RTRUE	
+?CCL88:	EQUAL?	GL-PRSA,V?FLIP \?CCL94
+	IN?	PAPER-NAME,GL-WINNER /?CCL97
+	ICALL	RT-CYOU-MSG,STR?228,STR?229
+	PRINTI	"not holding "
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTR	"."
+?CCL97:	ZERO?	WRITING \?CCL99
+	ICALL2	RT-CTHEO-PRINT,PAPER-NAME
+	PRINTR	" seems to be blank on both sides."
+?CCL99:	ICALL	RT-CYOU-MSG,STR?804,STR?805
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTI	" over."
+	CRLF	
+	CRLF	
+	GETP	PAPER-NAME,P?FLIPPED
+	SUB	1,STACK
+	PUTP	PAPER-NAME,P?FLIPPED,STACK
+	ICALL	RT-READ-PAPER,PAPER-NAME,WRITING,PHEAT
+	RTRUE	
+?CCL94:	EQUAL?	GL-PRSA,V?RUB-WITH \?CCL101
+	EQUAL?	GL-PRSO,PAPER-NAME \FALSE
+	EQUAL?	GL-PRSI,TH-CRAYON /?CCL106
+	PRINTI	"Rubbing the paper with "
+	ICALL1	RT-THEI-PRINT
+	PRINTR	" doesn't do anything."
+?CCL106:	ZERO?	WRITING /?CCL108
+	PRINTR	"You don't really want to do that. You would mess up your inscription."
+?CCL108:	FIRST?	PAPER-NAME \?CCL110
+	ICALL1	RT-CYOU-MSG
+	PRINTI	"cannot do a rubbing while there is something on "
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTR	"."
+?CCL110:	IN?	PAPER-NAME,TH-ELIZABETH-TOMB \?CCL112
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,1
+	RTRUE	
+?CCL112:	IN?	PAPER-NAME,TH-NEWTON-TOMB \?CCL114
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,2
+	RTRUE	
+?CCL114:	IN?	PAPER-NAME,TH-HENRY-V-TOMB \?CCL116
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,3
+	RTRUE	
+?CCL116:	IN?	PAPER-NAME,TH-EDWARD-TOMB \?CCL118
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,4
+	RTRUE	
+?CCL118:	IN?	PAPER-NAME,TH-POPE-TOMB \?CCL120
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,5
+	RTRUE	
+?CCL120:	IN?	PAPER-NAME,TH-DICKENS-TOMB \?CCL122
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,6
+	RTRUE	
+?CCL122:	IN?	PAPER-NAME,TH-CHAUCER-TOMB \?CCL124
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,7
+	RTRUE	
+?CCL124:	IN?	PAPER-NAME,TH-ANNE-OF-CLEVES-TOMB \?CCL126
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,8
+	RTRUE	
+?CCL126:	IN?	PAPER-NAME,TH-LITTLE-PRINCES-TOMB \?CCL128
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,9
+	RTRUE	
+?CCL128:	IN?	PAPER-NAME,TH-MARY-QUEEN-OF-SCOTS-TOMB \?CCL130
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,10
+	RTRUE	
+?CCL130:	IN?	PAPER-NAME,TH-HENRY-VII-TOMB \?CCL132
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,11
+	RTRUE	
+?CCL132:	IN?	PAPER-NAME,TH-PITT-TOMB \?CCL134
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,12
+	RTRUE	
+?CCL134:	IN?	PAPER-NAME,TH-VERE-TOMB \?CCL136
+	ICALL1	RT-INSCRIPTION-APPEARS-MSG
+	PUTP	PAPER-NAME,P?INSCRIPTION,13
+	RTRUE	
+?CCL136:	PRINTI	"Rubbing "
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTI	" while it is"
+	LOC	PAPER-NAME
+	LOC	STACK
+	EQUAL?	STACK,ROOMS \?CCL139
+	PRINTI	" on "
+	LOC	PAPER-NAME
+	FSET?	STACK,FL-INDOORS \?CCL142
+	ICALL1	TELL-THE-FLOOR
+	JUMP	?CND137
+?CCL142:	ICALL1	TELL-THE-GROUND
+	JUMP	?CND137
+?CCL139:	LOC	PAPER-NAME
+	ICALL2	RT-IN-ON-MSG,STACK
+	LOC	PAPER-NAME
+	ICALL2	RT-THEO-PRINT,STACK
+?CND137:	PRINTI	" would"
+	ICALL1	RT-WASTE-OF-TIME-MSG
+	RTRUE	
+?CCL101:	EQUAL?	GL-PRSA,V?LOOK-THRU \?CCL144
+	EQUAL?	GL-PRSI,TH-MAGNIFYING-GLASS \?CCL144
+	PRINTI	"All"
+	ICALL	RT-YOU-MSG,STR?665,STR?666
+	PRINTR	"is a faint watermark."
+?CCL144:	EQUAL?	GL-PRSA,V?TAKE \FALSE
+	FIRST?	PAPER-NAME \FALSE
+	ICALL1	RT-CYOU-MSG
+	ICALL2	RT-WOULD-HAVE-TO-MSG,STR?697
+	FIRST?	PAPER-NAME /?BOGUS150
+?BOGUS150:	ICALL2	RT-THEO-PRINT,STACK
+	PRINTI	" off of "
+	ICALL2	RT-THEO-PRINT,PAPER-NAME
+	PRINTR	" first."
+
+
+	.FUNCT	RT-PAPER-WARMING,PAPER-NAME
+	IN?	PAPER-NAME,CH-PLAYER \FALSE
+	GETP	PAPER-NAME,P?INSCRIPTION
+	EQUAL?	STACK,1,2,3 \FALSE
+	GETP	PAPER-NAME,P?HEATED
+	ZERO?	STACK \FALSE
+	PUTP	PAPER-NAME,P?HEATED,1
+	RFALSE	
+
+
+	.FUNCT	RT-I-FLASH-WESTMINSTER-LIGHTS
+	ZERO?	PLAYER-IN-ABBEY /FALSE
+	CRLF	
+	PRINTR	"The lights flicker off and on, and you remember that the Abbey closes at six o'clock."
+
+
+	.FUNCT	RT-I-WESTMINSTER-LIGHTS-ON
+	FSET	RM-NAVE,FL-LIGHTED
+	FSET	RM-SOUTH-AISLE,FL-LIGHTED
+	FSET	RM-JERICHO-PARLOUR,FL-LIGHTED
+	FSET	RM-JERUSALEM-CHAMBER,FL-LIGHTED
+	FSET	RM-NORTH-CLOISTER,FL-LIGHTED
+	FSET	RM-NORTH-TRANSEPT,FL-LIGHTED
+	FSET	RM-SOUTH-TRANSEPT,FL-LIGHTED
+	FSET	RM-EVANGELIST-CHAPEL,FL-LIGHTED
+	FSET	RM-NORTH-AMBULATORY,FL-LIGHTED
+	FSET	RM-SANCTUARY,FL-LIGHTED
+	FSET	RM-SOUTH-AMBULATORY,FL-LIGHTED
+	FSET	RM-POETS-CORNER,FL-LIGHTED
+	FSET	RM-NORTH-CHAPEL-AISLE,FL-LIGHTED
+	FSET	RM-HENRY-VII-CHAPEL,FL-LIGHTED
+	FSET	RM-SOUTH-CHAPEL-AISLE,FL-LIGHTED
+	FSET	RM-CONFESSOR-CHAPEL,FL-LIGHTED
+	FSET	RM-INNOCENTS-CORNER,FL-LIGHTED
+	ZERO?	PLAYER-IN-ABBEY /FALSE
+	CRLF	
+	PRINTR	"The lights come on."
+
+
+	.FUNCT	RT-I-WESTMINSTER-LIGHTS-OFF
+	FCLEAR	RM-NAVE,FL-LIGHTED
+	FCLEAR	RM-SOUTH-AISLE,FL-LIGHTED
+	FCLEAR	RM-JERICHO-PARLOUR,FL-LIGHTED
+	FCLEAR	RM-JERUSALEM-CHAMBER,FL-LIGHTED
+	FCLEAR	RM-NORTH-CLOISTER,FL-LIGHTED
+	FCLEAR	RM-NORTH-TRANSEPT,FL-LIGHTED
+	FCLEAR	RM-SOUTH-TRANSEPT,FL-LIGHTED
+	FCLEAR	RM-EVANGELIST-CHAPEL,FL-LIGHTED
+	FCLEAR	RM-NORTH-AMBULATORY,FL-LIGHTED
+	FCLEAR	RM-SANCTUARY,FL-LIGHTED
+	FCLEAR	RM-SOUTH-AMBULATORY,FL-LIGHTED
+	FCLEAR	RM-POETS-CORNER,FL-LIGHTED
+	FCLEAR	RM-NORTH-CHAPEL-AISLE,FL-LIGHTED
+	FCLEAR	RM-HENRY-VII-CHAPEL,FL-LIGHTED
+	FCLEAR	RM-SOUTH-CHAPEL-AISLE,FL-LIGHTED
+	FCLEAR	RM-CONFESSOR-CHAPEL,FL-LIGHTED
+	FCLEAR	RM-INNOCENTS-CORNER,FL-LIGHTED
+	ZERO?	PLAYER-IN-ABBEY /FALSE
+	CRLF	
+	PRINTR	"The lights go out."
+
+
+	.FUNCT	RT-I-LOCKED-IN-END-GAME
+	ZERO?	PLAYER-IN-ABBEY /FALSE
+	CRLF	
+	PRINTI	"In the distance you hear the huge door of the Abbey clang shut. You run to the Nave, only to discover that you have been locked in. After spending a spooky night in the Abbey, you emerge in the morning to discover that the theft of the Crown Jewels has been discovered."
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+
+
+	.FUNCT	RT-I-OPEN-WESTMINSTER-DOOR
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,11,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-CLOSE-WESTMINSTER-DOOR,STACK
+	FSET	LG-WESTMINSTER-DOOR,FL-OPENED
+	EQUAL?	GL-PLACE-CUR,RM-BROAD-SANCTUARY \?CCL3
+	CRLF	
+	PRINTR	"A verger appears, unlocks the huge door, and pushes it open."
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-NAVE \FALSE
+	CRLF	
+	PRINTR	"Suddenly you hear the west door opening. The sunlight streaming in the door blinds you after your night-long vigil. A verger enters, gives you a strange look, and disappears into the South Aisle."
+
+
+	.FUNCT	RT-I-CLOSE-WESTMINSTER-DOOR
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,13,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-OPEN-WESTMINSTER-DOOR,STACK
+	FCLEAR	LG-WESTMINSTER-DOOR,FL-OPENED
+	EQUAL?	GL-PLACE-CUR,RM-BROAD-SANCTUARY \?CCL3
+	CRLF	
+	PRINTR	"The verger says goodnight and closes the door."
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-NAVE \FALSE
+	SET	'PLAYER-IN-ABBEY,FALSE-VALUE
+	CRLF	
+	PRINTI	"A verger comes up to you and coughs deferentially. ""I'm sorry sir, but it's six o'clock and I have to close up now."" He escorts you to the door and closes it behind you as you exit."
+	CRLF	
+	CRLF	
+	CALL2	RT-GOTO,RM-BROAD-SANCTUARY
+	RSTACK	
+
+
+	.FUNCT	RT-CF-TH-BOAT,CONTEXT
+	EQUAL?	GL-PRSA,V?WALK \?CCL3
+	EQUAL?	GL-P-WALK-DIR,P?OUT \?CCL3
+	CALL	RT-PERFORM,V?EXIT,TH-BOAT
+	RSTACK	
+?CCL3:	EQUAL?	GL-PRSA,V?WALK \?CCL7
+	EQUAL?	GL-P-WALK-DIR,P?NORTH \?CCL7
+	EQUAL?	GL-PLACE-CUR,RM-THE-EMBANKMENT,RM-OUTSIDE-TRAITORS-GATE \?CCL7
+	PRINT	K-GET-OUT-FIRST-MSG
+	CRLF	
+	RTRUE	
+?CCL7:	EQUAL?	GL-PRSA,V?ENTER \FALSE
+	EQUAL?	GL-PRSO,TH-BOAT /FALSE
+	PRINT	K-GET-OUT-FIRST-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-PROCESS-BOAT-ON-THAMES,UP?,WRD
+	IN?	TH-ANCHOR,TH-BOAT \?CND1
+	CALL2	RT-ALARM-SET?,RT-I-MOVE-DOWNSTREAM
+	ZERO?	STACK \?CND1
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,0,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-MOVE-DOWNSTREAM,STACK
+?CND1:	EQUAL?	GL-PRSA,V?EXIT,V?SWIM \?PRD9
+	EQUAL?	GL-PRSO,ROOMS,TH-BOAT /?CTR6
+?PRD9:	EQUAL?	GL-PRSA,V?LEAP,V?CLIMB-DOWN,V?ENTER \?CCL7
+	EQUAL?	GL-PRSO,LG-WATER \?CCL7
+?CTR6:	ICALL	RT-CYOU-MSG,STR?813,STR?814
+	PRINTI	"out of the boat, and then suddenly remember that you can't swim. Unable to climb back in, you cling to the boat for hours, until you are rescued by a Scotland Yard launch. Naturally, Lestrade is aboard, and as he bundles you off to the hospital to recover from the dread disease you caught while floating in the river, he tells you that he - personally - will take on the case."
+	CRLF	
+	CRLF	
+	PRINTI	"Somehow this doesn't make you feel any better."
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+?CCL7:	EQUAL?	GL-PRSA,V?ROW,V?PADDLE,V?PADDLE-WITH \?CCL15
+	EQUAL?	GL-PRSO,FALSE-VALUE,ROOMS,TH-BOAT \?PRD20
+	EQUAL?	GL-PRSI,FALSE-VALUE /?CTR17
+?PRD20:	EQUAL?	GL-PRSA,V?PADDLE-WITH \?CCL18
+	EQUAL?	GL-PRSI,FALSE-VALUE \?CCL18
+?CTR17:	ICALL2	RT-ALARM-CLR,RT-I-MOVE-DOWNSTREAM
+	PRINTI	"[Please specify a direction to "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTR	".]"
+?CCL18:	EQUAL?	GL-PRSO,LG-UP-DOWN-STREAM /?CTR25
+	EQUAL?	GL-PRSO,TH-INTDIR \?PRD29
+	EQUAL?	GL-P-DIRECTION,P?WEST,P?EAST /?CTR25
+?PRD29:	EQUAL?	GL-PRSO,TH-BOAT \?CCL26
+	EQUAL?	GL-PRSI,TH-INTDIR \?CCL26
+?CTR25:	EQUAL?	GL-PRSO,LG-UP-DOWN-STREAM \?PRD36
+	GETP	GL-PRSO,P?OBJ-NOUN
+	EQUAL?	STACK,W?UPSTREAM /?PST35
+?PRD36:	EQUAL?	GL-P-DIRECTION,P?WEST /?PRD39
+	PUSH	0
+	JUMP	?PRD40
+?PRD39:	PUSH	1
+?PRD40:	SET	'UP?,STACK
+	JUMP	?PEN34
+?PST35:	SET	'UP?,1
+?PEN34:	ICALL2	RT-ALARM-CLR,RT-I-MOVE-DOWNSTREAM
+	IN?	TH-ANCHOR,TH-BOAT /?CCL43
+	ICALL1	RT-CYOU-MSG
+	PRINTI	"can "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTR	" like blue blazes, but the anchor is restraining the boat."
+?CCL43:	EQUAL?	GL-PRSA,V?ROW \?CCL45
+	IN?	TH-OAR-2,TH-OAR-LOCK /?CCL45
+	IN?	TH-OAR-1,TH-BOAT \?CCL50
+	ICALL	RT-CYOU-MSG,STR?815,STR?816
+	PRINTR	"hard on the oar. The boat spins round and round. Wheeeee!"
+?CCL50:	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTR	"not have any oars."
+?CCL45:	EQUAL?	GL-PRSA,V?PADDLE-WITH \?CCL52
+	EQUAL?	GL-PRSI,TH-PADDLE /?CCL52
+	EQUAL?	GL-PRSI,TH-VIOLIN /FALSE
+	ICALL1	RT-CYOU-MSG
+	PRINTI	"can't paddle with "
+	ICALL1	RT-THEI-PRINT
+	PRINTR	"."
+?CCL52:	EQUAL?	GL-PRSA,V?PADDLE,V?PADDLE-WITH \?CCL59
+	IN?	TH-PADDLE,GL-WINNER /?CCL59
+	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTI	"not have "
+	ICALL2	RT-A-PRINT,TH-PADDLE
+	PRINTR	"."
+?CCL59:	ZERO?	UP? /?CCL63
+	ICALL1	RT-MOVE-UPSTREAM
+	RTRUE	
+?CCL63:	ICALL1	RT-I-MOVE-DOWNSTREAM
+	RTRUE	
+?CCL26:	EQUAL?	GL-PRSO,TH-INTDIR /?PRD67
+	EQUAL?	GL-PRSI,TH-INTDIR \?CCL65
+?PRD67:	EQUAL?	GL-P-DIRECTION,P?NORTH \?CCL65
+	ICALL1	RT-LAND-BOAT
+	RTRUE	
+?CCL65:	EQUAL?	GL-PRSO,TH-INTDIR /?CTR70
+	EQUAL?	GL-PRSI,TH-INTDIR \?CCL71
+?CTR70:	ICALL2	RT-ALARM-CLR,RT-I-MOVE-DOWNSTREAM
+	PRINTR	"There doesn't seem to be anything in that direction."
+?CCL71:	ICALL2	RT-ALARM-CLR,RT-I-MOVE-DOWNSTREAM
+	PRINTI	"I don't recognize the direction you are asking me to "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTR	"."
+?CCL15:	EQUAL?	GL-PRSA,V?STAND,V?STAND-ON \?CCL75
+	PRINTR	"It isn't safe to stand in a boat."
+?CCL75:	EQUAL?	GL-PRSA,V?SIT \?CCL77
+	PRINTR	"You're already seated."
+?CCL77:	EQUAL?	GL-PRSA,V?LEAP \?CCL79
+	PRINTR	"It isn't safe to jump around in a boat."
+?CCL79:	EQUAL?	TH-FLOOR-ETC,GL-PRSO,GL-PRSI \FALSE
+	CALL2	RT-IDENTIFY-FLOOR?,W?FLOOR
+	ZERO?	STACK \?CCL81
+	CALL2	RT-IDENTIFY-FLOOR?,W?GROUND
+	ZERO?	STACK /FALSE
+?CCL81:	PRINTI	"There is no "
+	ICALL2	DPRINT,TH-FLOOR-ETC
+	PRINTR	" in the middle of a river."
+
+
+	.FUNCT	RT-I-MOVE-DOWNSTREAM
+	EQUAL?	GL-WINNER,CH-PLAYER \?CCL3
+	EQUAL?	GL-PRSA,V?ROW \?CCL3
+	ICALL	RT-CYOU-MSG,STR?817,STR?818
+	JUMP	?CND1
+?CCL3:	EQUAL?	GL-WINNER,CH-PLAYER \?CCL7
+	EQUAL?	GL-PRSA,V?PADDLE,V?PADDLE-WITH \?CCL7
+	ICALL	RT-CYOU-MSG,STR?819,STR?820
+	JUMP	?CND1
+?CCL7:	CRLF	
+	PRINTI	"The boat drifts "
+?CND1:	PRINTI	"down the river"
+	CALL1	RT-IS-LIT? >GL-NOW-LIT?
+	LOC	TH-BOAT
+	EQUAL?	STACK,RM-THAMES-ONE,RM-THAMES-TWO,RM-THAMES-THREE /?CCL11
+	LOC	TH-BOAT
+	EQUAL?	STACK,RM-THAMES-FOUR \?CND10
+?CCL11:	PRINTI	". "
+?CND10:	IN?	TH-BOAT,RM-THAMES-ONE \?CCL16
+	MOVE	TH-BOAT,RM-THAMES-TWO
+	ZERO?	GL-NOW-LIT? /?CND14
+	PRINTI	"Downstream you see the London Bridge."
+	JUMP	?CND14
+?CCL16:	IN?	TH-BOAT,RM-THAMES-TWO \?CCL20
+	MOVE	TH-BOAT,RM-THAMES-THREE
+	ZERO?	GL-NOW-LIT? /?CND14
+	PRINTI	"You pass under the London Bridge."
+	JUMP	?CND14
+?CCL20:	IN?	TH-BOAT,RM-THAMES-THREE \?CCL24
+	MOVE	TH-BOAT,RM-THAMES-FOUR
+	ZERO?	GL-NOW-LIT? /?CND14
+	PRINTI	"To the north you see the Traitors Gate."
+	JUMP	?CND14
+?CCL24:	IN?	TH-BOAT,RM-THAMES-FOUR \?CCL28
+	MOVE	TH-BOAT,RM-THAMES-FIVE
+	ZERO?	GL-NOW-LIT? /?CND14
+	PRINTI	"Downstream you see the open seas... the strong currents would surely leave you stranded in your small boat if you were to drift further."
+	JUMP	?CND14
+?CCL28:	IN?	TH-BOAT,RM-THAMES-FIVE \?CND14
+	PRINTI	", and you drift out to sea."
+	CRLF	
+	CRLF	
+	PRINTI	"After drifting for several days, a passing ship rescues you. By coincidence, another passenger happens to be Lestrade, who has resigned in the wake of the Crown Jewel scandal and is retiring to the island of Pago Pago. After some reflection, you decide to join him."
+	CRLF	
+	CRLF	
+	ICALL1	RT-QSR
+?CND14:	LOC	TH-BOAT >GL-PLACE-CUR
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-MOVE-UPSTREAM
+	PRINTI	"Fighting against the current, you "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTI	" upstream. "
+	CALL1	RT-IS-LIT? >GL-NOW-LIT?
+	IN?	TH-BOAT,RM-THAMES-ONE \?CCL3
+	CRLF	
+	CRLF	
+	PRINTI	"As you proceed you find yourself among the flotilla of warships that have come for the celebration of the Jubilee. You quickly decide that it's too dangerous here so you turn back and head downstream."
+	JUMP	?CND1
+?CCL3:	IN?	TH-BOAT,RM-THAMES-TWO \?CCL5
+	ZERO?	GL-NOW-LIT? /?CND6
+	PRINTI	"To the north you see the Embankment."
+?CND6:	MOVE	TH-BOAT,RM-THAMES-ONE
+	JUMP	?CND1
+?CCL5:	IN?	TH-BOAT,RM-THAMES-THREE \?CCL9
+	MOVE	TH-BOAT,RM-THAMES-TWO
+	JUMP	?CND1
+?CCL9:	IN?	TH-BOAT,RM-THAMES-FOUR \?CCL11
+	ZERO?	GL-NOW-LIT? /?CND12
+	PRINTI	"You pass under the London Bridge."
+?CND12:	MOVE	TH-BOAT,RM-THAMES-THREE
+	JUMP	?CND1
+?CCL11:	IN?	TH-BOAT,RM-THAMES-FIVE \?CND1
+	ZERO?	GL-NOW-LIT? /?CND15
+	PRINTI	"Upstream, you see the London Bridge, to the north you see the Traitors Gate."
+?CND15:	MOVE	TH-BOAT,RM-THAMES-FOUR
+?CND1:	CRLF	
+	LOC	TH-BOAT >GL-PLACE-CUR
+	RTRUE	
+
+
+	.FUNCT	RT-THAMES-TIDE
+	CALL	RT-CLOCK-CMP,8,32,0,18
+	EQUAL?	STACK,1 /TRUE
+	CALL	RT-CLOCK-CMP,8,48,0,18
+	EQUAL?	STACK,1 /FALSE
+	CALL	RT-CLOCK-CMP,14,35,0,18
+	EQUAL?	STACK,1 \?CCL7
+	RETURN	3
+?CCL7:	CALL	RT-CLOCK-CMP,14,51,0,18
+	EQUAL?	STACK,1 \?CCL9
+	RETURN	2
+?CCL9:	CALL	RT-CLOCK-CMP,20,38,0,18
+	EQUAL?	STACK,1 /TRUE
+	CALL	RT-CLOCK-CMP,20,54,0,18
+	EQUAL?	STACK,1 /FALSE
+	CALL	RT-CLOCK-CMP,2,41,0,19
+	EQUAL?	STACK,1 \?CCL15
+	RETURN	3
+?CCL15:	CALL	RT-CLOCK-CMP,2,57,0,19
+	EQUAL?	STACK,1 \?CCL17
+	RETURN	2
+?CCL17:	CALL	RT-CLOCK-CMP,8,44,0,19
+	EQUAL?	STACK,1 /TRUE
+	CALL	RT-CLOCK-CMP,9,0,0,19
+	EQUAL?	STACK,1 /FALSE
+	CALL	RT-CLOCK-CMP,14,47,0,19
+	EQUAL?	STACK,1 \?CCL23
+	RETURN	3
+?CCL23:	CALL	RT-CLOCK-CMP,15,3,0,19
+	EQUAL?	STACK,1 \?CCL25
+	RETURN	2
+?CCL25:	CALL	RT-CLOCK-CMP,20,50,0,19
+	EQUAL?	STACK,1 /TRUE
+	CALL	RT-CLOCK-CMP,21,6,0,19
+	EQUAL?	STACK,1 /FALSE
+	CALL	RT-CLOCK-CMP,2,53,0,20
+	EQUAL?	STACK,1 \?CCL31
+	RETURN	3
+?CCL31:	CALL	RT-CLOCK-CMP,3,9,0,20
+	EQUAL?	STACK,1 \?CCL33
+	RETURN	2
+?CCL33:	CALL	RT-CLOCK-CMP,8,56,0,20
+	EQUAL?	STACK,1 /TRUE
+	CALL	RT-CLOCK-CMP,9,12,0,20
+	EQUAL?	STACK,1 /FALSE
+	RETURN	3
+
+
+	.FUNCT	RT-TOWER-PASSWORD,WORD-NUM,PASSWORD
+	SET	'PASSWORD,PASSWORD-ID
+	ZERO?	PASSWORD /?CTR2
+	EQUAL?	GL-PLACE-CUR,RM-BYWARD-TOWER /?CCL3
+?CTR2:	PRINTR	"Wasn't she one of the six wives of Henry VIII?"
+?CCL3:	EQUAL?	GL-PLACE-PRV,RM-OUTER-WARD \?CCL7
+	PRINTR	"""I am sorry, but I have strict orders to allow absolutely no one to leave the Tower, whether or not he knows the password. The Prime Minister himself could not get out of here before Monday morning."
+?CCL7:	EQUAL?	WORD-NUM,PASSWORD /?CCL9
+	PRINTR	"""I am sorry but that password is no longer valid."""
+?CCL9:	PRINTI	"The guard steps aside as you walk in."
+	CRLF	
+	CRLF	
+	ICALL2	RT-GOTO,RM-OUTER-WARD
+	ICALL2	RT-UPDATE-SCORE,3
+	SET	'PASSWORD-ID,9
+	SET	'ALLOW-IN-TOWER,TRUE-VALUE
+	RTRUE	
+
+
+	.FUNCT	V-BOLEYN
+	CALL2	RT-TOWER-PASSWORD,1
+	RSTACK	
+
+
+	.FUNCT	V-CLEVES
+	CALL2	RT-TOWER-PASSWORD,2
+	RSTACK	
+
+
+	.FUNCT	V-HOWARD
+	CALL2	RT-TOWER-PASSWORD,3
+	RSTACK	
+
+
+	.FUNCT	V-PARR
+	CALL2	RT-TOWER-PASSWORD,4
+	RSTACK	
+
+
+	.FUNCT	V-ARAGON
+	CALL2	RT-TOWER-PASSWORD,5
+	RSTACK	
+
+
+	.FUNCT	V-SEYMOUR
+	CALL2	RT-TOWER-PASSWORD,6
+	RSTACK	
+
+
+	.FUNCT	RT-I-OPEN-MUSEUM-DOOR
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,10,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-CLOSE-MUSEUM-DOOR,STACK
+	FSET	LG-BRITISH-MUSEUM-DOOR,FL-OPENED
+	EQUAL?	GL-PLACE-CUR,RM-GREAT-RUSSELL-ST \FALSE
+	CRLF	
+	PRINTR	"A guard opens the door and then disappears inside the museum."
+
+
+	.FUNCT	RT-I-CLOSE-MUSEUM-DOOR
+	CALL	RT-DO-CLOCK-SET,GL-TIME-PARM,14,0,0
+	ICALL	RT-ALARM-SET-REL,RT-I-OPEN-MUSEUM-DOOR,STACK
+	FCLEAR	LG-BRITISH-MUSEUM-DOOR,FL-OPENED
+	EQUAL?	GL-PLACE-CUR,RM-GREAT-RUSSELL-ST \?CCL3
+	CRLF	
+	PRINTR	"The guard says goodnight and closes the door."
+?CCL3:	EQUAL?	GL-PLACE-CUR,RM-MANUSCRIPT-ROOM \?CCL5
+	IN?	CH-LIBRARIAN,RM-MANUSCRIPT-ROOM \?CCL5
+	CRLF	
+	PRINTI	"The librarian looks at his pocket-watch and exclaims, ""Goodness! It's closing time already! I really have enjoyed this chat, but I'm afraid you'll have to let me go. Why don't I see you out?"""
+	CRLF	
+	CRLF	
+	PRINTI	"He escorts you to the front door, discoursing all the while on the evolution of the use of mud by the Hittites. He waves goodbye as he closes the door behind you."
+	CRLF	
+	CRLF	
+	FSET	CH-LIBRARIAN,FL-ASLEEP
+	ICALL2	RT-GOTO,RM-GREAT-RUSSELL-ST
+	FCLEAR	CH-LIBRARIAN,FL-ASLEEP
+	RTRUE	
+?CCL5:	EQUAL?	GL-PLACE-CUR,RM-MANUSCRIPT-ROOM,RM-BRITISH-MUSEUM \FALSE
+	CRLF	
+	PRINTI	"A guard comes up to you and says, ""I'm sorry sir, its closing time. I have to lock up now."" He escorts you to the front door, and then closes it behind you as you leave."
+	CRLF	
+	CRLF	
+	CALL2	RT-GOTO,RM-GREAT-RUSSELL-ST
+	RSTACK	
+
+
+	.FUNCT	RT-INDENT-PRINT
+	LESS?	GL-ALLSCREEN,75 /FALSE
+	PRINTI	"     "
+	RTRUE	
+
+
+	.FUNCT	RT-WRAP-PRINT
+	LESS?	GL-ALLSCREEN,75 \?CCL3
+	CRLF	
+	PRINTI	"    "
+	RTRUE	
+?CCL3:	PRINTC	32
+	RTRUE	
+
+	.ENDI

@@ -1,0 +1,887 @@
+
+
+	.FUNCT	RT-KIDNAP
+	MOVE	CH-HOLMES,RM-LAIR
+	MOVE	TH-ROPE,CH-HOLMES
+	FSET	CH-HOLMES,FL-LOCKED
+	SET	'TH-ROPE-AUX1,CH-HOLMES
+	BAND	MYCROFT-STATE,-2 >MYCROFT-STATE
+	SET	'GL-PUPPY,FALSE-VALUE
+	CRLF	
+	PRINTI	"Suddenly, someone grabs you from behind, pins your arms to your sides, and covers up your head. You struggle fiercely to get loose, but to no avail. Then you hear a voice shout, ""Let him go, we've got the other one."""
+	CRLF	
+	CRLF	
+	PRINTI	"The person holding you knocks you on the head and flings you to the ground. You lose consciousness for a few moments, and when you awake, you are alone."
+	CRLF	
+	CRLF	
+	PRINTR	"Sherlock Holmes has been kidnapped."
+
+
+	.FUNCT	RT-WIGGINS-HELP-MSG
+	ICALL2	RT-CTHEO-PRINT,CH-WIGGINS
+	PRINTI	" says, ""I saw it all, guv'nor. But it was over before I could lift a finger. Mr 'Olmes was a friend to me, 'e was. And I'd do anyfing to 'elp you get 'im back."""
+	CRLF	
+	SET	'GL-PUPPY,CH-WIGGINS
+	FCLEAR	CH-WIGGINS,FL-NODESC
+	FCLEAR	CH-WIGGINS,FL-BROKEN
+	SET	'GL-PUPPY-MSG?,FALSE-VALUE
+	RETURN	GL-PUPPY-MSG?
+
+
+	.FUNCT	RT-STEAL-KEY
+	ZERO?	BOX-KEY-COLD? \?CCL3
+	SET	'BOX-KEY-COLD?,TRUE-VALUE
+	MOVE	TH-BOX-KEY,CH-PLAYER
+	ICALL2	RT-CTHEO-PRINT,CH-WIGGINS
+	PRINTI	" casually strolls past the guard and says, ""Cor blimey. That bird isn't 'alf built, is she?"" While the guard's attention is diverted, Wiggins's hand flashes in and out of his pocket. Then just as casually as before, he strolls back to you, slips something into your hand, and whispers, ""Sorry I couldn't get everything, guv. I 'ope this is enough."""
+	CRLF	
+	GETP	TH-BOX-KEY,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	TH-BOX-KEY,P?VALUE,0
+	RTRUE	
+?CCL3:	PRINTR	"""Sorry, guv. 'E'll never go for it twice."""
+
+
+	.FUNCT	RT-AC-TH-INTNUM,CONTEXT
+	EQUAL?	GL-PRSA,V?WAIT-FOR,V?WAIT,V?VERIFY /FALSE
+	EQUAL?	GL-PRSA,V?SHOOT \?CCL5
+	ICALL1	RT-IMPOSSIBLE-MSG
+	RTRUE	
+?CCL5:	EQUAL?	GL-PLACE-CUR,RM-BANK-VAULT /FALSE
+	EQUAL?	GL-P-NUMBER,-1 \?CCL10
+	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTR	"not see that here."
+?CCL10:	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTR	"not need to use a number here."
+
+
+	.FUNCT	RT-AC-TH-RING,CONTEXT
+	ZERO?	GL-NOW-PRSI? \FALSE
+	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?WEAR \FALSE
+	PRINTR	"It's the wrong size."
+
+
+	.FUNCT	RT-AC-TH-BOX-KEY,CONTEXT
+	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL3
+	IN?	TH-BOX-KEY,TH-GUARDS-POCKET /?CTR5
+	IN?	TH-BOX-KEY,CH-BANK-GUARD \?CCL6
+?CTR5:	ICALL1	RT-CYOU-MSG
+	PRINTR	"can't see it. The guard has it."
+?CCL6:	ICALL2	RT-CTHEO-PRINT,TH-BOX-KEY
+	PRINTR	" has the word ""Master"" written on it."
+?CCL3:	ZERO?	GL-NOW-PRSI? \FALSE
+	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?TURN \?CCL15
+	IN?	TH-BOX-KEY,TH-BOX-LOCK \FALSE
+	EQUAL?	TH-BOX-KEY-AUX1,K-GEM-BOX-NUM \?CCL21
+	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED \?CCL24
+	PRINTR	"The box is already open."
+?CCL24:	SET	'TH-SAFETY-DEPOSIT-BOX-AUX1,TH-BOX-KEY-AUX1
+	ICALL	RT-CYOU-MSG,STR?227,STR?707
+	PRINTI	"the box with the key."
+	FIRST?	TH-SAFETY-DEPOSIT-BOX \?CND25
+	PRINTI	" Inside you see "
+	ICALL2	RT-PRINT-CONTENTS-2,TH-SAFETY-DEPOSIT-BOX
+	PRINTC	46
+?CND25:	FSET	TH-SAFETY-DEPOSIT-BOX,FL-OPENED
+	FCLEAR	TH-SAFETY-DEPOSIT-BOX,FL-LOCKED
+	CRLF	
+	RTRUE	
+?CCL21:	ICALL	RT-CYOU-MSG,STR?227,STR?707
+	PRINT	K-NOTHING-INSIDE-MSG
+	ICALL	RT-YOU-MSG,STR?808,STR?809
+	PRINTR	"it back up again."
+?CCL15:	EQUAL?	GL-PRSA,V?READ \FALSE
+	IN?	TH-BOX-KEY,TH-GUARDS-POCKET /?CTR30
+	IN?	TH-BOX-KEY,CH-BANK-GUARD \?CCL31
+?CTR30:	ICALL1	RT-CYOU-MSG
+	PRINTR	"can't see it. The guard has it."
+?CCL31:	PRINTR	"It says, Master."""
+
+
+	.FUNCT	RT-AC-TH-BOX-LOCK,CONTEXT,NUM
+	EQUAL?	GL-P-NUMBER,-1 \?CCL3
+	ZERO?	TH-BOX-LOCK-AUX1 \?CND1
+	PRINT	K-SPECIFY-MSG
+	PRINTR	"lock by number."
+?CCL3:	LESS?	GL-P-NUMBER,1 /?CTR6
+	GRTR?	GL-P-NUMBER,999 \?CCL7
+?CTR6:	PRINTI	"There is no lock number "
+	PRINTN	GL-P-NUMBER
+	PRINTR	"."
+?CCL7:	SET	'TH-BOX-LOCK-AUX1,GL-P-NUMBER
+?CND1:	SET	'NUM,TH-BOX-LOCK-AUX1
+	ZERO?	GL-NOW-PRSI? /?CCL12
+	EQUAL?	GL-PRSA,V?PUT \?CCL15
+	EQUAL?	GL-PRSO,TH-BOX-KEY \?CCL18
+	MOVE	TH-BOX-KEY,TH-BOX-LOCK
+	SET	'TH-BOX-KEY-AUX1,TH-BOX-LOCK-AUX1
+	PRINTR	"The key fits nicely."
+?CCL18:	CALL1	RT-CANT-PUT-IN-ON-MSG
+	RSTACK	
+?CCL15:	EQUAL?	GL-PRSA,V?TAKE \FALSE
+	EQUAL?	GL-PRSO,TH-BOX-KEY \FALSE
+	IN?	TH-BOX-KEY,TH-BOX-LOCK \FALSE
+	MOVE	TH-BOX-KEY,GL-WINNER
+	SET	'TH-BOX-KEY-AUX1,0
+	PRINTR	"The key comes out smoothly."
+?CCL12:	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	PRINT	K-RICOCHET-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-AC-TH-SAFETY-DEPOSIT-BOX,CONTEXT,NUM
+	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL3
+	SET	'NUM,TH-SAFETY-DEPOSIT-BOX-AUX1
+	PRINTR	"It looks the same as all the other boxes."
+?CCL3:	EQUAL?	GL-P-NUMBER,-1 \?CCL5
+	ZERO?	TH-SAFETY-DEPOSIT-BOX-AUX1 \?CCL8
+	PRINT	K-SPECIFY-MSG
+	PRINTR	"box by number."
+?CCL8:	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED \?CND1
+	SET	'TH-SAFETY-DEPOSIT-BOX-AUX1,600
+	JUMP	?CND1
+?CCL5:	LESS?	GL-P-NUMBER,1 /?CTR10
+	GRTR?	GL-P-NUMBER,999 \?CCL11
+?CTR10:	PRINTI	"There is no box number "
+	PRINTN	GL-P-NUMBER
+	PRINTR	"."
+?CCL11:	SET	'TH-SAFETY-DEPOSIT-BOX-AUX1,GL-P-NUMBER
+?CND1:	SET	'NUM,TH-SAFETY-DEPOSIT-BOX-AUX1
+	ZERO?	GL-NOW-PRSI? /?CCL16
+	EQUAL?	GL-PRSA,V?TAKE,V?PUT,V?FILL /?CCL19
+	EQUAL?	GL-PRSA,V?EMPTY-INTO,V?POUR-FROM \FALSE
+?CCL19:	EQUAL?	NUM,K-GEM-BOX-NUM \?CCL24
+	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED /FALSE
+?CCL24:	ICALL1	RT-CTHEI-PRINT
+	PRINTR	" is closed."
+?CCL16:	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?UNLOCK,V?OPEN,V?OPEN-WITH \?CCL31
+	EQUAL?	GL-PRSI,FALSE-VALUE,TH-BOX-KEY /?CCL34
+	ICALL1	RT-CYOU-MSG
+	PRINTI	"can't "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTC	32
+	ICALL1	RT-THEO-PRINT
+	PRINTI	" with "
+	ICALL1	RT-THEI-PRINT
+	PRINTR	"."
+?CCL34:	IN?	TH-BOX-KEY,GL-WINNER /?CCL36
+	EQUAL?	NUM,TH-BOX-KEY-AUX1 /?CCL36
+	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTR	"not have the key."
+?CCL36:	EQUAL?	NUM,K-GEM-BOX-NUM \?CCL40
+	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED \?CCL43
+	PRINTR	"It is already open."
+?CCL43:	ICALL	RT-CYOU-MSG,STR?227,STR?707
+	PRINTI	"the box with the key."
+	FIRST?	TH-SAFETY-DEPOSIT-BOX \?CND44
+	PRINTI	" Inside you see "
+	ICALL2	RT-PRINT-CONTENTS-2,TH-SAFETY-DEPOSIT-BOX
+	PRINTC	46
+?CND44:	FSET	TH-SAFETY-DEPOSIT-BOX,FL-OPENED
+	FCLEAR	TH-SAFETY-DEPOSIT-BOX,FL-LOCKED
+	CRLF	
+	RTRUE	
+?CCL40:	ICALL	RT-CYOU-MSG,STR?227,STR?707
+	PRINT	K-NOTHING-INSIDE-MSG
+	ICALL	RT-YOU-MSG,STR?808,STR?809
+	PRINTR	"it back up again."
+?CCL31:	EQUAL?	GL-PRSA,V?LOCK,V?CLOSE \?CCL47
+	EQUAL?	NUM,K-GEM-BOX-NUM \?CCL50
+	IN?	TH-BOX-KEY,GL-WINNER /?CCL53
+	EQUAL?	NUM,TH-BOX-KEY-AUX1 /?CCL53
+	ICALL	RT-CYOU-MSG,STR?655,STR?656
+	PRINTR	"not have the key."
+?CCL53:	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED /?CCL57
+	PRINT	K-CLOSED-AND-LOCKED-MSG
+	CRLF	
+	RTRUE	
+?CCL57:	ICALL	RT-CYOU-MSG,STR?810,STR?811
+	PRINTI	"the box with the key."
+	FCLEAR	TH-SAFETY-DEPOSIT-BOX,FL-OPENED
+	FSET	TH-SAFETY-DEPOSIT-BOX,FL-LOCKED
+	CRLF	
+	RTRUE	
+?CCL50:	PRINT	K-CLOSED-AND-LOCKED-MSG
+	CRLF	
+	RTRUE	
+?CCL47:	EQUAL?	GL-PRSA,V?READ \?CCL59
+	PRINTN	TH-SAFETY-DEPOSIT-BOX-AUX1
+	CRLF	
+	RTRUE	
+?CCL59:	EQUAL?	GL-PRSA,V?LOOK-INSIDE,V?SEARCH \?CCL61
+	EQUAL?	NUM,K-GEM-BOX-NUM \?CTR63
+	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED /?CCL64
+?CTR63:	ICALL1	RT-CTHEO-PRINT
+	PRINTR	" is closed."
+?CCL64:	PRINTI	"Inside "
+	ICALL1	RT-THEO-PRINT
+	ICALL	RT-YOU-MSG,STR?665,STR?666
+	ICALL2	RT-PRINT-CONTENTS-2,TH-SAFETY-DEPOSIT-BOX
+	PRINTR	"."
+?CCL61:	EQUAL?	GL-PRSA,V?EMPTY,V?REACH-IN \?CCL68
+	EQUAL?	NUM,K-GEM-BOX-NUM \?CCL71
+	FSET?	TH-SAFETY-DEPOSIT-BOX,FL-OPENED /FALSE
+?CCL71:	ICALL1	RT-CTHEO-PRINT
+	PRINTR	" is closed."
+?CCL68:	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	PRINT	K-RICOCHET-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-AC-TH-DIAL,CONTEXT,LOCK?,WHO,PTS
+	ZERO?	CONTEXT \FALSE
+	ZERO?	TH-DIAL-AUX1 \?CND1
+	SET	'TH-DIAL-AUX1,TH-RIGHT
+?CND1:	ZERO?	GL-NOW-PRSI? \FALSE
+	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?TUNE-TO \?CCL12
+	EQUAL?	GL-PRSI,FALSE-VALUE,TH-LEFT,TH-RIGHT /?CCL12
+	ICALL1	RT-CYOU-MSG
+	PRINTI	"can't "
+	PRINTB	GL-P-PRSA-WORD
+	PRINTC	32
+	ICALL2	RT-THEO-PRINT,TH-DIAL
+	PRINTI	" to "
+	ICALL1	RT-THEI-PRINT
+	PRINTR	"."
+?CCL12:	EQUAL?	GL-PRSA,V?TUNE-TO,V?SPIN,V?TURN \?CCL16
+	EQUAL?	GL-PRSI,FALSE-VALUE,TH-LEFT,TH-RIGHT /?CTR18
+	EQUAL?	GL-PRSI,TH-HANDS \?CCL19
+?CTR18:	FSET?	TH-STETHOSCOPE,FL-WORN /?CCL24
+	SET	'LOCK?,1
+	PRINTI	"The dial turns smoothly."
+	CRLF	
+	JUMP	?CND22
+?CCL24:	EQUAL?	GL-LISTEN-OBJ,TH-DIAL,LG-BANK-VAULT-DOOR,RM-BANK-VAULT /?CCL26
+	SET	'LOCK?,1
+	PRINTI	"The dial turns quietly."
+	CRLF	
+	JUMP	?CND22
+?CCL26:	FSET?	TH-COTTON-BALLS,FL-WORN \?CCL28
+	SET	'LOCK?,1
+	PRINTI	"The dial turns with a series of muffled clicks."
+	CRLF	
+	JUMP	?CND22
+?CCL28:	FSET?	LG-BANK-VAULT-DOOR,FL-OPENED \?CCL30
+	SET	'LOCK?,2
+	PRINTI	"Clunk."
+	CRLF	
+	JUMP	?CND22
+?CCL30:	EQUAL?	TH-DIAL-AUX1,GL-PRSI /?CCL32
+	SET	'LOCK?,1
+	PRINTI	"Clunk."
+	CRLF	
+	JUMP	?CND22
+?CCL32:	INC	'TH-DIAL-AUX2
+?CND22:	EQUAL?	LOCK?,1 /?CND17
+	EQUAL?	TH-DIAL-AUX2,1 \?CCL37
+	SET	'TH-DIAL-AUX1,TH-RIGHT
+	PRINTI	"Whirr."
+	CRLF	
+	JUMP	?CND17
+?CCL37:	EQUAL?	TH-DIAL-AUX2,2 \?CCL39
+	SET	'TH-DIAL-AUX1,TH-LEFT
+	PRINTI	"Click."
+	CRLF	
+	JUMP	?CND17
+?CCL39:	EQUAL?	TH-DIAL-AUX2,3 \?CCL41
+	SET	'TH-DIAL-AUX1,TH-RIGHT
+	PRINTI	"Click."
+	CRLF	
+	JUMP	?CND17
+?CCL41:	EQUAL?	TH-DIAL-AUX2,4 \?CCL43
+	SET	'TH-DIAL-AUX1,TH-RIGHT
+	PRINTI	"Whirr."
+	CRLF	
+	JUMP	?CND17
+?CCL43:	EQUAL?	TH-DIAL-AUX2,5 \?CND17
+	SET	'LOCK?,2
+	PRINTI	"Click. Kerchunk. The vault door swings open."
+	CRLF	
+	CALL1	RT-WHO-SAYS? >WHO
+	EQUAL?	WHO,CH-HOLMES \?CND45
+	CRLF	
+	PRINTI	"Holmes says, ""Splendid, Watson. The net is drawing ever tighter around our quarry."""
+	CRLF	
+?CND45:	GETP	LG-BANK-VAULT-DOOR,P?VALUE >PTS
+	ZERO?	PTS /?CND17
+	ICALL2	RT-UPDATE-SCORE,PTS
+	PUTP	LG-BANK-VAULT-DOOR,P?VALUE,0
+	JUMP	?CND17
+?CCL19:	ICALL1	RT-IMPOSSIBLE-MSG
+?CND17:	EQUAL?	LOCK?,1 \?CCL51
+	SET	'TH-DIAL-AUX1,0
+	SET	'TH-DIAL-AUX2,0
+	RTRUE	
+?CCL51:	EQUAL?	LOCK?,2 \TRUE
+	SET	'TH-DIAL-AUX1,-1
+	SET	'TH-DIAL-AUX2,-1
+	FCLEAR	LG-BANK-VAULT-DOOR,FL-LOCKED
+	FSET	LG-BANK-VAULT-DOOR,FL-OPENED
+	RTRUE	
+?CCL16:	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	PRINT	K-RICOCHET-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-AC-TH-BOXES,CONTEXT
+	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL3
+	PRINTR	"There are rows and rows of safety deposit boxes, all alike, numbered from 1 to 999."
+?CCL3:	EQUAL?	GL-PRSA,V?UNLOCK,V?LOCK,V?OPEN /?CTR4
+	EQUAL?	GL-PRSA,V?CLOSE,V?READ \?CCL5
+?CTR4:	PRINT	K-SPECIFY-MSG
+	PRINTI	"box by number."
+	CRLF	
+	RETURN	2
+?CCL5:	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	PRINT	K-RICOCHET-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-AC-TH-GUARDS-POCKET
+	EQUAL?	GL-PRSA,V?LOOK-INSIDE,V?EXAMINE,V?SEARCH \?CCL3
+	ICALL1	RT-CYOU-MSG
+	PRINTR	"can't see inside the guard's pocket."
+?CCL3:	EQUAL?	GL-PRSA,V?PUT \?CCL5
+	ICALL1	RT-IMPOSSIBLE-MSG
+	RTRUE	
+?CCL5:	EQUAL?	GL-PRSA,V?TAKE,V?EMPTY,V?REACH-IN /?CCL7
+	EQUAL?	GL-PRSA,V?STEAL \FALSE
+?CCL7:	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTR	" slaps the offending hand away and says, ""Keep your hands to yourself, mate."""
+
+
+	.FUNCT	RT-AC-CH-BANK-GUARD,CONTEXT,GEMCNT,OBJ
+	ICALL2	RT-THIS-IS-IT,CH-BANK-GUARD
+	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL3
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTR	" is lounging against the wall, idly jangling some keys in his pocket and waiting for girls to walk by."
+?CCL3:	CALL2	RT-TELL-ABOUT?,CH-BANK-GUARD
+	ZERO?	STACK /?CCL5
+	EQUAL?	GL-PRSA,V?WHO,V?WHAT \?CCL8
+	SET	'OBJ,GL-PRSO
+	JUMP	?CND6
+?CCL8:	SET	'OBJ,GL-PRSI
+?CND6:	PRINT	K-GUARD-IGNORES-MSG
+	CRLF	
+	RTRUE	
+?CCL5:	CALL1	RT-WHO-WHAT-FAIL?
+	ZERO?	STACK /?CCL10
+	RETURN	2
+?CCL10:	EQUAL?	CONTEXT,K-M-WINNER \?CCL12
+	EQUAL?	GL-PRSA,V?GIVE \?CCL15
+	EQUAL?	GL-PRSO,TH-BOX-KEY,TH-GUARDS-KEYS \?CCL18
+	PRINT	K-SORRY-MATE-MSG
+	CRLF	
+	RTRUE	
+?CCL18:	EQUAL?	GL-PRSO,TH-OPAL,TH-RUBY,TH-SAPPHIRE /?CCL20
+	EQUAL?	GL-PRSO,TH-EMERALD \FALSE
+?CCL20:	PRINT	K-ILL-HOLD-IT-MSG
+	CRLF	
+	RTRUE	
+?CCL15:	PRINT	K-GUARD-IGNORES-MSG
+	CRLF	
+	RTRUE	
+?CCL12:	ZERO?	GL-NOW-PRSI? /?CCL24
+	EQUAL?	GL-PRSA,V?GIVE \?CCL27
+	EQUAL?	GL-PRSO,TH-OPAL,TH-RUBY,TH-SAPPHIRE /?CTR29
+	EQUAL?	GL-PRSO,TH-EMERALD \?CCL30
+?CTR29:	MOVE	GL-PRSO,CH-BANK-GUARD
+	FSET	GL-PRSO,FL-NOALL
+	INC	'CH-BANK-GUARD-AUX1
+	SET	'GEMCNT,CH-BANK-GUARD-AUX1
+	EQUAL?	GEMCNT,1 \?CCL35
+	PRINTR	"""Now this is very nice. But I think I would need more than just one to make letting you in worth my while. I'll hold this for you until you come back."""
+?CCL35:	EQUAL?	GEMCNT,2 \?CCL37
+	PRINTR	"""This is even more beautiful than the other one. But it isn't worth taking the risk for only two of them."""
+?CCL37:	EQUAL?	GEMCNT,3 \?CCL39
+	PRINTR	"""One more and you're in."""
+?CCL39:	EQUAL?	GEMCNT,4 \TRUE
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTI	" looks furtively up and down the street. Then he whispers to you out of the side of his mouth, ""Good enough. Go on in."""
+	CRLF	
+	ICALL2	RT-UPDATE-SCORE,3
+	RTRUE	
+?CCL30:	EQUAL?	GL-PRSO,TH-BOX-KEY \?CCL42
+	MOVE	TH-BOX-KEY,TH-GUARDS-POCKET
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTR	" looks surprised and says, ""Ta, mate. I didn't know I dropped it. I'll have to keep it in a safer place."" He puts the key into one of his inside pockets."
+?CCL42:	EQUAL?	GL-PRSO,TH-RED-GLASS \?CCL44
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTI	" looks at it carefully and then hands it back to you, saying, ""For a moment there, I thought this was a ruby. But it's only a piece of glass."""
+	CRLF	
+	CRLF	
+	PRINT	K-MORE-VALUABLE-MSG
+	CRLF	
+	RTRUE	
+?CCL44:	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTI	" examines what you are offering and then declines your bribe."
+	CRLF	
+	CRLF	
+	PRINT	K-MORE-VALUABLE-MSG
+	CRLF	
+	RTRUE	
+?CCL27:	EQUAL?	GL-PRSA,V?TAKE \?CCL46
+	EQUAL?	GL-PRSO,TH-OPAL,TH-RUBY,TH-SAPPHIRE /?CTR48
+	EQUAL?	GL-PRSO,TH-EMERALD \?CCL49
+?CTR48:	PRINT	K-ILL-HOLD-IT-MSG
+	CRLF	
+	RTRUE	
+?CCL49:	EQUAL?	GL-PRSO,TH-BOX-KEY,TH-GUARDS-KEYS \?CCL53
+	PRINT	K-SORRY-MATE-MSG
+	CRLF	
+	RTRUE	
+?CCL53:	EQUAL?	GL-PRSO,CH-BANK-GUARD \FALSE
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINT	K-MUST-WEIGH-MSG
+	CRLF	
+	RTRUE	
+?CCL46:	EQUAL?	GL-PRSA,V?SHOW \FALSE
+	EQUAL?	GL-PRSO,TH-OPAL,TH-RUBY,TH-SAPPHIRE /?CTR59
+	EQUAL?	GL-PRSO,TH-EMERALD,TH-RED-GLASS \?CCL60
+?CTR59:	PRINTR	"""My, what a loverly gem!"""
+?CCL60:	EQUAL?	GL-PRSO,TH-BOX-KEY \FALSE
+	MOVE	TH-BOX-KEY,TH-GUARDS-POCKET
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINTR	" looks surprised and says, ""Oh! Thank you. I must have dropped it. I'll be sure to keep it in a safer place."" He takes the key and puts it in one of his inside pockets."
+?CCL24:	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?TAKE \?CCL69
+	EQUAL?	GL-PRSI,FALSE-VALUE \FALSE
+	ICALL2	RT-CTHEO-PRINT,CH-BANK-GUARD
+	PRINT	K-MUST-WEIGH-MSG
+	CRLF	
+	RTRUE	
+?CCL69:	EQUAL?	GL-PRSA,V?ASK-FOR \FALSE
+	EQUAL?	GL-PRSI,TH-BOX-KEY,TH-GUARDS-KEYS \?CCL77
+	PRINT	K-SORRY-MATE-MSG
+	CRLF	
+	RTRUE	
+?CCL77:	EQUAL?	GL-PRSI,TH-OPAL,TH-RUBY,TH-SAPPHIRE /?CCL79
+	EQUAL?	GL-PRSI,TH-EMERALD \FALSE
+?CCL79:	PRINT	K-ILL-HOLD-IT-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-AC-CH-WIGGINS,CONTEXT,OBJ
+	ICALL2	RT-THIS-IS-IT,CH-WIGGINS
+	EQUAL?	CONTEXT,K-M-WINNER \?CCL3
+	FSET?	GL-WINNER,FL-ASLEEP \?CCL3
+	ICALL2	RT-NO-CONDITION-MSG,GL-WINNER
+	RTRUE	
+?CCL3:	EQUAL?	CONTEXT,K-M-CONT \?CCL7
+	FSET?	CH-WIGGINS,FL-ASLEEP \?CCL7
+	PRINTI	"It's bad enough that you wasted the etherium; using it to steal from your friends is quite unsporting. "
+	RTRUE	
+?CCL7:	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL11
+	FSET?	CH-WIGGINS,FL-ASLEEP \?CCL14
+	PRINTR	"Wiggins is still suffering from the effects of the etherium gas."
+?CCL14:	FSET?	CH-WIGGINS,FL-BROKEN \?CND12
+	FCLEAR	CH-WIGGINS,FL-BROKEN
+	FCLEAR	CH-WIGGINS,FL-NODESC
+	FSET	CH-WIGGINS,FL-SEEN
+	PRINTI	"After staring at his dirty face for a few moments, you suddenly recognize the boy. He is Wiggins, the head of the Baker Street Irregulars, which is Holmes's unofficial army of street urchins who ""go everywhere and do everything."""
+	CRLF	
+?CND12:	CALL2	RT-PICK-NEXT,GL-WIGGINS-DESC-TXT
+	PRINT	STACK
+	IN?	CH-WIGGINS,TH-BOAT \?CCL18
+	PRINT	K-ENJOYING-RIDE-MSG
+	JUMP	?CND16
+?CCL18:	IN?	CH-WIGGINS,TH-HANSOM-CAB /?CTR19
+	IN?	CH-WIGGINS,TH-GROWLER-CAB \?CCL20
+?CTR19:	PRINT	K-FIDGETING-MSG
+	JUMP	?CND16
+?CCL20:	CALL2	RT-PICK-NEXT,GL-WIGGINS-LOOK-TXT
+	PRINT	STACK
+?CND16:	PRINTC	46
+	CRLF	
+	RETURN	2
+?CCL11:	CALL2	RT-TELL-ABOUT?,CH-WIGGINS
+	ZERO?	STACK /?CCL24
+	EQUAL?	GL-PRSA,V?WHO,V?WHAT \?CCL27
+	SET	'OBJ,GL-PRSO
+	JUMP	?CND25
+?CCL27:	SET	'OBJ,GL-PRSI
+?CND25:	FSET?	CH-WIGGINS,FL-ASLEEP \?CCL30
+	CALL2	RT-NO-CONDITION-MSG,CH-WIGGINS
+	RSTACK	
+?CCL30:	EQUAL?	GL-PRSA,V?WHO \?CCL32
+	EQUAL?	OBJ,CH-WIGGINS \?CCL32
+	PRINTR	"""I'm Wiggins, 'ead o' the Baker Street Irregulars."""
+?CCL32:	EQUAL?	OBJ,CH-HOLMES \?CCL36
+	PRINTR	"""E's a good man, guv'nor. Best as ever was."""
+?CCL36:	PRINTR	"""Beats me. What do you think?"""
+?CCL24:	CALL1	RT-WHO-WHAT-FAIL?
+	ZERO?	STACK /?CCL38
+	RETURN	2
+?CCL38:	EQUAL?	CONTEXT,K-M-WINNER \?CCL40
+	EQUAL?	GL-PRSA,V?HELLO \?CCL43
+	PRINTR	"""'Ello."""
+?CCL43:	EQUAL?	GL-PRSA,V?GOODBYE \?CCL45
+	PRINTR	"""Ta ta."""
+?CCL45:	EQUAL?	GL-PRSA,V?THANK \?CCL47
+	PRINTR	"""Anytime, mate."""
+?CCL47:	EQUAL?	GL-PRSA,V?WHERE \?CCL49
+	PRINTR	"""Beats me. What do you think?"""
+?CCL49:	ZERO?	CH-WIGGINS-AUX1 \?CCL51
+	ICALL2	RT-CTHEO-PRINT,CH-WIGGINS
+	PRINT	K-WOUNDED-PRIDE-MSG
+	CRLF	
+	RTRUE	
+?CCL51:	EQUAL?	GL-PRSA,V?ENTER \?CCL53
+	EQUAL?	GL-PRSO,TH-BUTT-OF-MALMSEY \?CCL56
+	FSET?	GL-PRSO,FL-BROKEN /?CCL56
+	SET	'WIGGINS-COLD?,TRUE-VALUE
+	PRINTR	"Wiggins dutifully climbs into the full butt of malmsey and has a nice bath and gets out again."
+?CCL56:	EQUAL?	GL-PRSO,TH-BUTT-OF-MALMSEY \?CCL60
+	IN?	TH-GARNET,TH-BUTT-OF-MALMSEY \?CCL63
+	MOVE	TH-GARNET,CH-PLAYER
+	ICALL2	RT-THIS-IS-IT,TH-GARNET
+	SET	'WIGGINS-COLD?,TRUE-VALUE
+	FSET	TH-GARNET,FL-SEEN
+	FSET	TH-GARNET,FL-TOUCHED
+	FCLEAR	TH-GARNET,FL-NODESC
+	PRINTI	"Wiggins climbs into the empty butt of malmsey, gets the gem, gets out and gives it to you."
+	CRLF	
+	GETP	TH-GARNET,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	TH-GARNET,P?VALUE,0
+	RTRUE	
+?CCL63:	PRINTR	"Wiggins says, ""Once was enough, thank you."""
+?CCL60:	EQUAL?	GL-PRSO,TH-HANSOM-CAB,TH-GROWLER-CAB,TH-BOAT \?CCL65
+	IN?	CH-HOLMES,RM-LAIR \?CCL68
+	IN?	CH-PLAYER,GL-PRSO \?CCL71
+	PRINTI	"Wiggins climbs in next to you."
+	CRLF	
+	MOVE	CH-WIGGINS,GL-PRSO
+	JUMP	?CND69
+?CCL71:	PRINT	K-AFTER-YOU-MSG
+	CRLF	
+?CND69:	SET	'GL-PUPPY,CH-WIGGINS
+	FCLEAR	CH-WIGGINS,FL-NODESC
+	FCLEAR	CH-WIGGINS,FL-BROKEN
+	RTRUE	
+?CCL68:	PRINT	K-CANT-LEAVE-MSG
+	CRLF	
+	RTRUE	
+?CCL65:	EQUAL?	GL-PRSO,LG-WATER \FALSE
+	PRINTR	"""I ain't no bleedin' mermaid. Besides, bathing ain't 'ealthy."""
+?CCL53:	EQUAL?	GL-PRSA,V?TAKE,V?STEAL \?CCL75
+	EQUAL?	GL-PRSO,TH-GARNET \?CCL78
+	IN?	TH-GARNET,TH-BUTT-OF-MALMSEY \?CCL78
+	MOVE	TH-GARNET,CH-PLAYER
+	ICALL2	RT-THIS-IS-IT,TH-GARNET
+	SET	'WIGGINS-COLD?,TRUE-VALUE
+	FSET	TH-GARNET,FL-SEEN
+	FSET	TH-GARNET,FL-TOUCHED
+	FCLEAR	TH-GARNET,FL-NODESC
+	ICALL2	RT-CTHEO-PRINT,CH-WIGGINS
+	IN?	CH-WIGGINS,TH-BUTT-OF-MALMSEY /?CND81
+	PRINTI	" climbs into the empty butt of malsey,"
+?CND81:	PRINTI	" gets the gem, gets out, and gives it to you."
+	CRLF	
+	GETP	TH-GARNET,P?VALUE
+	ICALL2	RT-UPDATE-SCORE,STACK
+	PUTP	TH-GARNET,P?VALUE,0
+	RTRUE	
+?CCL78:	EQUAL?	GL-PRSO,TH-GUARDS-POCKET,TH-BOX-KEY,TH-GUARDS-KEYS /?CTR83
+	EQUAL?	GL-PRSI,TH-GUARDS-POCKET,CH-BANK-GUARD \?CCL84
+?CTR83:	ICALL1	RT-STEAL-KEY
+	RTRUE	
+?CCL84:	EQUAL?	GL-PRSA,V?STEAL \FALSE
+	PRINTR	"""I would if I could, guv. But I don't see 'ow to do it."""
+?CCL75:	EQUAL?	GL-PRSA,V?ROB \?CCL90
+	EQUAL?	GL-PRSO,CH-BANK-GUARD \?CCL90
+	CALL1	RT-STEAL-KEY
+	RSTACK	
+?CCL90:	EQUAL?	GL-PRSA,V?EMPTY,V?REACH-IN,V?SEARCH \?CCL94
+	EQUAL?	GL-PRSO,TH-GUARDS-POCKET,CH-BANK-GUARD /?CTR96
+	EQUAL?	GL-PRSI,TH-GUARDS-POCKET,CH-BANK-GUARD \?CCL97
+?CTR96:	ICALL1	RT-STEAL-KEY
+	RTRUE	
+?CCL97:	PRINTR	"""I would if I could, guv. But I don't see 'ow to do it."""
+?CCL94:	EQUAL?	GL-PRSA,V?FOLLOW \?CCL101
+	EQUAL?	GL-PRSO,CH-ME,CH-PLAYER \?CCL104
+	IN?	CH-HOLMES,RM-LAIR \?CCL107
+	PRINTI	"""After you, guv."""
+	CRLF	
+	SET	'GL-PUPPY,CH-WIGGINS
+	FCLEAR	CH-WIGGINS,FL-NODESC
+	FCLEAR	CH-WIGGINS,FL-BROKEN
+	RTRUE	
+?CCL107:	PRINT	K-CANT-LEAVE-MSG
+	CRLF	
+	RTRUE	
+?CCL104:	PRINTR	"""I'm not a bleedin' bloodhound."""
+?CCL101:	EQUAL?	GL-PRSA,V?WAIT \?CCL109
+	EQUAL?	GL-PUPPY,CH-WIGGINS \?CCL112
+	SET	'GL-PUPPY,FALSE-VALUE
+	PRINTR	"""Right. I'm glued to this spot."""
+?CCL112:	PRINTR	"""Whatever you say, guv."""
+?CCL109:	EQUAL?	GL-PRSA,V?EXIT \?CCL114
+	PRINT	K-AFTER-YOU-MSG
+	CRLF	
+	RTRUE	
+?CCL114:	EQUAL?	GL-PRSA,V?PULL \?CCL116
+	EQUAL?	GL-PRSO,TH-PORTCULLIS-CHAIN \?CCL116
+	PRINTR	"""I can't reach it, guv."""
+?CCL116:	PRINTR	"Wiggins looks at you and scratches his head."
+?CCL40:	ZERO?	GL-NOW-PRSI? /?CCL120
+	EQUAL?	GL-PRSA,V?GIVE \?CCL123
+	FSET?	CH-WIGGINS,FL-ASLEEP \?CCL126
+	ICALL	RT-NO-CONDITION-MSG,CH-WIGGINS,STR?812
+	RTRUE	
+?CCL126:	EQUAL?	GL-PRSO,TH-SHILLING \?CCL128
+	MOVE	TH-SHILLING,CH-WIGGINS
+	FSET	TH-SHILLING,FL-NOALL
+	SET	'CH-WIGGINS-AUX1,1
+	ZERO?	GL-P-CONT \?CND129
+	SET	'WINNER-IS-WIGGINS,TRUE-VALUE
+?CND129:	SET	'GL-P-QCONTEXT-TH,CH-WIGGINS
+	SET	'GL-P-QCONTEXT-RM,GL-PLACE-CUR
+	PRINTI	"Wiggins looks at "
+	ICALL2	RT-THEO-PRINT,TH-SHILLING
+	PRINTR	" and then at you. After a few moments he stuffs it deep into the recesses of his clothing and says, ""I'm all yours. Wot's the plan?"""
+?CCL128:	EQUAL?	GL-PRSO,TH-EMERALD,TH-SAPPHIRE,TH-RUBY /?CTR131
+	EQUAL?	GL-PRSO,TH-OPAL,TH-TOPAZ,TH-GARNET /?CTR131
+	EQUAL?	GL-PRSO,TH-POUND-NOTE,TH-SIXPENCE \?CCL132
+?CTR131:	PRINTI	"Wiggins glances at your offer and"
+	PRINT	K-WOUNDED-PRIDE-MSG
+	CRLF	
+	RTRUE	
+?CCL132:	PRINTR	"Wiggins looks at the item you have handed him and then returns it to you. Clearly it was not of interest to him."
+?CCL123:	EQUAL?	GL-PRSA,V?TAKE \FALSE
+	EQUAL?	GL-PRSO,TH-SHILLING \FALSE
+	FSET?	CH-WIGGINS,FL-ASLEEP \?CCL142
+	PRINTI	"He must have hidden it very well. "
+	ICALL1	RT-CYOU-MSG
+	PRINTR	"can't find it."
+?CCL142:	PRINTR	"""Sorry, guv'nor. A deal's a deal."""
+?CCL120:	ZERO?	GL-NOW-PRSI? \FALSE
+	EQUAL?	GL-PRSA,V?SMELL \FALSE
+	ZERO?	WIGGINS-COLD? /?CCL150
+	PRINT	K-EAU-DE-MSG
+	CRLF	
+	RTRUE	
+?CCL150:	PRINTR	"Yuck. Eau de urchin."
+
+
+	.FUNCT	RT-AC-CH-BUTLER,CONTEXT,WORD-NUM
+	ICALL2	RT-THIS-IS-IT,CH-BUTLER
+	EQUAL?	CONTEXT,K-M-WINNER \?CCL3
+	FSET?	CH-BUTLER,FL-ASLEEP \?CCL6
+	CALL2	RT-NO-CONDITION-MSG,CH-BUTLER
+	RSTACK	
+?CCL6:	EQUAL?	GL-PRSA,V?TAKE,V?FIND \?CCL8
+	CALL	RT-IDENTIFY-EVENT?,W?MYCROFT,GL-PRSO
+	ZERO?	STACK /?CCL8
+	SET	'GL-WINNER,CH-PLAYER
+	ICALL	RT-PERFORM,V?ASK-FOR,CH-BUTLER,TH-EVENT
+	RTRUE	
+?CCL8:	EQUAL?	GL-PRSA,V?HELLO \?CCL12
+	PRINTC	34
+	CALL1	RT-TIME-OF-DAY
+	ZERO?	STACK \?CCL15
+	PRINTI	"How do you do?"
+	JUMP	?CND13
+?CCL15:	CALL1	RT-TIME-OF-DAY
+	EQUAL?	STACK,1,2 \?CCL17
+	PRINTI	"Good day."
+	JUMP	?CND13
+?CCL17:	CALL1	RT-TIME-OF-DAY
+	EQUAL?	STACK,3 \?CND13
+	PRINTI	"Good evening."
+?CND13:	PRINTR	""""
+?CCL12:	EQUAL?	GL-PRSA,V?GOODBYE \?CCL20
+	PRINTC	34
+	CALL1	RT-TIME-OF-DAY
+	ZERO?	STACK \?CCL23
+	PRINTI	"Good night"
+	JUMP	?CND21
+?CCL23:	CALL1	RT-TIME-OF-DAY
+	EQUAL?	STACK,1,2 \?CCL25
+	PRINTI	"Good day"
+	JUMP	?CND21
+?CCL25:	CALL1	RT-TIME-OF-DAY
+	EQUAL?	STACK,3 \?CND21
+	PRINTI	"Good evening"
+?CND21:	PRINTR	"."""
+?CCL20:	EQUAL?	GL-PRSA,V?THANK \?CCL28
+	PRINTR	"""You're quite welcome."""
+?CCL28:	EQUAL?	GL-PRSA,V?WHO \?CCL30
+	EQUAL?	GL-PRSO,CH-BUTLER \?CCL30
+	PRINTR	"""I am one of the staff of this fine establishment."""
+?CCL30:	EQUAL?	GL-PRSA,V?WHO,V?WHAT,V?WHERE \?CCL34
+	PRINTR	"""I'm far too discreet to respond."""
+?CCL34:	EQUAL?	GL-PRSA,V?YES,V?NO \?CCL36
+	ICALL2	RT-CTHEO-PRINT,CH-BUTLER
+	PRINTR	" looks at you expectantly."
+?CCL36:	EQUAL?	GL-PRSA,V?RESCUE \?CCL38
+	PRINTR	"""What can I do for you?"""
+?CCL38:	PRINTR	"""I'm afraid I am unable to do that."""
+?CCL3:	ZERO?	GL-NOW-PRSI? \?CCL40
+	EQUAL?	GL-PRSA,V?ASK-FOR,V?ASK-ABOUT \FALSE
+	FSET?	CH-BUTLER,FL-ASLEEP \?CCL46
+	CALL2	RT-NO-CONDITION-MSG,CH-BUTLER
+	RSTACK	
+?CCL46:	CALL	RT-IDENTIFY-EVENT?,W?MYCROFT,GL-PRSI
+	ZERO?	STACK /?CCL48
+	BTST	MYCROFT-STATE,1 \?CCL51
+	PRINTR	"""I am very sorry but Mr Mycroft Holmes is not available at this time. Perhaps you would care to come back later?"""
+?CCL51:	BTST	MYCROFT-STATE,2 \?CCL53
+	BAND	MYCROFT-STATE,-3 >MYCROFT-STATE
+	PRINTI	"The butler listens to you and then leaves. He comes back shortly."
+	CRLF	
+	CRLF	
+	PRINTR	"""Mr Mycroft Holmes requires that you offer some token to verify that you are indeed the person you claim to be. Give whatever it is to me and I will take it to him."""
+?CCL53:	PRINTR	"The butler listens politely but insists that he can do nothing more for you than to deliver the token to Mr Mycroft Holmes."
+?CCL48:	EQUAL?	GL-PRSI,CH-HOLMES \?CCL55
+	PRINTR	"""I am afraid that I know the younger Mr Holmes only by his somewhat colourful reputation."""
+?CCL55:	EQUAL?	GL-PRSI,CH-BUTLER \?CCL57
+	PRINTR	"""I am well, sir. Thank you for asking."""
+?CCL57:	EQUAL?	GL-PRSI,CH-PLAYER,CH-ME \?CCL59
+	PRINTR	"He looks down his nose at you and sniffs, ""I don't believe we've been introduced."""
+?CCL59:	EQUAL?	GL-PRSI,CH-MEMBERS \?CCL61
+	PRINTR	"""They seem livelier than usual for this time of year."""
+?CCL61:	EQUAL?	GL-PRSI,RM-DIOGENES-CLUB \?CCL63
+	PRINTR	"The butler coughs deferentially, ""It is one of the most exclusive clubs in London, sir."" He glances at your clothes. ""Membership is by invitation only."""
+?CCL63:	FSET?	GL-PRSI,FL-PERSON \?CCL65
+	FSET?	GL-PRSI,FL-PLURAL \?CCL68
+	PRINTR	"""Unfortunately, I can say nothing about them."""
+?CCL68:	FSET?	GL-PRSI,FL-FEMALE \?CCL70
+	PRINTR	"""I am sorry but I can tell you nothing about her."""
+?CCL70:	PRINTR	"""Much to my regret I can tell you nothing about him."""
+?CCL65:	PRINTR	"""I'm afraid I wouldn't know anything about that."""
+?CCL40:	ZERO?	GL-NOW-PRSI? /FALSE
+	EQUAL?	GL-PRSA,V?GIVE \FALSE
+	FSET?	CH-BUTLER,FL-ASLEEP \?CCL78
+	CALL	RT-NO-CONDITION-MSG,CH-BUTLER,STR?812
+	RSTACK	
+?CCL78:	BTST	MYCROFT-STATE,1 \?CCL80
+	PRINTR	"The butler politely declines to take the gift you have offered."
+?CCL80:	BTST	MYCROFT-STATE,2 \?CCL82
+	PRINTR	"The butler refuses to take the item you have offered and asks if you have come to speak with someone here in the club."
+?CCL82:	EQUAL?	GL-PRSO,TH-RING \?CCL84
+	BOR	MYCROFT-STATE,5 >MYCROFT-STATE
+	REMOVE	TH-RING
+	PRINT	K-BUTLER-ACCEPTS-MSG
+	CRLF	
+	CRLF	
+	PRINTI	"After a few moments, Mycroft Holmes appears. He looks very worried."
+	CRLF	
+	CRLF	
+	PRINTI	"""Sherlock warned me that you might come,"" he says. ""And the fact that you are here indicates that he is indeed in trouble. I believe that in order to solve this mystery, you are going to have to go to the Tower of London. It will be closed, but you can give the password '"
+	RANDOM	6 >WORD-NUM
+	SET	'PASSWORD-ID,WORD-NUM
+	EQUAL?	WORD-NUM,1 \?CCL87
+	PRINTI	"Boleyn"
+	JUMP	?CND85
+?CCL87:	EQUAL?	WORD-NUM,2 \?CCL89
+	PRINTI	"Cleves"
+	JUMP	?CND85
+?CCL89:	EQUAL?	WORD-NUM,3 \?CCL91
+	PRINTI	"Howard"
+	JUMP	?CND85
+?CCL91:	EQUAL?	WORD-NUM,4 \?CCL93
+	PRINTI	"Parr"
+	JUMP	?CND85
+?CCL93:	EQUAL?	WORD-NUM,5 \?CCL95
+	PRINTI	"Aragon"
+	JUMP	?CND85
+?CCL95:	EQUAL?	WORD-NUM,6 \?CND85
+	PRINTI	"Seymour"
+?CND85:	PRINTI	"' to the guard at the Byward Tower. He will let you in. Good luck."""
+	CRLF	
+	CRLF	
+	PRINTI	"Mycroft pauses before he goes and looks at you meditatively, as if trying to decide if he can put his faith in you to rescue his brother. After a moment he gives his head an unconscious nod, then turns around and disappears back into the club."
+	CRLF	
+	ICALL2	RT-UPDATE-SCORE,1
+	RTRUE	
+?CCL84:	PRINT	K-BUTLER-ACCEPTS-MSG
+	CRLF	
+	CRLF	
+	PRINTI	"The butler soon returns looking concerned."
+	CRLF	
+	CRLF	
+	PRINTR	"""I am sorry but Mr Mycroft Holmes says this will not do. Do you have anything else?"""
+
+
+	.FUNCT	RT-AC-LG-BANK-VAULT-DOOR,CONTEXT
+	EQUAL?	CONTEXT,K-M-DESCFCN \?CCL3
+	EQUAL?	GL-PLACE-CUR,RM-BANK-OF-ENGLAND \?CCL6
+	ICALL2	RT-OPEN-CLOSED-MSG,LG-BANK-VAULT-DOOR
+	CRLF	
+	CRLF	
+	PRINTR	"In the middle of the door you see a big shiny dial."
+?CCL6:	ICALL2	RT-OPEN-CLOSED-MSG,LG-BANK-VAULT-DOOR
+	CRLF	
+	CRLF	
+	PRINTR	"The inside of the door is shiny and flat."
+?CCL3:	EQUAL?	GL-PRSA,V?OPEN \?CCL8
+	FSET?	LG-BANK-VAULT-DOOR,FL-OPENED \?CCL11
+	PRINTR	"The vault door is already open."
+?CCL11:	FSET?	LG-BANK-VAULT-DOOR,FL-LOCKED \?CCL13
+	PRINTR	"The vault door is locked."
+?CCL13:	FSET	LG-BANK-VAULT-DOOR,FL-OPENED
+	PRINTR	"The vault door swings open."
+?CCL8:	EQUAL?	GL-PRSA,V?CLOSE \?CCL15
+	FSET?	LG-BANK-VAULT-DOOR,FL-OPENED /?CCL18
+	PRINTR	"The vault door is already closed."
+?CCL18:	FCLEAR	LG-BANK-VAULT-DOOR,FL-OPENED
+	FSET	LG-BANK-VAULT-DOOR,FL-LOCKED
+	SET	'TH-DIAL-AUX1,0
+	SET	'TH-DIAL-AUX2,0
+	PRINTI	"The vault door swings closed and locks"
+	IN?	CH-PLAYER,RM-BANK-VAULT \?CCL21
+	PRINTI	" you in. Whoops!"
+	CRLF	
+	CRLF	
+	CALL1	RT-QSR
+	RSTACK	
+?CCL21:	PRINTR	"."
+?CCL15:	EQUAL?	GL-PRSA,V?ENTER,V?THROUGH \?CCL23
+	EQUAL?	GL-PLACE-CUR,RM-BANK-VAULT \?CCL26
+	CALL2	RT-DO-WALK,P?EAST
+	RSTACK	
+?CCL26:	EQUAL?	GL-PLACE-CUR,RM-BANK-OF-ENGLAND \FALSE
+	CALL2	RT-DO-WALK,P?WEST
+	RSTACK	
+?CCL23:	EQUAL?	GL-PRSA,V?LOOK-INSIDE \?CCL30
+	FSET?	LG-BANK-VAULT-DOOR,FL-OPENED \?CCL33
+	ICALL	RT-CYOU-MSG,STR?665,STR?666
+	PRINTI	"row upon row of "
+	ICALL2	DPRINT,TH-BOXES
+	PRINTR	"."
+?CCL33:	ICALL2	RT-CTHEO-PRINT,LG-BANK-VAULT-DOOR
+	PRINTR	" is closed."
+?CCL30:	EQUAL?	GL-PRSA,V?UNLOCK \?CCL35
+	FSET?	LG-BANK-VAULT-DOOR,FL-OPENED \?CCL38
+	ICALL2	RT-CTHEO-PRINT,LG-BANK-VAULT-DOOR
+	PRINTR	" is already opened."
+?CCL38:	PRINT	K-HOW-TO-MSG
+	CRLF	
+	RTRUE	
+?CCL35:	EQUAL?	GL-PRSA,V?SHOOT \FALSE
+	PRINT	K-RICOCHET-MSG
+	CRLF	
+	RTRUE	
+
+
+	.FUNCT	RT-TOPAZ-MSG
+	EQUAL?	GL-PRSO,TH-TOPAZ \FALSE
+	EQUAL?	GL-PUPPY,CH-HOLMES \FALSE
+	CRLF	
+	PRINTI	"Holmes plucks you by the sleeve and reaches into the box. ""Observe, Watson."" He pulls out an almost invisible thread and examines it with glittering eyes. ""Muslin,"" he declares, more to himself than to you. ""Of Indian origin, and of the type used almost exclusively in the manufacture of turbans."" He looks at you in triumph. ""Our case is almost complete, Doctor. The Agra gems, the Trichinopoly cigar, and now this strand of muslin."""
+	CRLF	
+	CRLF	
+	PRINTR	"Holmes puts the strand into his pocket and explains. ""Moriarty - for reasons as yet unknown to us - has stolen the Crown Jewels. The Agra gems have somehow passed into his hands by way of this Indian accomplice, and he is using small pieces of it to lure me into a rendezvous with him. It's a dangerous game we play, Watson, but if we are to recover the regalia we have no choice."""
+
+	.ENDI

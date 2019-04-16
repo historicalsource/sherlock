@@ -1,0 +1,1319 @@
+
+Combined ZIL Compiler Ver 2.0 (MIM)
+-----------------------------------
+Input file: PS:<SHERLOCK>GAMESOUND.ZIL.6
+[XZIP instructions]
+
+[Funny globals and constants]
+
+[Object numbers assigned rooms and local globals first]
+
+Loading PS:<SHERLOCK>CONSTANTS.ZIL.66 and compiling it.
+Loading PS:<SHERLOCK>MACROS.ZIL.23 and compiling it.
+Loading PS:<SHERLOCK>SYNTAX.ZIL.42 and compiling it.
+Loading PS:<SHERLOCK>SCHED.ZIL.19 and compiling it.
+Compiling routine: RT-COPY-TIME
+Compiling routine: RT-NORM-TIME
+Compiling routine: RT-DO-CLOCK-SET
+Compiling routine: RT-CLOCK-INC
+Compiling routine: RT-CLOCK-CMP
+Compiling routine: RT-CLOCK-JMP
+Compiling routine: RT-CLK-NTI-MSG
+Compiling routine: RT-CLK-DOW-MSG
+Compiling routine: RT-ALARM-SET?
+Compiling routine: RT-ALARM-SET-REL
+Compiling routine: RT-ALARM-SET-ABS
+Compiling routine: RT-ALARM-CLR
+Compiling routine: RT-ALARM-CHK
+Abstracting PS:<SHERLOCK>SCHED.
+Loading PS:<SHERLOCK>BOOT.ZIL.86 and compiling it.
+Compiling routine: RT-META-IN?
+Compiling routine: RT-SEE-INSIDE?
+Compiling routine: RT-VISIBLE?
+Compiling routine: CLOSED?
+Compiling routine: RT-ACCESSIBLE?
+Compiling routine: RT-DONT-ALL?
+Compiling routine: DPRINT
+Compiling routine: RT-A-PRINT
+Compiling routine: RT-THEO-PRINT
+Compiling routine: RT-CTHEO-PRINT
+Compiling routine: RT-THEI-PRINT
+Compiling routine: RT-CTHEI-PRINT
+Compiling routine: RT-PRINT-SPACES
+Compiling routine: SAY-NUMBER
+Compiling routine: RT-UPDATE-STATUS-LINE
+Compiling routine: RT-REFER-TO-MSG
+Compiling routine: RT-SAY-ROOM-NAME-IF-LIT
+Compiling routine: RT-DESCRIBE-PLACE
+Compiling routine: RT-EXEC-RM-DESCFCN
+Compiling routine: RT-DESCFCN-CONTEXT
+Compiling routine: RT-DESC-ALL
+Compiling routine: RT-GOTO
+Compiling routine: RT-RESET-THEM
+Compiling routine: RT-UPDATE-SCORE
+Compiling routine: RT-UPDATE-MOVES
+Compiling routine: RT-UPDATE-CLOCK
+Compiling routine: RT-MAIN-LOOP
+Compiling routine: RT-TOUCH-VERB?
+Compiling routine: RT-TALK-VERB?
+Compiling routine: RT-AC-CH-PLAYER
+Abstracting PS:<SHERLOCK>BOOT.
+Loading PS:<SHERLOCK>PARSER.ZIL.116 and compiling it.
+Compiling routine: RT-CAPITALIZE
+Compiling routine: RT-WORD-PRINT
+Compiling routine: RT-VERB-PRINT
+Compiling routine: RT-PREP-PRINT
+Compiling routine: RT-CLAUSE-PRINT
+Compiling routine: RT-BUFFER-PRINT
+Compiling routine: RT-DONT-KNOW-WORD-MSG
+Compiling routine: RT-DONT-KNOW-WORD-USE-MSG
+Compiling routine: RT-CANT-SEE-ANY-MSG
+Compiling routine: RT-TH-NOT-HERE-OBJECT
+Compiling routine: RT-FAKE-ORPHAN-MSG
+Compiling routine: RT-TIME-OF-DAY-MSG
+Compiling routine: RT-TIME-OF-DAY
+Compiling routine: RT-SPOKEN-TO-MSG
+Compiling routine: RT-GET-PREP
+Compiling routine: RT-SYNTAX-CHECK
+Compiling routine: RT-CLAUSE
+Compiling routine: RT-GET-WHAT-I-MEAN
+Compiling routine: RT-P-CLEAR
+Compiling routine: RT-PICK-NEXT
+Compiling routine: RT-QCONTEXT-GOOD?
+Compiling routine: RT-FIND-PERSON
+Compiling routine: RT-ANYONE-HERE?
+Compiling routine: RT-MOVE-ALL
+Compiling routine: RT-GOT?
+Compiling routine: RT-HELD?
+Compiling routine: RT-THIS-IS-IT
+Compiling routine: RT-CHANGE-LEXV
+Compiling routine: RT-WT?
+Compiling routine: RT-VERB-DIR-ONLY?
+Compiling routine: RT-STUFF
+Compiling routine: RT-INBUF-ADD
+Compiling routine: RT-ACLAUSE-WIN
+Compiling routine: RT-NCLAUSE-WIN
+Compiling routine: RT-ORPHAN-VERB
+Compiling routine: RT-ORPHAN
+Compiling routine: RT-ORPHAN-MERGE
+Compiling routine: RT-ADJ-CHECK
+Compiling routine: RT-CLAUSE-COPY
+Compiling routine: RT-CLAUSE-ADD
+Compiling routine: RT-PREP-FIND
+Compiling routine: RT-SYNTAX-FOUND
+Compiling routine: RT-BUT-MERGE
+Compiling routine: RT-SNARF-OBJECTS
+Compiling routine: RT-SNARF
+Compiling routine: RT-GET-OBJECT
+Compiling routine: RT-MOBY-FIND
+Compiling routine: RT-MATCH-PSEUDO
+Compiling routine: RT-GLOBAL-CHECK
+Compiling routine: RT-DO-SL
+Compiling routine: RT-SEARCH-LIST
+Compiling routine: RT-THIS-IT?
+Compiling routine: RT-OBJ-FOUND
+Compiling routine: RT-ITAKE
+Compiling routine: RT-ITAKE-CHECK
+Compiling routine: RT-MANY-CHECK
+Compiling routine: RT-IS-LIT?
+Compiling routine: RT-PERFORM
+Compiling routine: RT-SET-GL-PLACE-CUR
+Compiling routine: RT-PARSER
+Compiling routine: RT-WHICH-PRINT
+Compiling routine: RT-FIND-NOT-HERE
+Compiling routine: RT-NOT-HERE-PRINT
+Abstracting PS:<SHERLOCK>PARSER.
+Loading PS:<SHERLOCK>OTHER-MISC.ZIL.54 and compiling it.
+Compiling routine: SET-SIZE-TO-ONE
+Compiling routine: GET-SIZE
+Compiling routine: SET-MASS-TO-ONE
+Compiling routine: GET-MASS
+Compiling routine: GET-CAPACITY
+Compiling routine: SET-CAPACITY-TO-ONE
+Compiling routine: RT-SEE-ANYTHING-IN?
+Compiling routine: RT-CANT-TOUCH-MSG
+Compiling routine: RT-TOTAL-SIZE-IN-OBJ
+Compiling routine: RT-TOTAL-MASS-OF-OBJ
+Compiling routine: RT-TOTAL-COUNT-IN-OBJ
+Compiling routine: RT-OBJ-TOO-LARGE?
+Compiling routine: RT-OBJ-TOO-HEAVY?
+Compiling routine: RT-OBJ-TOO-MANY?
+Compiling routine: RT-REMOVE-ALL
+Compiling routine: RT-MOVE-ALL-BUT-WORN
+Compiling routine: RT-MOVE-NODESC-OBJS
+Compiling routine: RT-FIND-IN?
+Compiling routine: RT-GET-ANY-KEY
+Compiling routine: RT-GET-YES-NO?
+Compiling routine: RT-INIT-SCREEN
+Compiling routine: RT-GAMETITLE-MSG
+Compiling routine: RT-COPYRIGHT-MSG
+Compiling routine: RT-TRADEMARK-MSG
+Compiling routine: RT-ID-MSG
+Compiling routine: RT-VERSION-MSG
+Compiling routine: RT-DESC-PL-CONT-1
+Compiling routine: RT-DESCRIBE-PLACE-CONTENTS
+Compiling routine: RT-RANK-STR
+Compiling routine: RT-NEW-SCORE-MSG
+Compiling routine: RT-PARSE-EVENT?
+Compiling routine: RT-IDENTIFY-EVENT?
+Compiling routine: RT-DESC-EVENT
+Compiling routine: RT-AC-TH-EVENT
+Compiling routine: RT-TO-DO-THING-USE-MSG
+Compiling routine: RT-NOT-IN-SENTENCE-MSG
+Compiling routine: RT-IMPOSSIBLE-MSG
+Compiling routine: RT-NOT-LIKELY-MSG
+Compiling routine: RT-LOOKS-PUZZLED-MSG
+Compiling routine: RT-WINNER-NOT-HOLDING-MSG
+Compiling routine: RT-YOUD-HAVE-TO-MSG
+Compiling routine: RT-WOULD-HAVE-TO-MSG
+Compiling routine: RT-NOBODY-TO-ASK-MSG
+Compiling routine: RT-TALK-TO-SELF-MSG
+Compiling routine: RT-WAY-TO-TALK-MSG
+Compiling routine: RT-I-SUN-UP-DOWN-MSG
+Compiling routine: RT-NO-OTHER?
+Compiling routine: RT-GLOBAL-IN?
+Compiling routine: RT-META-LOC
+Compiling routine: GO
+Compiling routine: RT-NUMBER?
+Compiling routine: V-WAIT-FOR
+Compiling routine: RT-WAIT-TOD-MSG
+Compiling routine: RT-WINDOW
+Compiling routine: HOLMES-COMPLAINS
+Compiling routine: TOO-DARK-TO-GO
+Compiling routine: RT-AC-CH-PLAYER-AUX
+Compiling routine: RT-CHECK-HANDS
+Compiling routine: RT-HANDS-COVERING-EARS
+Loading PS:<SHERLOCK>SOUNDS.ZIL.38 and compiling it.
+Loading PS:<SHERLOCK>DEBUG.ZIL.35 and compiling it.
+Compiling routine: V-VERIFY
+Compiling routine: V-REFRESH
+Loading PS:<SHERLOCK>HINTS.ZIL.52 and compiling it.
+Compiling routine: V-HINTS-NO
+Compiling routine: V-HINT
+Compiling routine: RT-PICK-QUESTION
+Compiling routine: RT-ERASE-CURSOR
+Compiling routine: RT-NEW-CURSOR
+Compiling routine: RT-INVERSE-LINE
+Compiling routine: RT-DISPLAY-HINT
+Compiling routine: RT-PUT-UP-QUESTIONS
+Compiling routine: RT-PUT-UP-CHAPTERS
+Compiling routine: RT-INIT-HINT-SCREEN
+Compiling routine: RT-CENTER-LINE
+Compiling routine: RT-LEFT-LINE
+Compiling routine: RT-RIGHT-LINE
+Abstracting PS:<SHERLOCK>HINTS.
+Loading PS:<SHERLOCK>VERBS.ZIL.127 and compiling it.
+Compiling routine: SOUNDS
+Compiling routine: CHECK-LOOPING
+Compiling routine: RT-S-CAB-ARRIVES
+ ** Note: Atomic argument to routine assumed constant - RT-S-CAB-ARRIVES
+
+Compiling routine: RT-S-CAB-LEAVES
+Compiling routine: RT-S-CAB-GOES
+ ** Note: Atomic argument to routine assumed constant - RT-S-CAB-GOES
+
+Compiling routine: END-FANFARE
+Compiling routine: KILL-SOUNDS
+Compiling routine: V-$SOUND
+Compiling routine: PRE-CALL
+Compiling routine: PRE-DROP
+Compiling routine: PRE-DUMB-EXAMINE
+Compiling routine: PRE-EXAMINE
+Compiling routine: PRE-FEED
+Compiling routine: PRE-GIVE
+Compiling routine: PRE-LISTEN
+Compiling routine: PRE-POCKET
+Compiling routine: PRE-PUT
+Compiling routine: PRE-PUT-ON
+Compiling routine: PRE-SHOW
+Compiling routine: PRE-SHOOT
+Compiling routine: PRE-TAKE
+Compiling routine: PRE-THROW
+Compiling routine: PRE-THROW-OVER
+Compiling routine: PRE-WATCH
+Compiling routine: V-ADJUST
+Compiling routine: V-ALARM
+Compiling routine: V-ARREST
+Compiling routine: V-ASK-ABOUT-1
+Compiling routine: V-ASK-ABOUT
+Compiling routine: V-ASK-FOR-1
+Compiling routine: V-ASK-FOR
+Compiling routine: V-BLOW-INTO
+Compiling routine: V-BOW
+Compiling routine: V-BURN
+Compiling routine: V-BURN-WITH
+Compiling routine: V-BUY
+Compiling routine: V-BUY-FROM
+Compiling routine: V-CALL
+Compiling routine: V-CAST-OFF
+Compiling routine: V-CLEAN
+Compiling routine: V-CLEAN-OFF
+Compiling routine: V-CLIMB-DOWN
+Compiling routine: V-CLIMB-ON
+Compiling routine: V-CLIMB-OVER
+Compiling routine: V-CLIMB-UP
+Compiling routine: V-CLOSE
+Compiling routine: V-COUNT
+Compiling routine: V-COVER
+Compiling routine: V-CROSS
+Compiling routine: V-CUT
+Compiling routine: V-DETONATE
+Compiling routine: V-DIAGNOSE
+Compiling routine: V-DIVE
+Compiling routine: V-DRESS
+Compiling routine: V-DRINK
+Compiling routine: V-DRINK-FROM
+Compiling routine: V-DRIVE
+Compiling routine: V-DROP
+Compiling routine: V-DUMB-EXAMINE
+Compiling routine: V-EAT
+Compiling routine: V-EMPTY
+Compiling routine: V-EMPTY-INTO
+Compiling routine: V-ENTER
+Compiling routine: V-ESCAPE
+Compiling routine: V-EXAMINE
+Compiling routine: V-EXHALE
+Compiling routine: V-EXIT
+Compiling routine: V-FEED
+Compiling routine: V-FEED-SWP
+Compiling routine: V-FILL
+Compiling routine: V-FIND
+Compiling routine: V-FLIP
+Compiling routine: V-FLY
+Compiling routine: V-FOCUS-ON
+Compiling routine: V-FOLD
+Compiling routine: V-FOLLOW
+Compiling routine: V-FOO
+Compiling routine: V-GET-FOR
+Compiling routine: V-GET-FOR-SWP
+Compiling routine: V-GIN
+Compiling routine: V-GIVE
+Compiling routine: V-GIVE-SWP
+Compiling routine: V-GOODBYE
+Compiling routine: V-GUESS
+Compiling routine: V-HAGGLE
+Compiling routine: V-HAUL
+Compiling routine: V-HEAT
+Compiling routine: V-HELLO
+Compiling routine: V-HIDE
+Compiling routine: V-HIT
+Compiling routine: V-HOLD-OVER
+Compiling routine: V-HUSH
+Compiling routine: V-INHALE
+Compiling routine: V-KICK
+Compiling routine: V-KILL
+Compiling routine: V-KISS
+Compiling routine: V-KNOCK
+Compiling routine: V-LEAP
+Compiling routine: V-LIE-DOWN
+Compiling routine: V-LIGHT
+Compiling routine: V-LIGHT-WITH
+Compiling routine: V-LISTEN
+Compiling routine: V-LOCK
+Compiling routine: V-LOOK
+Compiling routine: V-LOOK-BEHIND
+Compiling routine: V-LOOK-DOWN
+Compiling routine: V-LOOK-INSIDE
+Compiling routine: V-LOOK-ON
+Compiling routine: V-LOOK-OUTSIDE
+Compiling routine: V-LOOK-THRU
+Compiling routine: V-LOOK-THRU-SWP
+Compiling routine: V-LOOK-UNDER
+Compiling routine: V-LOOK-UP
+Compiling routine: V-LOOSEN
+Compiling routine: V-LOWER
+Compiling routine: V-LAND
+Compiling routine: RT-LAND-BOAT
+Compiling routine: V-LAMP-OFF
+Compiling routine: V-LAMP-ON
+Compiling routine: V-LAUNCH
+Compiling routine: RT-LAUNCH-BOAT
+Compiling routine: V-MAKE
+Compiling routine: V-ECHO
+Compiling routine: V-MELT
+Compiling routine: V-MOVE
+Compiling routine: V-MUNG
+Compiling routine: V-OPEN
+Compiling routine: V-OPEN-WITH
+Compiling routine: V-PADDLE
+Compiling routine: V-PADDLE-WITH
+Compiling routine: V-PASSWORD
+Compiling routine: V-PAY
+Compiling routine: V-PICK
+Compiling routine: V-PLAY
+Compiling routine: V-PLUG
+Compiling routine: V-POCKET
+Compiling routine: V-POINT
+Compiling routine: V-POINT-AT
+Compiling routine: V-POINT-AT-SWP
+Compiling routine: V-POUR
+Compiling routine: V-POUR-FROM
+Compiling routine: V-PRAY
+Compiling routine: V-PULL
+Compiling routine: V-PUSH
+Compiling routine: V-PUSH-TO
+Compiling routine: V-PUT
+Compiling routine: V-PUT-BEHIND
+Compiling routine: V-PUT-ON
+Compiling routine: V-PUT-UNDER
+Compiling routine: V-QUESTION
+Compiling routine: V-RAISE
+Compiling routine: V-REACH-IN
+Compiling routine: V-READ
+Compiling routine: V-READ-TO
+Compiling routine: V-READ-TO-SWP
+Compiling routine: V-REFUSE
+Compiling routine: V-RELEASE
+Compiling routine: V-REPAIR
+Compiling routine: V-REPLACE
+Compiling routine: V-REPLY
+Compiling routine: V-RESCUE
+Compiling routine: V-RIDE
+Compiling routine: V-RING
+Compiling routine: V-RIP
+Compiling routine: V-ROB
+Compiling routine: V-ROW
+Compiling routine: V-RUB-WITH
+Compiling routine: V-SAY
+Compiling routine: V-SEARCH
+Compiling routine: V-SELL
+Compiling routine: V-SELL-SWP
+Compiling routine: V-SHAKE
+Compiling routine: V-SHINE-AT
+Compiling routine: V-SHINE-AT-SWP
+Compiling routine: V-SHOOT
+Compiling routine: V-SHOOT-SWP
+Compiling routine: V-SHOW
+Compiling routine: V-SHOW-SWP
+Compiling routine: V-SIT
+Compiling routine: V-SMELL
+Compiling routine: V-SMOKE
+Compiling routine: V-SPIN
+Compiling routine: V-STAND
+Compiling routine: V-STAND-ON
+Compiling routine: V-STAND-UNDER
+Compiling routine: V-STEAL
+Compiling routine: V-STRIKE
+Compiling routine: V-SWIM
+Compiling routine: V-SWING
+Compiling routine: V-TAKE
+Compiling routine: V-TAKE-OFF
+Compiling routine: V-TAKE-WITH
+Compiling routine: V-TASTE
+Compiling routine: V-TELL
+Compiling routine: V-TELL-ABOUT
+Compiling routine: V-TELL-WHO
+Compiling routine: V-THANK
+Compiling routine: V-THROUGH
+Compiling routine: V-THROW
+Compiling routine: V-THROW-SWP
+Compiling routine: V-THROW-OVER
+Compiling routine: V-TIE
+Compiling routine: V-TIE-UP
+Compiling routine: V-TIP
+Compiling routine: V-TOUCH
+Compiling routine: V-TOUCH-TO
+Compiling routine: V-TOUCH-TO-SWP
+Compiling routine: V-TRANSLATE
+Compiling routine: V-TUNE-TO
+Compiling routine: V-TURN
+Compiling routine: V-TURN-DOWN
+Compiling routine: V-TURN-TO
+Compiling routine: V-TURN-UP
+Compiling routine: V-UNDRESS
+Compiling routine: V-UNFOLD
+Compiling routine: V-UNLOCK
+Compiling routine: V-UNPLUG
+Compiling routine: V-UNSCREW-FROM
+Compiling routine: V-UNTIE
+Compiling routine: V-USE
+Compiling routine: V-USE-ON
+Compiling routine: V-WAIT
+Compiling routine: V-WALK
+Compiling routine: V-WALK-AROUND
+Compiling routine: V-WALK-TO
+Compiling routine: V-WATCH
+Compiling routine: V-WAVE-AT
+Compiling routine: V-WEAR
+Compiling routine: V-WEDGE
+Compiling routine: V-WEIGH
+Compiling routine: V-WHAT
+Compiling routine: V-WHERE
+Compiling routine: V-WHO
+Compiling routine: V-WIND
+Compiling routine: V-WRAP-AROUND
+Compiling routine: V-WRAP-AROUND-SWP
+Compiling routine: V-YELL
+Compiling routine: RT-CANT-SEE-MUCH-MSG
+Compiling routine: RT-NO-MONEY-MSG
+Compiling routine: RT-IN-VEHICLE-MSG
+Compiling routine: RT-DRIVE-WALK-MSG?
+Compiling routine: RT-ALREADY-IN-ROOM-MSG
+Compiling routine: RT-NOT-IN-ROOM-MSG
+Compiling routine: RT-OBJECT-IS-LOCKED-MSG
+Compiling routine: RT-NOTHING-INTERESTING-MSG
+Compiling routine: RT-WASTE-OF-TIME-MSG
+Compiling routine: RT-FOG-MSG
+Compiling routine: RT-ITS-RIGHT-HERE-MSG
+Compiling routine: RT-WHO-WHAT-WHERE-MSG
+Compiling routine: RT-HI-BYE-MSG
+Compiling routine: RT-NO-RESPONSE-MSG
+Compiling routine: RT-TAKE-OFF-PRSO-FIRST-MSG
+Compiling routine: RT-SAY-DROPPED-MSG
+Compiling routine: RT-FOOLISH-TO-TALK-MSG
+Compiling routine: RT-YOU-MSG
+Compiling routine: RT-CYOU-MSG
+Compiling routine: RT-ITS-ALREADY-MSG
+Compiling routine: RT-YOURE-NOT-A-MSG
+Compiling routine: RT-NO-POINT-MSG
+Compiling routine: RT-IS-ARE-MSG
+Compiling routine: RT-ISNT-ARENT-MSG
+Compiling routine: RT-S-NOS-MSG
+Compiling routine: RT-ES-NOES-MSG
+Compiling routine: RT-DONT-DOESNT-MSG
+Compiling routine: RT-SAY-ITS-MSG
+Compiling routine: RT-SAY-HIM-HER-THEM-IT-MSG
+Compiling routine: RT-YOUR-MSG
+Compiling routine: RT-ITS-CLOSED-MSG
+Compiling routine: RT-WHY-SHOOT-MSG
+Compiling routine: RT-HOW-READ-MSG
+Compiling routine: RT-ALREADY-HAVE-PRSO-MSG
+Compiling routine: RT-CANT-OPEN-PRSO-MSG
+Compiling routine: RT-CANT-CLOSE-THAT-MSG
+Compiling routine: RT-NO-GOOD-SURFACE-MSG
+Compiling routine: RT-LANDS-AT-YOUR-FEET-MSG
+Compiling routine: RT-OPEN-CLOSED-MSG
+Compiling routine: RT-YOU-OPEN-MSG
+Compiling routine: RT-YOU-CLOSE-MSG
+Compiling routine: RT-IN-ON-MSG
+Compiling routine: RT-CIN-CON-MSG
+Compiling routine: RT-OUT-OFF-MSG
+Compiling routine: RT-CANT-LOCK-MSG
+Compiling routine: RT-THING-WONT-LOCK-MSG
+Compiling routine: RT-DONT-HAVE-MSG
+Compiling routine: RT-ROOM-IN-ON-MSG?
+Compiling routine: RT-IMPOSSIBLE-PUT-IN-ON-MSG
+Compiling routine: RT-CANT-PUT-IN-ON-MSG
+Compiling routine: RT-CHECK-MOVE-MSG?
+Compiling routine: RT-EMPTY-PRSO-MSG
+Compiling routine: RT-IDROP-MSG
+Compiling routine: RT-PRINT-CONTENTS-1
+Compiling routine: RT-PRINT-CONTENTS-2
+Compiling routine: RT-PRINT-CONTENTS-3
+Compiling routine: RT-DO-WALK
+Compiling routine: RT-WHO-SAYS?
+Compiling routine: RT-TRANSCRIPT
+Compiling routine: RT-QSR
+Compiling routine: V-YES
+Compiling routine: V-NO
+Compiling routine: V-MAYBE
+Compiling routine: V-DESC-LEVEL
+Compiling routine: V-QUIT
+Compiling routine: V-RESTART
+Compiling routine: V-SAVE
+Compiling routine: V-RESTORE
+Compiling routine: V-SCRIPT
+Compiling routine: V-VERSION
+Compiling routine: V-INVENTORY
+Compiling routine: V-NOTIFY
+Compiling routine: V-SCORE
+Compiling routine: V-UNDO
+Loading PS:<SHERLOCK>PEOPLE.ZIL.83 and compiling it.
+Compiling routine: RT-LIBRARIAN-SAYS-MSG
+Compiling routine: RT-TELL-ABOUT?
+Compiling routine: RT-WHO-WHAT-FAIL?
+Compiling routine: RT-NO-CONDITION-MSG
+Compiling routine: RT-AC-CH-HOLMES
+Compiling routine: RT-HOLMES-SAYS-AGRA-MSG
+Compiling routine: RT-HOLMES-DESCRIBE-MSG?
+Compiling routine: RT-AC-CH-MATCH-SNIFFING-DOG
+Compiling routine: RT-AC-CH-TUSSAUDS-GUARD
+Compiling routine: RT-PIGEON-PANIC
+Compiling routine: RT-PIGEON-FLY
+Compiling routine: RT-AC-CH-TRAINED-PIGEON
+Compiling routine: RT-AC-CH-SHERMAN
+Compiling routine: RT-AC-CH-PRIME-MINISTER
+Compiling routine: RT-AC-CH-AKBAR
+Compiling routine: RT-AC-CH-MORIARTY
+Compiling routine: RT-AC-CH-HUDSON
+Compiling routine: RT-AC-CH-DENKEEPER
+Compiling routine: RT-AC-CH-LIBRARIAN
+Compiling routine: RT-AC-CH-NANNIES
+Compiling routine: RT-AC-CH-HOUSEWIVES
+Compiling routine: RT-AC-CH-PALACE-GUARD
+ ** Note: Atomic argument to routine assumed constant - END-FANFARE
+
+Compiling routine: RT-AC-CH-URCHINS
+Compiling routine: RT-AC-CH-MEMBERS
+Abstracting PS:<SHERLOCK>PEOPLE.
+Loading PS:<SHERLOCK>GENERIC.ZIL.17 and compiling it.
+Compiling routine: RT-GN-PAPER
+Compiling routine: RT-GN-GEM
+Compiling routine: RT-GN-PIGEON
+Compiling routine: RT-GN-OAR
+Compiling routine: RT-GN-BOX
+Compiling routine: RT-GN-DOOR
+Compiling routine: RT-GN-BOTTLE
+Compiling routine: RT-GN-PILL
+Compiling routine: RT-GN-TH-CLOTHES
+Compiling routine: RT-GN-BODY
+Compiling routine: RT-GN-INTNUM
+Compiling routine: RT-GN-ETHERIUM
+Compiling routine: RT-GN-TOWER
+Abstracting PS:<SHERLOCK>GENERIC.
+Loading PS:<SHERLOCK>PLACES3.ZIL.83 and compiling it.
+Compiling routine: RT-AC-RM-221B-BAKER-ST
+Compiling routine: RT-AC-RM-ENTRY-HALL
+Compiling routine: RT-AC-RM-PARLOUR
+Compiling routine: RT-AC-RM-VESTIBULE
+Compiling routine: RT-AC-RM-HOLMES-STUDY
+Compiling routine: RT-AC-RM-HOLMES-BEDROOM
+Compiling routine: RT-AC-RM-YORK-PLACE
+Compiling routine: RT-AC-RM-MARYLEBONE-RD
+Compiling routine: RT-AC-RM-CHAMBER-OF-HORRORS
+Compiling routine: RT-AC-RM-TOTTENHAM-COURT-RD
+Compiling routine: RT-AC-RM-ST-GILES-CIRCUS
+Compiling routine: RT-AC-RM-OXFORD-ST
+Compiling routine: RT-AC-RM-ORCHARD-ST
+Compiling routine: RT-AC-RM-AUDLEY-ST
+Compiling routine: RT-AC-RM-HYDE-PARK-CORNER
+Compiling routine: RT-AC-RM-KENSINGTON-GARDENS
+Compiling routine: RT-AC-RM-TRAFALGAR-SQUARE
+Compiling routine: RT-AC-RM-DIOGENES-CLUB
+Compiling routine: RT-AC-RM-GREAT-RUSSELL-ST
+Compiling routine: RT-AC-RM-BRITISH-MUSEUM
+Compiling routine: RT-AC-RM-GROSVENOR-PLACE
+Compiling routine: RT-AC-RM-VICTORIA-SQUARE
+Compiling routine: RT-AC-RM-BROAD-SANCTUARY
+Compiling routine: RT-AC-RM-PARLIAMENT-SQUARE
+Compiling routine: RT-AC-RM-PARLIAMENT
+Compiling routine: RT-AC-RM-BUCKINGHAM-PALACE-RD
+Compiling routine: RT-AC-RM-QUEENS-GARDENS
+Compiling routine: RT-AC-RM-BIRDCAGE-WALK
+Compiling routine: RT-AC-RM-THE-MALL
+Compiling routine: RT-AC-RM-WHITEHALL
+Compiling routine: RT-AC-RM-SCOTLAND-YARD
+Compiling routine: RT-AC-RM-THE-BLACK-MUSEUM
+Compiling routine: RT-AC-RM-NEW-OXFORD-ST
+Compiling routine: RT-AC-RM-COVENT-GARDEN
+Compiling routine: RT-AC-RM-THE-STRAND
+Compiling routine: RT-AC-RM-FLEET-STREET
+Compiling routine: RT-AC-RM-THE-EMBANKMENT
+Compiling routine: RT-AC-RM-UPPER-THAMES-ST
+Compiling routine: RT-AC-RM-PINCHIN-LANE
+Compiling routine: RT-AC-RM-CHEAPSIDE
+Compiling routine: RT-AC-RM-BANK-OF-ENGLAND
+Compiling routine: RT-AC-RM-BANK-VAULT
+Compiling routine: RT-AC-RM-KING-WILLIAM-ST
+Compiling routine: RT-AC-RM-MONUMENT
+Compiling routine: RT-AC-RM-LOWER-THAMES-ST
+Compiling routine: RT-AC-RM-TOWER-ENTRANCE
+Compiling routine: RT-DF-RM-SOUTH-AISLE
+Compiling routine: RT-DF-RM-JERICHO-PARLOUR
+Compiling routine: RT-DF-RM-JERUSALEM-CHAMBER
+Compiling routine: RT-DF-RM-NORTH-CLOISTER
+Compiling routine: RT-DF-RM-SOUTH-TRANSEPT
+Compiling routine: RT-DF-RM-NORTH-TRANSEPT
+Compiling routine: RT-DF-RM-POETS-CORNER
+Compiling routine: RT-DF-RM-SOUTH-AMBULATORY
+Compiling routine: RT-DF-RM-SANCTUARY
+Compiling routine: RT-DF-RM-NORTH-AMBULATORY
+Compiling routine: RT-DF-RM-CONFESSOR-CHAPEL
+Compiling routine: RT-DF-RM-SOUTH-CHAPEL-AISLE
+Compiling routine: RT-DF-RM-NORTH-CHAPEL-AISLE
+Compiling routine: RT-DF-RM-INNOCENTS-CORNER
+Compiling routine: RT-AC-RM-DRAWBRIDGE
+Compiling routine: RT-DF-RM-BYWARD-TOWER
+Compiling routine: RT-DF-RM-OUTER-WARD
+Compiling routine: RT-DF-RM-BLOODY-TOWER
+Compiling routine: RT-DF-RM-WAKEFIELD-TOWER
+Compiling routine: RT-DF-RM-JEWEL-ROOM
+Compiling routine: RT-DF-RM-DUNGEON
+Compiling routine: RT-DF-RM-TORTURE-ROOM
+Compiling routine: RT-DF-RM-WHITE-TOWER
+Compiling routine: RT-DF-RM-TOWER-GREEN
+Compiling routine: RT-DF-RM-BOWYER-TOWER
+Compiling routine: RT-DF-RM-INSIDE-TRAITORS-GATE
+Compiling routine: RT-DF-RM-OUTSIDE-TRAITORS-GATE
+Abstracting PS:<SHERLOCK>PLACES3.
+Loading PS:<SHERLOCK>PLACES2.ZIL.61 and compiling it.
+Compiling routine: RT-SURGE
+Compiling routine: RT-AC-RM-MADAME-TUSSAUDS
+Compiling routine: RT-AC-RM-MANUSCRIPT-ROOM
+Compiling routine: RT-AC-RM-VICTORIA-STREET
+Compiling routine: RT-AC-RM-CLOCK-TOWER
+Compiling routine: RT-AC-RM-THAMES-ONE
+Compiling routine: RT-AC-RM-THAMES-TWO
+Compiling routine: RT-AC-RM-THAMES-THREE
+Compiling routine: RT-AC-RM-THAMES-FOUR
+Compiling routine: RT-AC-RM-THAMES-FIVE
+Compiling routine: RT-AC-RM-SHERMANS-HOUSE
+Compiling routine: RT-AC-RM-THREADNEEDLE-ST
+Compiling routine: RT-AC-RM-LONDON-BRIDGE
+Compiling routine: RT-AC-RM-SWAN-LANE
+Compiling routine: RT-AC-RM-BAR-OF-GOLD
+Compiling routine: RT-AC-RM-LAIR
+Compiling routine: RT-AC-RM-NAVE
+Compiling routine: RT-AC-RM-EVANGELIST-CHAPEL
+Compiling routine: RT-AC-RM-HENRY-VII-CHAPEL
+Compiling routine: RT-EX-ENTER-BANK-OF-ENGLAND
+Compiling routine: RT-AC-RM-BUCKINGHAM-PALACE
+Compiling routine: RT-EX-RM-ENTER-BUCKINGHAM-PALACE
+Compiling routine: RT-EX-RM-STEER-BOAT
+Compiling routine: RT-EX-RM-LAND-BOAT
+Compiling routine: RT-EX-RM-LAUNCH-BOAT
+Compiling routine: RT-EX-PARLOUR-ENTRY
+Compiling routine: RT-EX-LEAVE-EMBANKMENT
+Abstracting PS:<SHERLOCK>PLACES2.
+Loading PS:<SHERLOCK>PLACES1.ZIL.52 and compiling it.
+Loading PS:<SHERLOCK>THINGS2.ZIL.149 and compiling it.
+Compiling routine: RT-DF-TH-ROOM
+Compiling routine: RT-AC-TH-NOT-HERE-OBJECT
+Compiling routine: RT-AC-TH-INTDIR
+Compiling routine: RT-AC-TH-TIME
+Compiling routine: RT-AC-TH-HANDS
+Compiling routine: RT-AC-TH-WATSONS-HEART
+Compiling routine: RT-AC-TH-EARS
+Compiling routine: RT-AC-TH-HEAD
+Compiling routine: RT-AC-TH-BREATH
+Compiling routine: RT-AC-TH-CLOTHES
+Compiling routine: RT-AC-TH-WATERMARK
+Compiling routine: RT-AC-TH-SESAME
+Compiling routine: RT-AC-TH-RIGHT
+Compiling routine: RT-AC-TH-LEFT
+Compiling routine: RT-AC-TH-BULLET-HOLE
+Compiling routine: RT-AC-TH-GENERIC-BODY
+Compiling routine: RT-AC-TH-POCKET
+Compiling routine: RT-AC-TH-GUN
+Compiling routine: RT-AC-TH-KNIFE
+Compiling routine: RT-AC-TH-MAGNIFYING-GLASS
+Compiling routine: RT-AC-TH-VIOLIN
+Compiling routine: RT-AC-TH-PHIAL
+Compiling routine: RT-HOLMES-HITS
+Compiling routine: RT-AC-TH-GREEN-PAPER
+Compiling routine: RT-AC-TH-WHITE-PAPER
+Compiling routine: RT-AC-TH-BLUE-PAPER
+Compiling routine: RT-AC-TH-ORANGE-PAPER
+Compiling routine: RT-AC-TH-YELLOW-PAPER
+Compiling routine: RT-AC-TH-BROWN-PAPER
+Compiling routine: RT-AC-TH-ELIZABETH-TOMB
+Compiling routine: RT-AC-TH-NEWTON-TOMB
+Compiling routine: PRINT-SDESC
+Compiling routine: RT-AC-TH-HENRY-V-TOMB
+Compiling routine: RT-AC-TH-EDWARD-TOMB
+Compiling routine: RT-AC-TH-POPE-TOMB
+Compiling routine: RT-AC-TH-DICKENS-TOMB
+Compiling routine: RT-AC-TH-CHAUCER-TOMB
+Compiling routine: RT-AC-TH-ANNE-OF-CLEVES-TOMB
+Compiling routine: RT-AC-TH-LITTLE-PRINCES-TOMB
+Compiling routine: RT-AC-TH-MARY-QUEEN-OF-SCOTS-TOMB
+Compiling routine: RT-AC-TH-HENRY-VII-TOMB
+Compiling routine: RT-AC-TH-PITT-TOMB
+Compiling routine: RT-AC-TH-FIGURES
+Compiling routine: RT-AC-TH-VERE-TOMB
+Compiling routine: RT-AC-TH-LAMP
+Compiling routine: RT-LAMP-SEALED
+Compiling routine: RT-BREAK-LAMP
+Compiling routine: RT-AC-TH-BLACK-BAG
+Compiling routine: RT-AC-TH-CHARLES-STATUE
+Compiling routine: RT-AC-TH-WILLIAM-STATUE
+Compiling routine: RT-AC-TH-WALTER-STATUE
+Compiling routine: RT-AC-TH-ELIZABETH-STATUE
+Compiling routine: RT-AC-TH-THOMAS-STATUE
+Compiling routine: RT-AC-TH-DRAKE-STATUE
+Compiling routine: RT-AC-TH-JOHN-STATUE
+Compiling routine: RT-AC-TH-FAWKES-STATUE
+Compiling routine: RT-AC-TH-NELSON-COLUMN
+Compiling routine: RT-AC-TH-BOAT
+Compiling routine: RT-AC-TH-OAR-1
+Compiling routine: RT-AC-TH-OAR-LOCK
+Compiling routine: RT-AC-TH-CLAPPER
+Compiling routine: RT-AC-TH-COTTON-BALLS
+Compiling routine: RT-AC-TH-BELL
+Compiling routine: RT-AC-TH-STETHOSCOPE
+Compiling routine: RT-AC-TH-WATSONS-HAT
+Compiling routine: RT-AC-TH-ELIZAS-FLOWERS
+Compiling routine: RT-AC-TH-CARNATION
+Compiling routine: RT-AC-TH-EMERALD
+Compiling routine: RT-AC-TH-SAPPHIRE
+Compiling routine: RT-AC-TH-OPAL
+Compiling routine: RT-AC-TH-RUBY
+Compiling routine: RT-AC-TH-TOPAZ
+Compiling routine: RT-AC-TH-CRAYON
+Compiling routine: RT-AC-TH-WATSONS-COAT
+Compiling routine: RT-AC-TH-LAPEL
+Compiling routine: RT-AC-TH-CLUMP-OF-MOSS
+Compiling routine: RT-AC-TH-BLIGH-BOAT
+Compiling routine: RT-AC-TH-ANCHOR
+Compiling routine: RT-AC-TH-NELSON-STATUE
+Compiling routine: RT-AC-TH-CROWN-JEWELS
+Compiling routine: RT-AC-TH-ETHERIUM-AMPOULE
+Compiling routine: RT-AC-TH-BROKEN-AMPOULE
+Compiling routine: RT-AC-TH-ETHERIUM-GAS
+Compiling routine: RT-AC-TH-LAB-EQUIPMENT
+Compiling routine: RT-AC-TH-ROPE
+Compiling routine: RT-AC-TH-LIQUID
+Compiling routine: RT-AC-TH-SYRINGE
+Compiling routine: RT-AC-TH-MOROCCO-CASE
+Compiling routine: RT-AC-TH-DEAD-PIGEON
+Compiling routine: RT-AC-TH-PIGEONS
+Compiling routine: RT-SHOOT-BIRDS
+Compiling routine: RT-AC-TH-RED-GLASS
+Compiling routine: RT-AC-TH-BED
+Compiling routine: RT-AC-TH-MATCHBOOK
+Compiling routine: RT-AC-TH-PICTURES
+Compiling routine: RT-AC-TH-CLUE-BOOK
+Compiling routine: RT-AC-TH-BOOK-PAGE
+Compiling routine: RT-READ-CLUE-BOOK
+Compiling routine: RT-AC-TH-BANK-OF-CANDLES
+Compiling routine: RT-AC-TH-PRAMS
+Compiling routine: RT-AC-TH-PARK-FLOWERS
+Compiling routine: RT-AC-TH-ARCH
+Compiling routine: RT-AC-TH-SHAFT
+Compiling routine: RT-AC-TH-FIREPLACE
+Compiling routine: RT-AC-TH-GAS-LIGHT
+Compiling routine: RT-AC-TH-CHARIOT
+Compiling routine: RT-AC-TH-JEWEL-CASE
+Compiling routine: RT-AC-TH-ELIZAS-MOUTH
+Compiling routine: RT-AC-TH-RUBBINGS
+Compiling routine: RT-AC-TH-SOFA
+Compiling routine: RT-AC-TH-MARQUEES
+Compiling routine: RT-AC-TH-SUPPORTS
+Compiling routine: RT-AC-TH-ASH
+Compiling routine: RT-AC-TH-CIGARETTE
+Compiling routine: RT-AC-TH-TURBAN
+Compiling routine: RT-AC-TH-ANCHOR-CHAIN
+Compiling routine: RT-SAY-LOWER-ANCHOR
+Compiling routine: RT-SAY-RAISE-ANCHOR
+Compiling routine: RT-AC-TH-WAX-OBJECT-1
+Compiling routine: RT-AC-TH-LIBRARY-OBJ
+Compiling routine: RT-AC-TH-RAILING
+Compiling routine: RT-AC-TH-OPIUM-GAS
+Compiling routine: RT-AC-TH-PRODUCE
+Compiling routine: RT-AC-TH-TRINKETS
+Compiling routine: RT-AC-TH-GUARDS-KEYS
+Compiling routine: RT-AC-TH-NELSON-EYE
+Compiling routine: RT-AC-TH-PANELLING
+Compiling routine: RT-AC-TH-INSTRUMENTS
+Compiling routine: RT-AC-TH-PLAYER-BODY
+Abstracting PS:<SHERLOCK>THINGS2.
+Loading PS:<SHERLOCK>THINGS1.ZIL.91 and compiling it.
+Compiling routine: RT-IDENTIFY-FLOOR?
+Compiling routine: TELL-THE-FLOOR
+Compiling routine: TELL-THE-GROUND
+Compiling routine: RT-AC-TH-FLOOR-ETC
+Compiling routine: RT-AC-TH-WALL
+Compiling routine: RT-AC-TH-CROWDS
+Abstracting PS:<SHERLOCK>THINGS1.
+Loading PS:<SHERLOCK>CAB.ZIL.68 and compiling it.
+Compiling routine: RT-AC-CH-HANSOM-CABBIE
+Compiling routine: RT-AC-CH-GROWLER-CABBIE
+Compiling routine: RT-GET-ROOM-ID
+Compiling routine: RT-CAB-DIST
+Compiling routine: RT-I-CAB-ARRIVE
+Compiling routine: RT-I-HANSOM-LEAVE
+Compiling routine: RT-I-HANSOM-TO?
+Compiling routine: RT-I-GROWLER-LEAVE
+Compiling routine: RT-I-GROWLER-TO?
+Compiling routine: RT-MOVE-HANSOM
+Compiling routine: RT-MOVE-GROWLER
+Compiling routine: RT-CF-TH-HANSOM-CAB
+Compiling routine: RT-CF-TH-GROWLER-CAB
+Compiling routine: RT-BLOW-WHISTLE
+Compiling routine: RT-AC-TH-HANSOM-CAB
+Compiling routine: RT-AC-TH-GROWLER-CAB
+Compiling routine: RT-AC-TH-CAB-WHISTLE
+Abstracting PS:<SHERLOCK>CAB.
+Loading PS:<SHERLOCK>TOWER.ZIL.38 and compiling it.
+Compiling routine: RT-EX-RM-EXIT-BYWARD-TOWER
+Compiling routine: RT-AC-CH-TOWER-GUARD
+Compiling routine: RT-AC-TH-MALMSEY
+Compiling routine: RT-AC-TH-MALMSEY-POOL
+Compiling routine: RT-AC-TH-BUTT-OF-MALMSEY
+Compiling routine: RT-AC-TH-EMPTY-BUTT-OF-MALMSEY
+Compiling routine: RT-EMPTY-BUTT-MSG
+Compiling routine: RT-AC-TH-BUNG
+Compiling routine: RT-AC-TH-GARNET
+Compiling routine: RT-AC-TH-MACE
+Compiling routine: RT-AC-TH-PORTCULLIS-CHAIN
+Compiling routine: RT-AC-TH-SUIT-OF-ARMOUR
+Compiling routine: RT-AC-LG-PORTCULLIS-DOOR
+Abstracting PS:<SHERLOCK>TOWER.
+Loading PS:<SHERLOCK>SCOPE.ZIL.18 and compiling it.
+Compiling routine: RT-AC-CH-VENDOR
+Compiling routine: RT-AC-TH-POUND-NOTE
+Compiling routine: RT-AC-TH-TELESCOPE
+Compiling routine: RT-AC-TH-SIXPENCE
+Abstracting PS:<SHERLOCK>SCOPE.
+Loading PS:<SHERLOCK>ELIZA.ZIL.28 and compiling it.
+Compiling routine: RT-AC-TH-BLUE-PILL-BOTTLE
+Compiling routine: RT-AC-TH-BROWN-PILL-BOTTLE
+Compiling routine: RT-AC-TH-ORANGE-PILL
+Compiling routine: RT-AC-TH-YELLOW-PILL
+Compiling routine: RT-AC-CH-ELIZA-DOOLITTLE
+Compiling routine: RT-LISTEN-ELIZA
+Compiling routine: RT-CURE-ELIZA
+Abstracting PS:<SHERLOCK>ELIZA.
+Loading PS:<SHERLOCK>CHARLES.ZIL.71 and compiling it.
+Compiling routine: BURN-OUT-MATCH
+Compiling routine: RT-AC-TH-MATCH
+Compiling routine: CLEAR-ALL-FLAGS
+Compiling routine: RT-AC-TH-TORCH
+Compiling routine: RT-LIGHT-PIPE
+Compiling routine: RT-AC-TH-TOBACCO
+Compiling routine: RT-AC-TH-PIPE
+Compiling routine: RT-AC-TH-MAIL
+Compiling routine: RT-AC-TH-NEWSPAPER
+Compiling routine: RT-AC-TH-WESTMINSTER-CLUE
+Compiling routine: RT-AC-TH-WAX-HEAD
+Compiling routine: DESC-WAX-AX
+Compiling routine: RT-GUARD-TAKE-ITEM
+Compiling routine: RT-GUARD-STOP-ENTRANCE
+Compiling routine: RT-EX-RM-EXIT-TUSSAUDS
+Compiling routine: RT-EX-RM-MATCH-SNIFFING-DOG
+Compiling routine: RT-PUT-OUT
+Compiling routine: RT-I-MATCH-OUT
+Compiling routine: BURN-MATCH-OUT
+Compiling routine: RT-I-PIPE-OUT
+Compiling routine: RT-I-TORCH-OUT
+Compiling routine: RT-I-NEWSPAPER-OUT
+Compiling routine: RT-I-CLUE-OUT
+Compiling routine: RT-I-MAIL-OUT
+Compiling routine: RT-I-MATCHBOOK-OUT
+Compiling routine: PRE-LIGHT-WITH
+Compiling routine: RT-GN-WAX
+Abstracting PS:<SHERLOCK>CHARLES.
+Loading PS:<SHERLOCK>BANK.ZIL.63 and compiling it.
+Compiling routine: RT-KIDNAP
+Compiling routine: RT-WIGGINS-HELP-MSG
+Compiling routine: RT-STEAL-KEY
+Compiling routine: RT-AC-TH-INTNUM
+Compiling routine: RT-AC-TH-RING
+Compiling routine: RT-AC-TH-BOX-KEY
+Compiling routine: RT-AC-TH-BOX-LOCK
+Compiling routine: RT-AC-TH-SAFETY-DEPOSIT-BOX
+Compiling routine: RT-AC-TH-DIAL
+Compiling routine: RT-AC-TH-BOXES
+Compiling routine: RT-AC-TH-GUARDS-POCKET
+Compiling routine: RT-AC-CH-BANK-GUARD
+Compiling routine: RT-AC-CH-WIGGINS
+Compiling routine: RT-AC-CH-BUTLER
+Compiling routine: RT-AC-LG-BANK-VAULT-DOOR
+Compiling routine: RT-TOPAZ-MSG
+Abstracting PS:<SHERLOCK>BANK.
+Loading PS:<SHERLOCK>PUZZLES.ZIL.86 and compiling it.
+Compiling routine: RT-EXAMINE-GEM
+Compiling routine: RT-HANDLE-SCRATCH
+Compiling routine: RT-HOLE?
+Compiling routine: RT-WASTE-OF-BULLETS-MSG
+Compiling routine: RT-SHOOT-DEAD-MSG
+Compiling routine: RT-READ-NEWSPAPER
+Compiling routine: RT-WAKE-UP-HOLMES
+Compiling routine: RT-I-PM-HALL
+Compiling routine: RT-I-PM-VESTIBULE
+Compiling routine: RT-I-HUDSON
+Compiling routine: RT-I-PM-LEAVE
+Compiling routine: RT-I-PM-QUITS
+Compiling routine: RT-GET-PIGEON
+Compiling routine: RT-PIGEON-INTEREST
+Compiling routine: RT-KILL-PIGEON
+Compiling routine: RT-PIGEON-OBJ
+Compiling routine: RT-SHERMAN-RAGE
+Compiling routine: RT-I-PIGEON-LOSE-INTEREST
+Compiling routine: RT-I-PIGEON-IMPATIENT
+Compiling routine: RT-I-PIGEON-CIRCLE
+Compiling routine: RT-I-SHERMANS-REVENGE
+Compiling routine: RT-IMPOLITE-MSG
+Compiling routine: RT-I-BIGBEN
+Compiling routine: RT-I-SWING-BELL
+Compiling routine: RT-RELIEF
+Compiling routine: RT-ZERO-SECONDS
+Compiling routine: RT-I-EXHALE
+Compiling routine: RT-I-INHALE
+Compiling routine: RT-I-TAKE-WATSONS-STUFF
+Compiling routine: RT-I-OUT-OF-TIME
+Compiling routine: RT-ETHERIUM-EFFECT
+Compiling routine: RT-I-WAKE-UP
+Compiling routine: RT-SMELL-ETHERIUM?
+Compiling routine: RT-FIND-FLAME
+Compiling routine: RT-DOES-MORIARTY-WIN
+Compiling routine: RT-PROCESS-PASSWORD
+Compiling routine: V-SWORDFISH
+Compiling routine: RT-ROPE-MSG
+Compiling routine: RT-INSCRIPTION-APPEARS-MSG
+Compiling routine: RT-PROCESS-TOMB
+Compiling routine: RT-READ-INSCRIPTION
+Compiling routine: RT-READ-PAPER
+Compiling routine: RT-PROCESS-PAPER
+Compiling routine: RT-PAPER-WARMING
+Compiling routine: RT-I-FLASH-WESTMINSTER-LIGHTS
+Compiling routine: RT-I-WESTMINSTER-LIGHTS-ON
+Compiling routine: RT-I-WESTMINSTER-LIGHTS-OFF
+Compiling routine: RT-I-LOCKED-IN-END-GAME
+Compiling routine: RT-I-OPEN-WESTMINSTER-DOOR
+Compiling routine: RT-I-CLOSE-WESTMINSTER-DOOR
+Compiling routine: RT-CF-TH-BOAT
+Compiling routine: RT-PROCESS-BOAT-ON-THAMES
+Compiling routine: RT-I-MOVE-DOWNSTREAM
+Compiling routine: RT-MOVE-UPSTREAM
+Compiling routine: RT-THAMES-TIDE
+Compiling routine: RT-TOWER-PASSWORD
+Compiling routine: V-BOLEYN
+Compiling routine: V-CLEVES
+Compiling routine: V-HOWARD
+Compiling routine: V-PARR
+Compiling routine: V-ARAGON
+Compiling routine: V-SEYMOUR
+Compiling routine: RT-I-OPEN-MUSEUM-DOOR
+Compiling routine: RT-I-CLOSE-MUSEUM-DOOR
+Compiling routine: RT-INDENT-PRINT
+Compiling routine: RT-WRAP-PRINT
+Abstracting PS:<SHERLOCK>PUZZLES.
+Loading PS:<SHERLOCK>LOCALS.ZIL.34 and compiling it.
+Compiling routine: RT-AC-LG-BAKER-ST-DOOR
+Compiling routine: RT-AC-LG-PARLOUR-DOOR
+Compiling routine: RT-AC-LG-HOLMES-STUDY-DOOR
+Compiling routine: RT-AC-LG-HOLMES-BEDROOM-DOOR
+Compiling routine: RT-AC-LG-BAR-OF-GOLD-DOOR
+Compiling routine: RT-AC-LG-LAIR-DOOR
+Compiling routine: RT-AC-LG-JERICHO-PARLOUR-DOOR
+Compiling routine: RT-AC-LG-SHOPS
+Compiling routine: RT-AC-LG-WATER
+Compiling routine: RT-AC-LG-UP-DOWN-STREAM
+Compiling routine: RT-AC-LG-BRITISH-MUSEUM-DOOR
+Compiling routine: RT-AC-LG-WESTMINSTER-DOOR
+Compiling routine: RT-AC-LG-PLAQUES
+Compiling routine: RT-DF-LG-WAX-STATUES
+Compiling routine: RT-AC-LG-WINDOW
+Compiling routine: RT-AC-LG-TOMBS-ABBEY
+Compiling routine: RT-AC-LG-STREETLIGHT
+Compiling routine: RT-AC-LG-STAIRWAY
+Compiling routine: RT-AC-LG-SHAFT-OF-LIGHT
+Compiling routine: RT-AC-LG-RAVENS
+Compiling routine: RT-DF-LG-BOATS
+Compiling routine: RT-AC-LG-HOLMES-HOUSE
+Compiling routine: RT-AC-LG-PEDESTAL
+Compiling routine: RT-AC-LG-TOWER
+Abstracting PS:<SHERLOCK>LOCALS.
+ ** Note: OBJECT has no properties: LOCAL-GLOBALS
+ ** Note: OBJECT has no properties: GLOBAL-OBJECTS
+ ** Note: OBJECT has no properties: TH-X-OBJECT
+ ** Note: OBJECT has no properties: TH-Y-OBJECT
+Vocabulary: 1194
+
+Prepositions: 23
+
+ABOUT	 AROUND	  BEFORE   FOR	    IN	     OUT      TO       UP
+AGAINST	 AT	  BEHIND   FROM	    OFF	     OVER     UNDER    WITH
+APART	 AWAY	  DOWN	   GO	    ON	     THROUGH  UNTIL
+
+Real globals: 240
+
+ALLOW-IN-TOWER		     GL-PRSO
+BELIEVE-WAIT-TIME?	     GL-PUPPY
+BOX-KEY-COLD?		     GL-PUPPY-MSG?
+CAB-RAMP		     GL-QUEST-NUM
+CAB-ROOM-IDS		     GL-RESERVE-PTR
+CH-BANK-GUARD-AUX1	     GL-SCORE-CUR
+CH-ELIZA-DOOLITTLE-AUX1	     GL-SCORE-HEADER-LEN
+CH-HOLMES-AUX1		     GL-SCORE-MAX
+CH-TRAINED-PIGEON-AUX1	     GL-SCORE-MSG
+CH-TRAINED-PIGEON-AUX2	     GL-SCORE-STS
+CH-TRAINED-PIGEON-AUX3	     GL-SHORT-STAT?
+CH-VENDOR-AUX1		     GL-SPLIT-ROW
+CH-WIGGINS-AUX1		     GL-STAT-MAX-ROOM
+GL-A-ROUT		     GL-STAT-S-POS
+GL-A-TIME		     GL-STAT-T-POS
+GL-AGAIN-DIR		     GL-TEMP-TIME
+GL-ALARM-EXEC		     GL-TIME
+GL-ALARM-WAIT		     GL-TIME-PARM
+GL-ALLSCREEN		     GL-TIME-UPDT-DEF
+GL-ALW-LIT?		     GL-TIME-UPDT-INC
+GL-BORING-TXT		     GL-WAIT-BELL
+GL-CAN-UNDO		     GL-WHERE-TO-ORPH?
+GL-CHAPT-NUM		     GL-WHERE-TO-PROMPT?
+GL-CLOCK-FMT		     GL-WIGGINS-DESC-TXT
+GL-CLOCK-STOP		     GL-WIGGINS-LOOK-TXT
+GL-CLOCK-WAIT		     GL-WINDOW
+GL-CLOSED-OBJECT	     GL-WINNER
+GL-COLUMN-TABLE		     GL-YES-IBUF
+GL-CUR-POS		     GL-YES-LEXV
+GL-DAY-NAME		     GLOBAL-VARS-TABLE
+GL-DEBUG-FLAG		     HEARD-SWING?
+GL-DESC-LEVEL		     INHIBIT-ROOMS
+GL-DIROUT-TBL		     K-AFTER-YOU-MSG
+GL-FORMER-PUPPY		     K-AMBULATORY-MSG
+GL-FUNNY-CLAUSE?	     K-ANCHOR-ALREADY-OUT-MSG
+GL-HINT-WARNING		     K-ANNIE-OAKELEY-MSG
+GL-HINTS-OFF		     K-ANOTHER-PHIAL-MSG
+GL-HOLES		     K-ASTERISK-MSG
+GL-HOLMES-DESC-TXT	     K-BE-MORE-SPECIFIC-MSG
+GL-HOLMES-HOUSE-LOOK-TXT     K-BETTER-SUCCESS-MSG
+GL-HOLMES-INDOORS-LOOK-TXT   K-BRAND-MSG
+GL-HOLMES-OUTDOORS-LOOK-TXT  K-BRAVO-MSG
+GL-IN-OUT		     K-BREATH-TAKING-MSG
+GL-LAST-OUT-TOD		     K-BRIGHTENS-UP-MSG
+GL-LASTFOC		     K-BULLET-MSG
+GL-LINE-TABLE		     K-BUTLER-ACCEPTS-MSG
+GL-LISTEN-OBJ		     K-CAB-HERE-MSG
+GL-LOC-TRAIL		     K-CANT-LEAVE-MSG
+GL-LONG-OOPS		     K-CANT-WAIT-MSG
+GL-MIDSCREEN		     K-CLOSED-AND-LOCKED-MSG
+GL-MOVES-CUR		     K-CONFUSED-MSG
+GL-MOVES-STS		     K-CUSTOMARILY-KEEP-MSG
+GL-NO-POINT-TXT		     K-DIZZY-MSG
+GL-NOT-LIKELY-TXT	     K-DO-IT-YOURSELF-MSG
+GL-NOW-LIT?		     K-DONT-UNDERSTAND-MSG
+GL-NOW-PRSI?		     K-DROP-IT-FIRST-MSG
+GL-OOPS-INBUF		     K-EAU-DE-MSG
+GL-OOPS-TABLE		     K-ENJOYING-RIDE-MSG
+GL-P-AADJ		     K-ENOUGH-ROOM-MSG
+GL-P-ACLAUSE		     K-EVERYONE-OUT-MSG
+GL-P-ADJ		     K-EYES-HINGED-MSG
+GL-P-ADJW		     K-FIDGETING-MSG
+GL-P-ANAM		     K-FOUGHT-WELL-MSG
+GL-P-AND		     K-GET-OUT-FIRST-MSG
+GL-P-BUTS		     K-GOOD-LOOK-MSG
+GL-P-CONT		     K-GOOD-SHOW-MSG
+GL-P-DIR		     K-HEAVY-ARMOUR-MSG
+GL-P-DIR-WORD		     K-HINTS
+GL-P-DIRECTION		     K-HOW-TO-MSG
+GL-P-END-ON-PREP	     K-ILL-HOLD-IT-MSG
+GL-P-GET-FLAGS		     K-INAPPROPRIATE-MSG
+GL-P-GOOD		     K-MAYBE-MSG
+GL-P-GWIMBIT		     K-MUST-BE-IN-BOAT-MSG
+GL-P-HER-OBJECT		     K-NO-RESTING-MSG
+GL-P-HIM-OBJECT		     K-PITY-MSG
+GL-P-IT-OBJECT		     K-RICOCHET-MSG
+GL-P-ITBL		     K-SEEMS-TO-HEAR-MSG
+GL-P-LEN		     K-SHATTER-MSG
+GL-P-MERGE		     K-SIGN-HERE-MSG
+GL-P-MERGED		     K-SIMPLE-TOMB-MSG
+GL-P-MOBY-FOUND		     K-SMOULDERS-MSG
+GL-P-MULT?		     K-SORRY-MATE-MSG
+GL-P-NAM		     K-SPECIFY-DIR-MSG
+GL-P-NAMW		     K-SPECIFY-MSG
+GL-P-NCN		     K-SUICIDE-MSG
+GL-P-NUMBER		     K-THEFT-MSG
+GL-P-OCLAUSE		     K-TOO-DARK-MSG
+GL-P-OF			     K-WELL-WORN-MSG
+GL-P-OFW		     KNIFE-COLD?
+GL-P-ORPH		     LAST-PSEUDO-LOC
+GL-P-OTBL		     LOOP-VOL
+GL-P-OVERFLOW		     LOOPING?
+GL-P-OVTBL		     MYCROFT-STATE
+GL-P-P-LEX		     PASSWORD-ID
+GL-P-PHR		     PLAYER-IN-ABBEY
+GL-P-PIBUF		     RM-HOLMES-STUDY-AUX1
+GL-P-PRSA-WORD		     RUN-SMELL-ETHERIUM?
+GL-P-PRSI		     SOUND-ON?
+GL-P-PRSO		     SOUND-QUEUED?
+GL-P-QCONTEXT-RM	     TH-BELL-AUX1
+GL-P-QCONTEXT-TH	     TH-BELL-AUX2
+GL-P-QUOT		     TH-BOAT-AUX1
+GL-P-RIBUF		     TH-BOX-KEY-AUX1
+GL-P-S-LEX		     TH-BOX-LOCK-AUX1
+GL-P-SLOCBITS		     TH-CAB-WHISTLE-AUX1
+GL-P-SYNTAX		     TH-CAB-WHISTLE-AUX2
+GL-P-T-LEX		     TH-DIAL-AUX1
+GL-P-TABLE		     TH-DIAL-AUX2
+GL-P-THEM-OBJECT	     TH-GROWLER-CAB-AUX1
+GL-P-TIME		     TH-GUN-AUX1
+GL-P-TIME-FLAG		     TH-HANSOM-CAB-AUX1
+GL-P-VTBL		     TH-HANSOM-CAB-AUX2
+GL-P-WALK-DIR		     TH-PACKET-OF-PAPER-AUX1
+GL-P-XADJ		     TH-PHIAL-AUX1
+GL-P-XNAM		     TH-ROPE-AUX1
+GL-PLACE-CUR		     TH-ROPE-AUX2
+GL-PLACE-PRV		     TH-SAFETY-DEPOSIT-BOX-AUX1
+GL-PLACE-STS		     TH-SAPPHIRE-AUX1
+GL-PRSA			     WIGGINS-COLD?
+GL-PRSI			     WINNER-IS-WIGGINS
+
+Objects: 314
+
+CH-AKBAR		     TH-BED
+CH-BANK-GUARD		     TH-BEDSIDE-TABLE
+CH-BUTLER		     TH-BELL
+CH-DENKEEPER		     TH-BLACK-BAG
+CH-ELIZA-DOOLITTLE	     TH-BLIGH-BOAT
+CH-GROWLER-CABBIE	     TH-BLUE-PAPER
+CH-HANSOM-CABBIE	     TH-BLUE-PILL-BOTTLE
+CH-HER			     TH-BOAT
+CH-HIM			     TH-BOOK-PAGE
+CH-HOLMES		     TH-BOX-KEY
+CH-HOUSEWIVES		     TH-BOX-LOCK
+CH-HUDSON		     TH-BOXES
+CH-LIBRARIAN		     TH-BREATH
+CH-MATCH-SNIFFING-DOG	     TH-BROWN-PAPER
+CH-ME			     TH-BROWN-PILL-BOTTLE
+CH-MEMBERS		     TH-BULLET-HOLE
+CH-MORIARTY		     TH-BUNG
+CH-NANNIES		     TH-BUTT-OF-MALMSEY
+CH-PALACE-GUARD		     TH-CAB-WHISTLE
+CH-PLAYER		     TH-CARNATION
+CH-PRIME-MINISTER	     TH-CHARLES-STATUE
+CH-QUEEN		     TH-CHAUCER-TOMB
+CH-SHERMAN		     TH-CIGARETTE
+CH-THEM			     TH-CLAPPER
+CH-TOWER-GUARD		     TH-CLOTHES
+CH-TRAINED-PIGEON	     TH-CLUE-BOOK
+CH-TUSSAUDS-GUARD	     TH-CLUMP-OF-MOSS
+CH-URCHINS		     TH-COTTON-BALLS
+CH-VENDOR		     TH-CRAYON
+CH-WIGGINS		     TH-CROWDS
+CH-YOU			     TH-CROWN-JEWELS
+GLOBAL-OBJECTS		     TH-DEAD-PIGEON
+LG-BAKER-ST-DOOR	     TH-DIAL
+LG-BANK-VAULT-DOOR	     TH-DICKENS-TOMB
+LG-BAR-OF-GOLD-DOOR	     TH-DRAKE-STATUE
+LG-BOATS		     TH-EARS
+LG-BRITISH-MUSEUM-DOOR	     TH-EDWARD-TOMB
+LG-COLUMNS		     TH-ELIZABETH-STATUE
+LG-HOLMES-BEDROOM-DOOR	     TH-ELIZABETH-TOMB
+LG-HOLMES-STUDY-DOOR	     TH-ELIZAS-FLOWERS
+LG-JERICHO-PARLOUR-DOOR	     TH-ELIZAS-MOUTH
+LG-LAIR-DOOR		     TH-EMERALD
+LG-MARBLE		     TH-ETHERIUM-AMPOULE
+LG-PARLOUR-DOOR		     TH-ETHERIUM-GAS
+LG-PLAQUES		     TH-EVENT
+LG-PORTCULLIS-DOOR	     TH-FAWKES-STATUE
+LG-RAVENS		     TH-FEET
+LG-SHAFT-OF-LIGHT	     TH-FIGURES
+LG-SHOPS		     TH-FLOOR-ETC
+LG-STAIRWAY		     TH-GARNET
+LG-STREETLIGHT		     TH-GENERIC-BODY
+LG-TOMBS-ABBEY		     TH-GREEN-PAPER
+LG-TOWER		     TH-GROWLER-CAB
+LG-UP-DOWN-STREAM	     TH-GUARDS-KEYS
+LG-WATER		     TH-GUARDS-POCKET
+LG-WESTMINSTER-DOOR	     TH-GUN
+LG-WINDOW		     TH-HANDS
+LOCAL-GLOBALS		     TH-HANSOM-CAB
+PSEUDO-OBJECT		     TH-HEAD
+RM-221B-BAKER-ST	     TH-HENRY-V-TOMB
+RM-AUDLEY-ST		     TH-HENRY-VII-TOMB
+RM-BANK-OF-ENGLAND	     TH-INTDIR
+RM-BANK-VAULT		     TH-INTNUM
+RM-BAR-OF-GOLD		     TH-IT
+RM-BIRDCAGE-WALK	     TH-JEWEL-CASE
+RM-BLOODY-TOWER		     TH-JOHN-STATUE
+RM-BOWYER-TOWER		     TH-KNIFE
+RM-BRITISH-MUSEUM	     TH-LAB-EQUIPMENT
+RM-BROAD-SANCTUARY	     TH-LAIR-KEY
+RM-BUCKINGHAM-PALACE	     TH-LAMP
+RM-BUCKINGHAM-PALACE-RD	     TH-LAPEL
+RM-BYWARD-TOWER		     TH-LEFT
+RM-CHAMBER-OF-HORRORS	     TH-LIBRARY-TABLE
+RM-CHEAPSIDE		     TH-LIQUID
+RM-CLOCK-TOWER		     TH-LITTLE-PRINCES-TOMB
+RM-CONFESSOR-CHAPEL	     TH-MACE
+RM-COVENT-GARDEN	     TH-MAGNIFYING-GLASS
+RM-DIOGENES-CLUB	     TH-MAIL
+RM-DRAWBRIDGE		     TH-MALMSEY
+RM-DUNGEON		     TH-MALMSEY-POOL
+RM-ENTRY-HALL		     TH-MANTELPIECE
+RM-EVANGELIST-CHAPEL	     TH-MARY-QUEEN-OF-SCOTS-TOMB
+RM-FLEET-STREET		     TH-MATCH
+RM-GREAT-RUSSELL-ST	     TH-MATCHBOOK
+RM-GROSVENOR-PLACE	     TH-MORIARTY-DESK
+RM-HENRY-VII-CHAPEL	     TH-MOROCCO-CASE
+RM-HOLMES-BEDROOM	     TH-NELSON-COLUMN
+RM-HOLMES-STUDY		     TH-NELSON-EYE
+RM-HYDE-PARK-CORNER	     TH-NELSON-STATUE
+RM-INNOCENTS-CORNER	     TH-NEWSPAPER
+RM-INSIDE-TRAITORS-GATE	     TH-NEWTON-TOMB
+RM-JERICHO-PARLOUR	     TH-NOT-HERE-OBJECT
+RM-JERUSALEM-CHAMBER	     TH-OAR-1
+RM-JEWEL-ROOM		     TH-OAR-2
+RM-KENSINGTON-GARDENS	     TH-OAR-LOCK
+RM-KING-WILLIAM-ST	     TH-OPAL
+RM-LAIR			     TH-OPIUM-GAS
+RM-LONDON-BRIDGE	     TH-ORANGE-PAPER
+RM-LOWER-THAMES-ST	     TH-ORANGE-PILL
+RM-MADAME-TUSSAUDS	     TH-PACKET-OF-PAPER
+RM-MANUSCRIPT-ROOM	     TH-PADDLE
+RM-MARYLEBONE-RD	     TH-PARK-FLOWERS
+RM-MONUMENT		     TH-PERSIAN-SLIPPER
+RM-NAVE			     TH-PHIAL
+RM-NEW-OXFORD-ST	     TH-PIGEONS
+RM-NORTH-AMBULATORY	     TH-PIPE
+RM-NORTH-CHAPEL-AISLE	     TH-PITT-TOMB
+RM-NORTH-CLOISTER	     TH-PLAYER-BODY
+RM-NORTH-TRANSEPT	     TH-POCKET
+RM-ORCHARD-ST		     TH-POPE-TOMB
+RM-OUTER-WARD		     TH-PORTCULLIS-CHAIN
+RM-OUTSIDE-TRAITORS-GATE     TH-POUND-NOTE
+RM-OXFORD-ST		     TH-PRAMS
+RM-PARLIAMENT		     TH-RAILING
+RM-PARLIAMENT-SQUARE	     TH-RED-GLASS
+RM-PARLOUR		     TH-RIGHT
+RM-PINCHIN-LANE		     TH-RING
+RM-POETS-CORNER		     TH-ROOM
+RM-QUEENS-GARDENS	     TH-ROPE
+RM-SANCTUARY		     TH-RUBBINGS
+RM-SCOTLAND-YARD	     TH-RUBY
+RM-SHERMANS-HOUSE	     TH-SAFETY-DEPOSIT-BOX
+RM-SOUTH-AISLE		     TH-SAPPHIRE
+RM-SOUTH-AMBULATORY	     TH-SESAME
+RM-SOUTH-CHAPEL-AISLE	     TH-SHAFT
+RM-SOUTH-TRANSEPT	     TH-SHILLING
+RM-ST-GILES-CIRCUS	     TH-SIXPENCE
+RM-SWAN-LANE		     TH-SOFA
+RM-THAMES-FIVE		     TH-STETHOSCOPE
+RM-THAMES-FOUR		     TH-SUIT-OF-ARMOUR
+RM-THAMES-ONE		     TH-SYRINGE
+RM-THAMES-THREE		     TH-TELESCOPE
+RM-THAMES-TWO		     TH-THOMAS-STATUE
+RM-THE-BLACK-MUSEUM	     TH-TIME
+RM-THE-EMBANKMENT	     TH-TOBACCO
+RM-THE-MALL		     TH-TOPAZ
+RM-THE-STRAND		     TH-TORCH
+RM-THREADNEEDLE-ST	     TH-TRINKETS
+RM-TORTURE-ROOM		     TH-TURBAN
+RM-TOTTENHAM-COURT-RD	     TH-VERE-TOMB
+RM-TOWER-ENTRANCE	     TH-VIOLIN
+RM-TOWER-GREEN		     TH-WALL
+RM-TRAFALGAR-SQUARE	     TH-WALTER-STATUE
+RM-UPPER-THAMES-ST	     TH-WATERMARK
+RM-VESTIBULE		     TH-WATSONS-COAT
+RM-VICTORIA-SQUARE	     TH-WATSONS-HAT
+RM-VICTORIA-STREET	     TH-WATSONS-HEART
+RM-WAKEFIELD-TOWER	     TH-WAX-AX
+RM-WHITE-TOWER		     TH-WAX-HEAD
+RM-WHITEHALL		     TH-WESTMINSTER-CLUE
+RM-YORK-PLACE		     TH-WHITE-PAPER
+ROOMS			     TH-WILLIAM-STATUE
+TH-ANCHOR		     TH-WORKBENCH
+TH-ANCHOR-CHAIN		     TH-X-OBJECT
+TH-ANNE-OF-CLEVES-TOMB	     TH-Y-OBJECT
+TH-ASH			     TH-YELLOW-PAPER
+TH-BANK-OF-CANDLES	     TH-YELLOW-PILL
+
+Properties: 28
+
+P?ACTION       P?FLIPPED      P?NE	     P?PSEUDOS	    P?SYNONYM
+P?ADJECTIVE    P?GENERIC      P?NORTH	     P?SE	    P?UP
+P?CONTFCN      P?GLOBAL	      P?NW	     P?SIZE	    P?VALUE
+P?DEXTERITY    P?HEATED	      P?OBJ-ADJ	     P?SOUTH	    P?WEST
+P?DOWN	       P?IN	      P?OBJ-NOUN     P?STRENGTH
+P?EAST	       P?INSCRIPTION  P?OUT	     P?SW
+
+Flags: 48
+
+FL-ALIVE	   FL-FOOD	      FL-MONEY		 FL-SEEN
+FL-ASLEEP	   FL-HAS-DESCFCN     FL-NEEDS-IDENTITY	 FL-SURFACE
+FL-BODYPART	   FL-HAS-SDESC	      FL-NO-CROWDS	 FL-TAKEABLE
+FL-BROKEN	   FL-HOLMES-TOLD     FL-NO-ETHERIUM	 FL-TOOL
+FL-BURNABLE	   FL-INDOORS	      FL-NOALL		 FL-TOUCHED
+FL-BUYABLE	   FL-KEY	      FL-NOARTC		 FL-TRANSPARENT
+FL-BYHAND	   FL-KNIFE	      FL-NODESC		 FL-TRYTAKE
+FL-CLOTHING	   FL-LAMP	      FL-OPENABLE	 FL-VEHICLE
+FL-COLLECTIVE	   FL-LIGHTED	      FL-OPENED		 FL-VOWEL
+FL-CONTAINER	   FL-LOCATION	      FL-PERSON		 FL-WEAPON
+FL-DOOR		   FL-LOCKED	      FL-PLURAL		 FL-WORN
+FL-FEMALE	   FL-LOSE-IDENTITY   FL-READABLE	 FL-YOUR
+
+Fake globals: 1
+
+GL-ALARM-STOP
